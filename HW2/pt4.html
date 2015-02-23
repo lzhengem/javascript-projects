@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<!-- this page will use geElementById and innerHTML to write html onto the same page -->
+	 	
+
+	<head>
+		<meta charset="utf-8">
+	 	<title>CNIT 133 Homework 2 - Part 4 - Square and cubes</title>
+	 	<meta name="description" content="Lena Zheng HW2 part 4 Square and Cubes">
+	 	<meta name="author" content="Lena Zheng">
+	 	<link rel="stylesheet" type="text/css" href="../nav.css">
+
+		<style type="text/css">
+
+			
+			.center {
+				text-align: center;
+			}
+
+			.center table{
+				background: #FF0000;
+				background: -webkit-linear-gradient(bottom, #FF0000 0%, #CCFF33 100%); 
+				background: -moz-linear-gradient(bottom, #FF0000 0%, #CCFF33 100%);
+				margin: 0 auto;
+				border: 1px solid black;
+				/*makes it so the borders become 1 (show the lines down the table*/
+				border-collapse: collapse;
+				
+			}
+			td {
+				padding: 10px;
+				text-align:right;
+			}
+		</style>
+
+		<script src="http://code.jquery.com/jquery-1.10.1.js"></script>
+		<script>
+			function process(begin,end){
+				document.write("<table><tr><td>Number</td><td>Square</td><td>Cube</td></tr>");
+				for (var i = begin; i <= end; i++) {
+					document.write("<tr><td>" + i + "</td><td>" + Math.pow(i,2) + "</td><td>" + Math.pow(i,3) + "</tr>");
+				};
+				document.write("</tr></table>");
+			};
+
+			function secondprocess(begin,end){
+				var secondtable = ""
+				secondtable += "<table><tr><td>Number</td><td>Square</td><td>Cube</td></tr>";
+				for (var i = begin; i <= end; i++) {
+					secondtable += "<tr><td>" + i + "</td><td>" + Math.pow(i,2) + "</td><td>" + Math.pow(i,3) + "</tr>"
+				};
+				secondtable += "</tr></table>";
+				// this allows you to write onto the same page
+				document.getElementById("theTable").innerHTML = secondtable;
+
+			}
+
+
+		</script>
+	</head>
+
+	<body>
+		<header>
+			<h2>CNIT133 HW2 Part 4 - Square and cubes</h2>
+			<nav>
+				<ul>
+					<li><a href="http://hills.ccsf.edu/~lzheng22/cnit133_js">HW 1</a></li>
+					<li>
+						<a href="http://hills.ccsf.edu/~lzheng22/cnit133_js/HW2/hw2.html">HW 2</a>
+						<ul>
+							<li><a href="http://hills.ccsf.edu/~lzheng22/cnit133_js/HW2/pt1.html">HW 2: Part 1</a></li>
+							<li><a href="http://hills.ccsf.edu/~lzheng22/cnit133_js/HW2/pt2.html">HW 2: Part 2</a></li>
+							<li><a href="http://hills.ccsf.edu/~lzheng22/cnit133_js/HW2/pt3.html">HW 2: Part 3</a></li>
+							<li><a href="http://hills.ccsf.edu/~lzheng22/cnit133_js/HW2/pt4.html">HW 2: Part 4</a></li>
+							<li><a href="http://hills.ccsf.edu/~lzheng22/cnit133_js/HW2/extracredit.html">HW 2: Extra Credit</a></li>
+						</ul>
+					</li>
+					<li><a href="http://hills.ccsf.edu/~lzheng22/cnit133_js/HW3/hw3.html">HW 3</a></li>
+					<li><a href="http://hills.ccsf.edu/~lzheng22/cnit133_js/HW4/hw4.html">HW 4</a></li>
+					<li><a href="http://hills.ccsf.edu/~lzheng22/cnit133_js/HW5/hw5.html">HW 5</a></li>
+					<li><a href="http://hills.ccsf.edu/~lzheng22/cnit133_js/HW6/hw6.html">HW 6</a></li>
+					<li><a href="http://hills.ccsf.edu/~lzheng22/cnit133_js/HW7/hw7.html">HW 7</a></li>
+					<li><a href="http://hills.ccsf.edu/~lzheng22/cnit133_js/HW8/hw8.html">HW 8</a>
+					</li>
+				</ul>
+			</nav>
+		</header>
+		<div class="center">
+		Table displaying squares and cubes of number 1 to 6:
+
+		<script type="text/javascript">process(1,6);</script>
+		<br>
+		
+			<button type="button" onclick="secondprocess(7,10)">Click to show 7 to 10</button>
+		
+
+		<br>
+		<div id="theTable"></div>
+
+		</div>
+		<footer>
+			<a href="http://validator.w3.org/check?uri=referer"><img alt="HTML5" src="http://fog.ccsf.edu/~srubin/html5a.jpg" style="border:0;width:29px;height:35px"></a>
+
+			<a href="http://jigsaw.w3.org/css-validator/check/referer"><img style="border:0;width:88px;height:31px" src="http://jigsaw.w3.org/css-validator/images/vcss-blue" alt="Valid CSS!"></a>
+		</footer>
+	</body>
+
+</html>
+
+

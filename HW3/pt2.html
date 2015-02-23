@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+ 	<title>Salesperson</title>
+ 	<meta name="description" content="Lena Zheng HW3 salesperson">
+ 	<meta name="author" content="Lena Zheng">
+ 	<link rel="stylesheet" type="text/css" href="../nav.css">
+
+	<style type="text/css">
+		input {
+			text-align: right;
+		}
+	</style>
+
+	<script src="http://code.jquery.com/jquery-1.10.1.js"></script>
+
+	<!-- the following script is needed for jquery validation of input -->
+
+	<script src="http://fog.ccsf.edu/~srubin//jQvalidate.js"></script>
+
+	<script>
+		$(document).ready(function(){
+			$("#myform").validate({
+			// Rules for each input item
+			rules: 
+				{
+				salesperson: {required: true},
+				item1: { required: true, number: true, digits: true},
+				item2: { required: true, number: true, digits: true},
+				item3: { required: true, number: true, digits: true},
+				item4: { required: true, number: true, digits: true},
+
+				}
+			});	  
+		});
+
+		$(function() {
+			$( document ).tooltip();
+		});
+
+		function process() {
+			if ($("#myform").valid()) {
+				// define variables	
+				var item1, item2, item3, item4
+				var item1total, item2total, item3total, item4total
+				var totalsold, totalearning
+				item1 = parseInt(document.myform.item1.value)
+				item2 = parseInt(document.myform.item2.value)
+				item3 = parseInt(document.myform.item3.value)
+				item4 = parseInt(document.myform.item4.value)
+
+				item1total = parseFloat((item1 * 239.99).toFixed(2))
+				item2total = parseFloat((item2 * 129.75).toFixed(2))
+				item3total = parseFloat((item3 * 99.95).toFixed(2))
+				item4total = parseFloat((item4 * 350.89).toFixed(2))
+
+
+				totalsold = (item1total + item2total + item3total + item4total).toFixed(2)
+				totalearning = (0.09 * totalsold + 200).toFixed(2)
+
+				document.getElementById("item1sold").innerHTML = "<input type='text' size='10' value= "+ item1 +">";
+				document.getElementById("item2sold").innerHTML = "<input type='text' size='10' value= "+ item2 +">";
+				document.getElementById("item3sold").innerHTML = "<input type='text' size='10' value= "+ item3 +">";
+				document.getElementById("item4sold").innerHTML = "<input type='text' size='10' value= "+ item4 +">";
+
+				document.getElementById("item1total").innerHTML = "<input type='text' size='10' value= "+ item1total +">";
+				document.getElementById("item2total").innerHTML = "<input type='text' size='10' value= "+ item2total +">";
+				document.getElementById("item3total").innerHTML = "<input type='text' size='10' value= "+ item3total +">";
+				document.getElementById("item4total").innerHTML = "<input type='text' size='10' value= "+ item4total +">";
+				document.getElementById("totalsold").innerHTML = "<input type='text' size='10' value= " + totalsold + ">";
+				document.getElementById("totalearning").innerHTML = "<input type='text' size='10' value= " + totalearning + ">";
+
+			}
+
+		}
+	</script>
+</head>
+
+<body>
+	<header>
+		<h2>HW 3 pt 2: Salesperson</h2>
+		<nav>
+			<ul>
+				<li><a href="http://hills.ccsf.edu/~lzheng22/cnit133_js">HW 1</a></li>
+				<li>
+					<a href="http://hills.ccsf.edu/~lzheng22/cnit133_js/HW2/hw2.html">HW 2</a>
+					<ul>
+						<li><a href="http://hills.ccsf.edu/~lzheng22/cnit133_js/HW2/pt1.html">HW 2: Part 1</a></li>
+						<li><a href="http://hills.ccsf.edu/~lzheng22/cnit133_js/HW2/pt2.html">HW 2: Part 2</a></li>
+						<li><a href="http://hills.ccsf.edu/~lzheng22/cnit133_js/HW2/pt3.html">HW 2: Part 3</a></li>
+						<li><a href="http://hills.ccsf.edu/~lzheng22/cnit133_js/HW2/pt4.html">HW 2: Part 4</a></li>
+						<li><a href="http://hills.ccsf.edu/~lzheng22/cnit133_js/HW2/extracredit.html">HW 2: Extra Credit</a></li>
+					</ul>
+				</li>
+				<li><a href="http://hills.ccsf.edu/~lzheng22/cnit133_js/HW3/hw3.html">HW 3</a>
+					<ul>
+						<li><a href="http://hills.ccsf.edu/~lzheng22/cnit133_js/HW3/pt1.html">HW 3: Part 1</a></li>
+						<li><a href="http://hills.ccsf.edu/~lzheng22/cnit133_js/HW3/pt2.html">HW 3: Part 2</a></li>
+						<li><a href="http://hills.ccsf.edu/~lzheng22/cnit133_js/HW3/pt3.html">HW 3: Part 3</a></li>
+						<li><a href="http://hills.ccsf.edu/~lzheng22/cnit133_js/HW3/pt4.html">HW 3: Part 4</a></li>
+						<li><a href="http://hills.ccsf.edu/~lzheng22/cnit133_js/HW3/pt5.html">HW 3: Part 5</a></li>
+						<li><a href="http://hills.ccsf.edu/~lzheng22/cnit133_js/HW3/pt6.html">HW 3: Part 6</a></li>
+						<li><a href="http://hills.ccsf.edu/~lzheng22/cnit133_js/HW3/extracredit.html">HW 3: Extra Credit</a></li>
+					</ul>
+				</li>
+				<li><a href="http://hills.ccsf.edu/~lzheng22/cnit133_js/HW4/hw4.html">HW 4</a></li>
+				<li><a href="http://hills.ccsf.edu/~lzheng22/cnit133_js/HW5/hw5.html">HW 5</a></li>
+				<li><a href="http://hills.ccsf.edu/~lzheng22/cnit133_js/HW6/hw6.html">HW 6</a></li>
+				<li><a href="http://hills.ccsf.edu/~lzheng22/cnit133_js/HW7/hw7.html">HW 7</a></li>
+				<li><a href="http://hills.ccsf.edu/~lzheng22/cnit133_js/HW8/hw8.html">HW 8</a>
+				</li>
+			</ul>
+		</nav>
+	</header>
+	<section class="body">
+		<form id="myform" name="myform">
+
+			<label for="salesperson">Salesperson:</label>
+			<input type="text" id="salesperson" name="salesperson" size="10" title="Please make sure that the salesperson's name is spelled correctly" autofocus><br>
+
+			<h3>Input the number of items sold for each item number:</h3>
+				
+			<table>
+			
+				<tr>
+					<td>Item</td>
+					<td>Value</td>
+				</tr>
+				<tr>
+					<td><label for="item1">1 </label></td>
+					<td><input type="text" id="item1" name="item1" size="10"></td>
+				</tr>
+				<tr>
+					<td><label for="item2">2 </label></td>
+					<td><input type="text" id="item2" name="item2" size="10" ></td>
+				</tr>
+				<tr>
+					<td><label for="item3">3 </label></td>
+					<td><input type="text" id="item3" name="item3" size="10" ></td>
+				</tr>
+				<tr>
+					<td><label for="item4">4 </label></td>
+					<td><input type="text" id="item4" name="item4" size="10" ></td>
+				</tr>
+			</table>
+			<input type="button"  onclick="process()" value="SUBMIT">
+			<input type="reset" value="RESET" onClick="window.location.reload();"><br><br>
+
+
+
+			<table>
+	
+				<tr>
+					<td>Item #</td>
+					<td>Price</td>
+					<td>Number Sold</td>
+					<td>Total</td>
+				</tr>
+				<tr>
+					<td>1</td>
+					<td>$239.99</td>
+					<td><div id="item1sold"><input type="text" size="10"></div></td>
+					<td><div id="item1total"><input type="text" size="10"></div></td>
+				</tr>
+				<tr>
+					<td>2</td>
+					<td>$129.75</td>
+					<td><div id="item2sold"><input type="text" size="10"></div></td>
+					<td><div id="item2total"><input type="text" size="10"></div></td>
+				</tr>
+				<tr>
+					<td>3</td>
+					<td>$99.95</td>
+					<td><div id="item3sold"><input type="text" size="10"></div></td>
+					<td><div id="item3total"><input type="text" size="10"></div></td>
+				</tr>
+				<tr>
+					<td>4</td>
+					<td>$350.89</td>
+					<td><div id="item4sold"><input type="text" size="10"></div></td>
+					<td><div id="item4total"><input type="text" size="10"></div></td>
+				</tr>
+				<tr>
+					<td colspan="3">Total Amount Sold:</td>
+					<td><div id="totalsold"><input type="text" size="10"></div></td>
+				</tr>
+				<tr>
+					<td colspan="3">Total Weekly earnings:</td>
+					<td><div id="totalearning"><input type="text" size="10"></div></td>
+				</tr>
+			</table>
+		</form>
+
+
+	</section>
+	<footer>
+		<a href="http://validator.w3.org/check?uri=referer"><img alt="HTML5" src="../html5.png" style="border:0;width:29px;height:35px"></a>
+
+		<a href="http://jigsaw.w3.org/css-validator/check/referer"><img style="border:0;width:88px;height:31px" src="../css.png" alt="Valid CSS!"></a>
+
+	</footer>
+</body>
+
+</html>
+
+

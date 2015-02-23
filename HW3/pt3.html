@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+ 	<title>Credit Limit</title>
+ 	<meta name="description" content="Lena Zheng HW3 credit limit">
+ 	<meta name="author" content="Lena Zheng">
+ 	<link rel="stylesheet" type="text/css" href="../nav.css">
+
+	<style type="text/css">
+		input {
+			text-align: right;
+		}
+	</style>
+
+	<script src="http://code.jquery.com/jquery-1.10.1.js"></script>
+
+	<!-- the following script is needed for jquery validation of input -->
+
+	<script src="http://fog.ccsf.edu/~srubin//jQvalidate.js"></script>
+
+	<script>
+		$(document).ready(function(){
+			$("#myform").validate({
+			// Rules for each input item
+				rules: 
+				{
+					accnum: {required: true, number: true},
+					balance: { required: true, number: true},
+					itemscharged: { required: true, number: true},
+					creditsapplied: { required: true, number: true},
+					allowedlimit: { required: true, number: true},
+
+				}
+			});
+		});
+
+		$(document).ready(function(){
+		    $("button").click(function(e){
+		    	//prevent the page from reloading again
+		    	e.preventDefault();
+		        $("textarea").css({
+		            "color": "white",
+		            "background-color": "black",
+		            "font-weight":"bold",
+		            "font-size" : "large"
+
+		        });
+		    });
+		});
+
+
+
+		$(function() {
+			$( document ).tooltip();
+		});
+
+		function process() {
+			if ($("#myform").valid()) {
+				// define variables	
+				var accnum, balance, itemscharged, creditsapplied, allowedlimit
+				var newbalance, output
+
+				accnum = document.myform.accnum.value
+				balance = parseInt(document.myform.balance.value)
+				itemscharged = parseInt(document.myform.itemscharged.value)
+				creditsapplied = parseInt(document.myform.creditsapplied.value)
+				allowedlimit = parseInt(document.myform.allowedlimit.value)
+
+				newbalance = balance + itemscharged - creditsapplied
+				output = "Your new balance is " + newbalance + "."
+
+				if (newbalance > allowedlimit){
+					output += "\nCredit limit exceeded by " + (newbalance - allowedlimit) + "."
+				} 
+				else {
+					output += "\nCredit available is " + (allowedlimit - newbalance) + "."
+				}
+				
+				document.myform.comment.value = output;
+
+			}
+
+		}
+	</script>
+</head>
+
+<body>
+	<header>
+		<h2>HW 3 pt 3: credit limit</h2>
+		<nav>
+			<ul>
+				<li><a href="http://hills.ccsf.edu/~lzheng22/cnit133_js">HW 1</a></li>
+				<li>
+					<a href="http://hills.ccsf.edu/~lzheng22/cnit133_js/HW2/hw2.html">HW 2</a>
+					<ul>
+						<li><a href="http://hills.ccsf.edu/~lzheng22/cnit133_js/HW2/pt1.html">HW 2: Part 1</a></li>
+						<li><a href="http://hills.ccsf.edu/~lzheng22/cnit133_js/HW2/pt2.html">HW 2: Part 2</a></li>
+						<li><a href="http://hills.ccsf.edu/~lzheng22/cnit133_js/HW2/pt3.html">HW 2: Part 3</a></li>
+						<li><a href="http://hills.ccsf.edu/~lzheng22/cnit133_js/HW2/pt4.html">HW 2: Part 4</a></li>
+						<li><a href="http://hills.ccsf.edu/~lzheng22/cnit133_js/HW2/extracredit.html">HW 2: Extra Credit</a></li>
+					</ul>
+				</li>
+				<li><a href="http://hills.ccsf.edu/~lzheng22/cnit133_js/HW3/hw3.html">HW 3</a>
+					<ul>
+						<li><a href="http://hills.ccsf.edu/~lzheng22/cnit133_js/HW3/pt1.html">HW 3: Part 1</a></li>
+						<li><a href="http://hills.ccsf.edu/~lzheng22/cnit133_js/HW3/pt2.html">HW 3: Part 2</a></li>
+						<li><a href="http://hills.ccsf.edu/~lzheng22/cnit133_js/HW3/pt3.html">HW 3: Part 3</a></li>
+						<li><a href="http://hills.ccsf.edu/~lzheng22/cnit133_js/HW3/pt4.html">HW 3: Part 4</a></li>
+						<li><a href="http://hills.ccsf.edu/~lzheng22/cnit133_js/HW3/pt5.html">HW 3: Part 5</a></li>
+						<li><a href="http://hills.ccsf.edu/~lzheng22/cnit133_js/HW3/pt6.html">HW 3: Part 6</a></li>
+						<li><a href="http://hills.ccsf.edu/~lzheng22/cnit133_js/HW3/extracredit.html">HW 3: Extra Credit</a></li>
+					</ul>
+				</li>
+				<li><a href="http://hills.ccsf.edu/~lzheng22/cnit133_js/HW4/hw4.html">HW 4</a></li>
+				<li><a href="http://hills.ccsf.edu/~lzheng22/cnit133_js/HW5/hw5.html">HW 5</a></li>
+				<li><a href="http://hills.ccsf.edu/~lzheng22/cnit133_js/HW6/hw6.html">HW 6</a></li>
+				<li><a href="http://hills.ccsf.edu/~lzheng22/cnit133_js/HW7/hw7.html">HW 7</a></li>
+				<li><a href="http://hills.ccsf.edu/~lzheng22/cnit133_js/HW8/hw8.html">HW 8</a>
+				</li>
+			</ul>
+		</nav>
+	</header>
+	<section class="body">
+		<form id="myform" name="myform">
+			<table>
+				<tr>
+
+					<td><label for="accnum">Credit Account Summary Account Number:</label></td>
+					<td><input type="text" id="accnum" name="accnum" size="10" title="Enter Account number" autofocus></td>
+				</tr>		
+				<tr>
+					<td><label for="allowedlimit">Credit limit: </label></td>
+					<td><input type="text" id="allowedlimit" name="allowedlimit" size="10" ></td>
+				</tr>
+				<tr>
+					<td><label for="balance">Balance at the beginning of the month: </label></td>
+					<td><input type="text" id="balance" name="balance" size="10"></td>
+				</tr>
+				
+				<tr>
+					<td><label for="itemscharged">Total amount charged this month: </label></td>
+					<td><input type="text" id="itemscharged" name="itemscharged" size="10" ></td>
+				</tr>
+				<tr>
+					<td><label for="creditsapplied">Total amount of credits this month: </label></td>
+					<td><input type="text" id="creditsapplied" name="creditsapplied" size="10" ></td>
+				</tr>
+			</table>
+			<input type="button"  onclick="process()" value="SUBMIT">
+			<input type="reset" value="RESET" onClick="window.location.reload();"><br><br>
+
+			<textarea rows="6" cols="40" name="comment"></textarea>
+			<button>Click to change Textarea Display</button>
+
+		</form>
+
+
+	</section>
+	<footer>
+		<a href="http://validator.w3.org/check?uri=referer"><img alt="HTML5" src="../html5.png" style="border:0;width:29px;height:35px"></a>
+
+		<a href="http://jigsaw.w3.org/css-validator/check/referer"><img style="border:0;width:88px;height:31px" src="../css.png" alt="Valid CSS!"></a>
+
+	</footer>
+</body>
+
+</html>
+
+

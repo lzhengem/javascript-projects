@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<!-- this will use jquery to fade a text box -->
+	<head>
+		<meta charset="utf-8">
+	 	<title>CNIT 133 Homework 2 - Part 3 - jQuery</title>
+	 	<meta name="description" content="Lena Zheng HW2 part 3 jQuery">
+	 	<meta name="author" content="Lena Zheng">
+	 	<link rel="stylesheet" type="text/css" href="../nav.css">
+
+		<style type="text/css">
+		table {
+			margin: 0 auto;
+		}
+		textarea {
+			background-color: yellow;
+		}
+
+		</style>
+
+		<script src="http://code.jquery.com/jquery-1.10.1.js"></script>
+		<script>
+			function process(){
+				var num1, num2, num3, num4, num5, arr, zeros, positive, negative, message;
+				num1 = parseInt(document.myform.num1.value);
+				num2 = parseInt(document.myform.num2.value);
+				num3 = parseInt(document.myform.num3.value);
+				num4 = parseInt(document.myform.num4.value);
+				num5 = parseInt(document.myform.num5.value);
+				arr = [num1,num2,num3,num4,num5];
+				zeros = 0;
+				positive = 0;
+				negative = 0;
+				for (var i = 0; i < arr.length ; i++) {
+					if (arr[i] == 0) {
+						zeros++;
+					}
+					else if (arr[i] > 0) {
+						positive++;
+
+					}
+					else if (arr[i] < 0) {
+						negative++;
+					}
+					else
+					{
+						alert("Come on put in real numbers");
+						break;
+					}
+				};
+				document.myform.result.value = "Positives: " + positive + "\nNegatives: " + negative + "\nZeros: " + zeros;
+			}
+
+			$(document).ready(function(){
+				$("button").click(function(){
+					$("textarea").fadeTo("slow",0.25);
+				});
+			});
+
+		</script>
+	</head>
+
+	<body>
+		<header>
+			<h2>CNIT133 HW2 Part 3 - jQuery</h2>
+			<nav>
+				<ul>
+					<li><a href="http://hills.ccsf.edu/~lzheng22/cnit133_js">HW 1</a></li>
+					<li>
+						<a href="http://hills.ccsf.edu/~lzheng22/cnit133_js/HW2/hw2.html">HW 2</a>
+						<ul>
+							<li><a href="http://hills.ccsf.edu/~lzheng22/cnit133_js/HW2/pt1.html">HW 2: Part 1</a></li>
+							<li><a href="http://hills.ccsf.edu/~lzheng22/cnit133_js/HW2/pt2.html">HW 2: Part 2</a></li>
+							<li><a href="http://hills.ccsf.edu/~lzheng22/cnit133_js/HW2/pt3.html">HW 2: Part 3</a></li>
+							<li><a href="http://hills.ccsf.edu/~lzheng22/cnit133_js/HW2/pt4.html">HW 2: Part 4</a></li>
+							<li><a href="http://hills.ccsf.edu/~lzheng22/cnit133_js/HW2/extracredit.html">HW 2: Extra Credit</a></li>
+						</ul>
+					</li>
+					<li><a href="http://hills.ccsf.edu/~lzheng22/cnit133_js/HW3/hw3.html">HW 3</a></li>
+					<li><a href="http://hills.ccsf.edu/~lzheng22/cnit133_js/HW4/hw4.html">HW 4</a></li>
+					<li><a href="http://hills.ccsf.edu/~lzheng22/cnit133_js/HW5/hw5.html">HW 5</a></li>
+					<li><a href="http://hills.ccsf.edu/~lzheng22/cnit133_js/HW6/hw6.html">HW 6</a></li>
+					<li><a href="http://hills.ccsf.edu/~lzheng22/cnit133_js/HW7/hw7.html">HW 7</a></li>
+					<li><a href="http://hills.ccsf.edu/~lzheng22/cnit133_js/HW8/hw8.html">HW 8</a>
+					</li>
+				</ul>
+			</nav>
+		</header>
+		<section class="getnums">
+			<form name="myform">
+				<table>
+					<tr>
+						<td>Please enter 5 numbers</td>
+					</tr>
+					<tr>
+						<td><input type="text" name="num1" size="5"></td>
+						<td><input type="text" name="num2" size="5"></td>
+					</tr>
+					<tr>
+						<td><input type="text" name="num3" size="5"></td>
+						<td><input type="text" name="num4" size="5"></td>
+					</tr>
+					<tr>
+						<td><input type="text" name="num5" size="5"></td>
+					</tr>
+					<tr>
+						<td><input type="button" onclick="process()" value="submit">
+						<input type="reset" value="Reset"></td>
+					</tr>
+					<tr>
+						<td colspan="2">
+							<br><textarea rows="6" cols="40" name="result">Results Here</textarea>
+						</td>			
+					</tr>
+					<tr>
+						<td><button type="button">Click to fade</button></td>
+					</tr>
+				</table>
+			</form>
+		</section>
+
+
+		<footer>
+			<a href="http://validator.w3.org/check?uri=referer"><img alt="HTML5" src="http://fog.ccsf.edu/~srubin/html5a.jpg" style="border:0;width:29px;height:35px"></a>
+
+			<a href="http://jigsaw.w3.org/css-validator/check/referer"><img style="border:0;width:88px;height:31px" src="http://jigsaw.w3.org/css-validator/images/vcss-blue" alt="Valid CSS!"></a>
+		</footer>
+	</body>
+
+</html>
+
+

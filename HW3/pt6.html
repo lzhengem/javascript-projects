@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+ 	<title>Random</title>
+ 	<meta name="description" content="Lena Zheng HW3 Random">
+ 	<meta name="author" content="Lena Zheng">
+ 	<link rel="stylesheet" type="text/css" href="../nav.css">
+	<style type="text/css">
+		input {
+			text-align: right;
+		}
+	</style>
+
+	<script src="http://code.jquery.com/jquery-1.10.1.js"></script>
+
+	<!-- the following script is needed for jquery validation of input -->
+
+	<script src="http://fog.ccsf.edu/~srubin//jQvalidate.js"></script>
+	<!-- for instructions box -->
+	<script src="http://code.jquery.com/ui/1.10.3/jquery-ui.js"></script>
+
+	<script>
+		var num1, num2
+
+		$(document).ready(function(){
+			$("#myform").validate({
+			// Rules for each input item
+				rules: 
+				{
+					guess: {number: true},
+
+				}
+
+			});
+		});
+		function random_nums(){
+			
+			num1 = parseInt(Math.random() * 10)
+			num2 = parseInt(Math.random() * 10)
+
+			document.getElementById("question").innerHTML = "<input type='text' value='what is " + num1.toString() + " times " + num2.toString() + "?'>"
+
+
+		}
+		function validate_answer(){
+			var answer = num1 * num2
+			if (parseInt(document.myform.answer.value) == answer){
+				var again = confirm("Good job!\n Do you want to try again?")
+				if (again == true){
+					random_nums()
+				}else{
+					window.location.reload()
+				}
+
+			}else{
+				alert("No. Please try again.")
+			}
+			//i choose not to clear the question at this point because the student still needs to
+			//answer the question and would still need to see the question
+			document.getElementById("answer").value = "";
+
+		}
+
+
+		
+
+
+	</script>
+</head>
+
+<body>
+	<header>
+		<h2>HW 3 pt 6: Random</h2>
+		<nav>
+			<ul>
+				<li><a href="http://hills.ccsf.edu/~lzheng22/cnit133_js">HW 1</a></li>
+				<li>
+					<a href="http://hills.ccsf.edu/~lzheng22/cnit133_js/HW2/hw2.html">HW 2</a>
+					<ul>
+						<li><a href="http://hills.ccsf.edu/~lzheng22/cnit133_js/HW2/pt1.html">HW 2: Part 1</a></li>
+						<li><a href="http://hills.ccsf.edu/~lzheng22/cnit133_js/HW2/pt2.html">HW 2: Part 2</a></li>
+						<li><a href="http://hills.ccsf.edu/~lzheng22/cnit133_js/HW2/pt3.html">HW 2: Part 3</a></li>
+						<li><a href="http://hills.ccsf.edu/~lzheng22/cnit133_js/HW2/pt4.html">HW 2: Part 4</a></li>
+						<li><a href="http://hills.ccsf.edu/~lzheng22/cnit133_js/HW2/extracredit.html">HW 2: Extra Credit</a></li>
+					</ul>
+				</li>
+				<li><a href="http://hills.ccsf.edu/~lzheng22/cnit133_js/HW3/hw3.html">HW 3</a>
+					<ul>
+						<li><a href="http://hills.ccsf.edu/~lzheng22/cnit133_js/HW3/pt1.html">HW 3: Part 1</a></li>
+						<li><a href="http://hills.ccsf.edu/~lzheng22/cnit133_js/HW3/pt2.html">HW 3: Part 2</a></li>
+						<li><a href="http://hills.ccsf.edu/~lzheng22/cnit133_js/HW3/pt3.html">HW 3: Part 3</a></li>
+						<li><a href="http://hills.ccsf.edu/~lzheng22/cnit133_js/HW3/pt4.html">HW 3: Part 4</a></li>
+						<li><a href="http://hills.ccsf.edu/~lzheng22/cnit133_js/HW3/pt5.html">HW 3: Part 5</a></li>
+						<li><a href="http://hills.ccsf.edu/~lzheng22/cnit133_js/HW3/pt6.html">HW 3: Part 6</a></li>
+						<li><a href="http://hills.ccsf.edu/~lzheng22/cnit133_js/HW3/extracredit.html">HW 3: Extra Credit</a></li>
+					</ul>
+				</li>
+				<li><a href="http://hills.ccsf.edu/~lzheng22/cnit133_js/HW4/hw4.html">HW 4</a></li>
+				<li><a href="http://hills.ccsf.edu/~lzheng22/cnit133_js/HW5/hw5.html">HW 5</a></li>
+				<li><a href="http://hills.ccsf.edu/~lzheng22/cnit133_js/HW6/hw6.html">HW 6</a></li>
+				<li><a href="http://hills.ccsf.edu/~lzheng22/cnit133_js/HW7/hw7.html">HW 7</a></li>
+				<li><a href="http://hills.ccsf.edu/~lzheng22/cnit133_js/HW8/hw8.html">HW 8</a>
+				</li>
+			</ul>
+		</nav>
+	</header>
+
+	<form id="myform" name="myform">
+		<input type="button" onclick="random_nums()" value="Get question">
+		<div id="question"><input type="text" value="question here"></div><br>
+		Your answer:
+		<input type="text" id="answer" name="answer">
+		<input type="button" onclick="validate_answer()" value="Submit answer">
+
+	</form>
+	<footer>
+		<a href="http://validator.w3.org/check?uri=referer"><img alt="HTML5" src="../html5.png" style="border:0;width:29px;height:35px"></a>
+
+		<a href="http://jigsaw.w3.org/css-validator/check/referer"><img style="border:0;width:88px;height:31px" src="../css.png" alt="Valid CSS!"></a>
+
+	</footer>
+</body>
+
+</html>
+
+

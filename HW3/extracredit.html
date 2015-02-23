@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+ 	<title>Extra Credit: craps</title>
+ 	<meta name="description" content="Lena Zheng HW3 extra credit: craps">
+ 	<meta name="author" content="Lena Zheng">
+ 	<link rel="stylesheet" type="text/css" href="../nav.css">
+
+	<style type="text/css">
+		input {
+			text-align: right;
+		}
+		#instructions{
+			display: none;
+		}
+	</style>
+	<script src="http://code.jquery.com/jquery-1.10.1.js"></script>
+
+	<script>
+
+		$(document).ready(function(){
+			$("#flip").click(function(){
+				$("#instructions").slideToggle("slow");
+			});
+		});
+		//so we know how many times we rolled and keep track of the points
+		var times_rolled = 0
+		var points
+
+		function roll() {
+			times_rolled += 1
+			//get rid of the win and lose message from previous rounds
+			document.getElementById("message").innerHTML = "";
+
+
+			// define variables	
+			var die1, die2, sum
+			die1 = parseInt(Math.random() * 6 + 1)
+			die2 = parseInt(Math.random() * 6 + 1)
+			sum = die1 + die2
+
+			//diplay the die values 
+			document.getElementById("die1").innerHTML = "<input type='text' size='10' value= "+ die1 +">";
+			document.getElementById("die2").innerHTML = "<input type='text' size='10' value= "+ die2 +">";
+			document.getElementById("sum").innerHTML = "<input type='text' size='10' value= "+ sum +">";
+			document.getElementById("times_rolled").innerHTML = "<input type='text' size='10' value= "+ times_rolled +">";
+			//if get 7 or 11 on first roll, display win message
+			if (times_rolled == 1){
+				if (sum == 7 || sum == 11){
+					document.getElementById("message").innerHTML = "You win! Click to play again!"
+					times_rolled = 0
+				}
+
+				//if get 2,3, or 12 on first roll, display lose message
+				else if (sum == 2|| sum == 3 || sum == 12){
+					document.getElementById("message").innerHTML = "You Lose! Click to play again!"
+					times_rolled = 0
+					points = null
+				}
+
+				//for any other point value, that is the goal point
+				else{
+					points = sum
+					document.getElementById("points").innerHTML = "<input type='text' size='10' value= "+ points +">";
+				}
+
+			} //if roll goal point value before rolling 7, display win message
+			else if (points == sum){
+				document.getElementById("message").innerHTML = "You win! Click to play again!"
+				times_rolled = 0
+				points = null
+			}
+			//if roll 7 before goal point value, display lose message
+			else if (sum == 7){
+				document.getElementById("message").innerHTML = "You Lose! Click to play again!"
+				times_rolled = 0
+				points = null
+
+			}
+			
+
+		}
+	</script>
+</head>
+
+<body>
+	<header>
+		<h2>HW 3 extra credit: craps</h2>
+		<nav>
+			<ul>
+				<li><a href="http://hills.ccsf.edu/~lzheng22/cnit133_js">HW 1</a></li>
+				<li>
+					<a href="http://hills.ccsf.edu/~lzheng22/cnit133_js/HW2/hw2.html">HW 2</a>
+					<ul>
+						<li><a href="http://hills.ccsf.edu/~lzheng22/cnit133_js/HW2/pt1.html">HW 2: Part 1</a></li>
+						<li><a href="http://hills.ccsf.edu/~lzheng22/cnit133_js/HW2/pt2.html">HW 2: Part 2</a></li>
+						<li><a href="http://hills.ccsf.edu/~lzheng22/cnit133_js/HW2/pt3.html">HW 2: Part 3</a></li>
+						<li><a href="http://hills.ccsf.edu/~lzheng22/cnit133_js/HW2/pt4.html">HW 2: Part 4</a></li>
+						<li><a href="http://hills.ccsf.edu/~lzheng22/cnit133_js/HW2/extracredit.html">HW 2: Extra Credit</a></li>
+					</ul>
+				</li>
+				<li><a href="http://hills.ccsf.edu/~lzheng22/cnit133_js/HW3/hw3.html">HW 3</a>
+					<ul>
+						<li><a href="http://hills.ccsf.edu/~lzheng22/cnit133_js/HW3/pt1.html">HW 3: Part 1</a></li>
+						<li><a href="http://hills.ccsf.edu/~lzheng22/cnit133_js/HW3/pt2.html">HW 3: Part 2</a></li>
+						<li><a href="http://hills.ccsf.edu/~lzheng22/cnit133_js/HW3/pt3.html">HW 3: Part 3</a></li>
+						<li><a href="http://hills.ccsf.edu/~lzheng22/cnit133_js/HW3/pt4.html">HW 3: Part 4</a></li>
+						<li><a href="http://hills.ccsf.edu/~lzheng22/cnit133_js/HW3/pt5.html">HW 3: Part 5</a></li>
+						<li><a href="http://hills.ccsf.edu/~lzheng22/cnit133_js/HW3/pt6.html">HW 3: Part 6</a></li>
+						<li><a href="http://hills.ccsf.edu/~lzheng22/cnit133_js/HW3/extracredit.html">HW 3: Extra Credit</a></li>
+					</ul>
+				</li>
+				<li><a href="http://hills.ccsf.edu/~lzheng22/cnit133_js/HW4/hw4.html">HW 4</a></li>
+				<li><a href="http://hills.ccsf.edu/~lzheng22/cnit133_js/HW5/hw5.html">HW 5</a></li>
+				<li><a href="http://hills.ccsf.edu/~lzheng22/cnit133_js/HW6/hw6.html">HW 6</a></li>
+				<li><a href="http://hills.ccsf.edu/~lzheng22/cnit133_js/HW7/hw7.html">HW 7</a></li>
+				<li><a href="http://hills.ccsf.edu/~lzheng22/cnit133_js/HW8/hw8.html">HW 8</a>
+				</li>
+			</ul>
+		</nav>
+	</header>
+	<section class="body">
+		<form id="myform" name="myform">
+			<div id="flip"><input type="button" value="Click to show instructions"></div>
+			<div id="instructions">Click to roll the dice. If you get 7 or 11 on the first roll, you win! If you get craps (2, 3, or 12) on the first throw, you lose. For any other value, that will be your "point" you keep rolling and if you roll your point before rolling a 7, you win! Otherwise, you lose.</div>
+			<table>
+
+				<tr>
+					<td>Die 1</td>
+					<td><div id="die1"><input type="text" size="10"></div></td>
+				</tr>
+				<tr>
+					<td>Die 2</td>
+					<td><div id="die2"><input type="text" size="10"></div></td>
+				</tr>
+				<tr>
+					<td>Sum</td>
+					<td><div id="sum"><input type="text" size="10"></div></td>
+				</tr>
+				<tr>
+					<td>Points</td>
+					<td><div id="points"><input type="text" size="10"></div></td>
+				</tr>
+				<tr>
+					<td>Times rolled</td>
+					<td><div id="times_rolled"><input type="text" size="10"></div></td>
+				</tr>
+			</table>
+			<input type="button"  onclick="roll()" value="Roll Dice">
+			<input type="reset" value="RESET" onClick="window.location.reload();"><br><br>
+			<div id="message"></div>
+		</form>
+
+
+	</section>
+	<footer>
+		<a href="http://validator.w3.org/check?uri=referer"><img alt="HTML5" src="../html5.png" style="border:0;width:29px;height:35px"></a>
+
+		<a href="http://jigsaw.w3.org/css-validator/check/referer"><img style="border:0;width:88px;height:31px" src="../css.png" alt="Valid CSS!"></a>
+
+	</footer>
+</body>
+
+</html>
+
+

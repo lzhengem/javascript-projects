@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+ 	<title>Degree</title>
+ 	<meta name="description" content="Lena Zheng HW3 degree">
+ 	<meta name="author" content="Lena Zheng">
+ 	<link rel="stylesheet" type="text/css" href="../nav.css">
+	<style type="text/css">
+		input {
+			text-align: right;
+		}
+	</style>
+
+	<script src="http://code.jquery.com/jquery-1.10.1.js"></script>
+
+	<!-- the following script is needed for jquery validation of input -->
+
+	<script src="http://fog.ccsf.edu/~srubin//jQvalidate.js"></script>
+	<!-- for instructions box -->
+	<script src="http://code.jquery.com/ui/1.10.3/jquery-ui.js"></script>
+
+	<script>
+		$(document).ready(function(){
+			$("#myform").validate({
+			// Rules for each input item
+				rules: 
+				{
+					C: {number: true},
+					F: {number: true}
+
+
+				}
+
+			});
+		});
+		function fahrenheit(){
+			if ($("#myform").valid()) {
+				
+				if (document.myform.C.value == ""){
+					alert("Please enter a number")
+				}else{
+					var c, F
+					C = parseInt(document.myform.C.value)
+
+					F = (9/5 * C) + 32
+					document.myform.toF.value = (F).toFixed(2)
+				}
+			}
+		}
+
+		function celsius(){
+			if ($("#myform").valid()) {
+				if (document.myform.F.value == ""){
+					alert("Please enter a number")
+				}else{
+					var c, F
+					F = parseInt(document.myform.F.value)
+					C = 5/9 * (F - 32) 
+					document.myform.toC.value = (C).toFixed(2)
+				}
+			}
+		}
+
+
+	</script>
+</head>
+
+<body>
+	<header>
+		<h2>HW 3 pt 5: Degree</h2>
+		<nav>
+			<ul>
+				<li><a href="http://hills.ccsf.edu/~lzheng22/cnit133_js">HW 1</a></li>
+				<li>
+					<a href="http://hills.ccsf.edu/~lzheng22/cnit133_js/HW2/hw2.html">HW 2</a>
+					<ul>
+						<li><a href="http://hills.ccsf.edu/~lzheng22/cnit133_js/HW2/pt1.html">HW 2: Part 1</a></li>
+						<li><a href="http://hills.ccsf.edu/~lzheng22/cnit133_js/HW2/pt2.html">HW 2: Part 2</a></li>
+						<li><a href="http://hills.ccsf.edu/~lzheng22/cnit133_js/HW2/pt3.html">HW 2: Part 3</a></li>
+						<li><a href="http://hills.ccsf.edu/~lzheng22/cnit133_js/HW2/pt4.html">HW 2: Part 4</a></li>
+						<li><a href="http://hills.ccsf.edu/~lzheng22/cnit133_js/HW2/extracredit.html">HW 2: Extra Credit</a></li>
+					</ul>
+				</li>
+				<li><a href="http://hills.ccsf.edu/~lzheng22/cnit133_js/HW3/hw3.html">HW 3</a>
+					<ul>
+						<li><a href="http://hills.ccsf.edu/~lzheng22/cnit133_js/HW3/pt1.html">HW 3: Part 1</a></li>
+						<li><a href="http://hills.ccsf.edu/~lzheng22/cnit133_js/HW3/pt2.html">HW 3: Part 2</a></li>
+						<li><a href="http://hills.ccsf.edu/~lzheng22/cnit133_js/HW3/pt3.html">HW 3: Part 3</a></li>
+						<li><a href="http://hills.ccsf.edu/~lzheng22/cnit133_js/HW3/pt4.html">HW 3: Part 4</a></li>
+						<li><a href="http://hills.ccsf.edu/~lzheng22/cnit133_js/HW3/pt5.html">HW 3: Part 5</a></li>
+						<li><a href="http://hills.ccsf.edu/~lzheng22/cnit133_js/HW3/pt6.html">HW 3: Part 6</a></li>
+						<li><a href="http://hills.ccsf.edu/~lzheng22/cnit133_js/HW3/extracredit.html">HW 3: Extra Credit</a></li>
+					</ul>
+				</li>
+				<li><a href="http://hills.ccsf.edu/~lzheng22/cnit133_js/HW4/hw4.html">HW 4</a></li>
+				<li><a href="http://hills.ccsf.edu/~lzheng22/cnit133_js/HW5/hw5.html">HW 5</a></li>
+				<li><a href="http://hills.ccsf.edu/~lzheng22/cnit133_js/HW6/hw6.html">HW 6</a></li>
+				<li><a href="http://hills.ccsf.edu/~lzheng22/cnit133_js/HW7/hw7.html">HW 7</a></li>
+				<li><a href="http://hills.ccsf.edu/~lzheng22/cnit133_js/HW8/hw8.html">HW 8</a>
+				</li>
+			</ul>
+		</nav>
+	</header>
+
+	<form id="myform" name="myform">
+		<table>
+			<tr>
+				<td><label for="C">Celsius: </label></td>
+				<td><input type="text" id="C" name="C" size="10"></td>
+			</tr>
+			<tr>
+				<td colspan="2"><input type="button" name="data" onclick="fahrenheit()" value="Convert to Fahrenheit"></td>
+			</tr>
+			<tr>
+				<td colspan="2"><textarea rows="2" cols="14" name="toF"></textarea></td>
+			</tr>
+		</table>
+
+		<table>
+			<tr>
+				<td><label for="F">Fahrenheit: </label></td>
+				<td><input type="text" id="F" name="F" size="10"> </td>
+			</tr>
+			<tr>
+				<td colspan="2"><input type="button" name="data" onclick="celsius()" value="Convert to Celsius"></td>
+			</tr>
+			<tr>
+				<td colspan="2"><textarea rows="2" cols="14" name="toC"></textarea></td>
+			</tr>
+		</table>
+
+		<input type="reset" value="RESET" onClick="window.location.reload();">
+
+	</form>
+	<footer>
+		<a href="http://validator.w3.org/check?uri=referer"><img alt="HTML5" src="../html5.png" style="border:0;width:29px;height:35px"></a>
+
+		<a href="http://jigsaw.w3.org/css-validator/check/referer"><img style="border:0;width:88px;height:31px" src="../css.png" alt="Valid CSS!"></a>
+
+	</footer>
+</body>
+
+</html>
+
+

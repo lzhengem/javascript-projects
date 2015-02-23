@@ -1,0 +1,92 @@
+
+header, footer {
+	text-align: center;
+}
+
+body {
+	background-color: pink;
+}
+/*nav bar*/
+
+
+nav ul ul {
+	/*when not hovering, the subpages are hidden*/
+	display: none;
+}
+nav{
+	text-align: center;
+}
+
+nav ul li:hover > ul {
+	/*when hovering, only its own subpages will show*/
+	display: block;
+}
+
+nav ul {
+	/*background blue to green*/
+	background: #66CCFF; 
+	background: -moz-linear-gradient(top, #66CCFF 0%,#CCFFCC 100%);  
+	background: -webkit-linear-gradient(top, #66CCFF 0%,#CCFFCC 100%);  
+	box-shadow: 0px 0px 1px rgba(0,0,0,0.15);
+	padding: 0 5px;
+	border-radius: 5px;  
+	/*do not show the list dots*/
+	list-style: none;
+	position: relative;
+	/*makethe list prettier - make the border fit hug the list*/
+	display: inline-table;
+}
+nav ul:after {
+	/*after the </nav> tag, it adds an empty string*/
+	content: "";
+	/*nothing can be to the left or the right of it*/
+	clear: both; 
+	display: block;
+}
+
+nav ul li {
+	/*makes the list go in a line*/
+	float: left;
+	/*li background - same as ul to make it match*/
+	background: #66CCFF;  
+	background: -moz-linear-gradient(top, #66CCFF 0%,#CCFFCC 100%);  
+	background: -webkit-linear-gradient(top, #66CCFF 0%,#CCFFCC 100%);  
+}
+nav ul li:hover {
+
+	background: #FF0066;
+	background: -moz-linear-gradient(top, #FF0066 0%,#5f6975 40%);
+	background: -webkit-linear-gradient(top, #FF0066 0%,#5f6975 40%);
+}
+nav ul li:hover a {
+	/*changes link colors when hovering over the hw page*/
+	color: #FFFFFF;
+}
+
+
+nav ul li a {
+	display: block;
+	padding: 5px 25px;
+	color: #CC0066;
+	/*removes the underline for hyperlink*/
+	text-decoration: none;
+}
+
+nav ul ul {
+	padding: 0;
+	/*positioning the sublinks*/
+	position: absolute;
+	top: 28px;
+}
+nav ul ul li {
+	/*reverse the previous float:left, going back to a vertical list*/
+	float: none; 
+	position: relative;
+}
+nav ul ul li a {
+	/*space the sublink in its box*/
+	padding: 1px 20px;
+}
+nav ul ul li a:hover{
+	color: white;
+}

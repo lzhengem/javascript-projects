@@ -1,0 +1,2331 @@
+CNIT 133 javascript
+
+1.3 Creating Webpages
+
+
+Screen resolution: I recommend using 1600x900.
+
+3. Save the webpage file with an extension of .html or .htm
+
+http://hills.ccsf.edu/~LOGIN/
+If your homepage is in a sub-directory of public_html, for example it's in a sub-directory named cnit133 then the URL should be:
+
+http://hills.ccsf.edu/~LOGIN/cnit133/index.html/
+
+1.4 The Hills Server, FTP, and Unix Permissions
+
+ssh secure shell download:
+ftp://sol.ccsf.org/pub/TCP/SSH/
+ sshSecureShellClient-3.2.9.exe
+
+ free FTP: 
+ https://filezilla-project.org/
+ http://winscp.net/eng/download.php
+
+ unix perms: you can change it yourself cd, chmod, or type:
+wwwsetup
+
+1.5 HTML5:
+summary of changes: http://fog.ccsf.cc.ca.us/~srubin/html5.html
+
+HTML5 - geolocation, 
+simpler doc type than HTML 4.1
+meta can remove extra stuff in meta tag (meta is for validation
+in link and script, dont need to type "type")
+instead of using <div> and then having div id for every single thing, there are new elements:
+header, nav, section, aside, footer
+
+HTML5 basic format
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title></title>
+</head>
+<body>
+
+<header>
+</header>
+
+<section>
+</section>
+
+<footer>
+</footer>
+
+</body>
+
+</html> 
+
+
+HTML5:
+- Most HTML5 pages won't validate unless you also use some CSS on the page.
+- Unlike XHTML, statements that should self-close in XHTML are not required to self-close in HTML5. In HTML5, there is no error if the self-closing / is included.
+Example:
+XHTML: <img src="abc.gif" />
+HTML5: <img src="abc.gif"> or <img src="abc.gif" />
+
+- Unlike XHTML, tagnames and attributes in HTML5 are allowed to be CAPITALIZED. For example: <IMG SRC="abc.gif"> is valid.
+
+
+- has new input types:
+
+    email
+    url
+    number
+    range
+    Date pickers (date, month, week, time, datetime, datetime-local)
+    search
+    color
+- new form elements:
+
+    datalist
+    keygen
+    output
+ - new attributes for form and input:
+
+    autocomplete
+    autofocus
+    form
+    form overrides (formaction, formenctype, formmethod, formnovalidate, formtarget)
+    height and width
+    list
+    min, max and step
+    multiple
+    pattern (regexp)
+    placeholder
+    required
+
+
+- attributes that are 'on' can be specified with no value
+XHTML: <input type="checkbox" name="email" checked="checked" />
+
+HTML5: <input type="checkbox" name="email" checked>
+
+HTML5: <input type="text" id="width" name="width" autofocus>
+
+XHTML:
+-  all form attributes are required to have values
+
+Validation code for HTML: 
+<p>
+<a href="http://validator.w3.org/check?uri=referer"><img style="border:0;width:88px;height:59px" src="html5.jpg" alt="HTML5"></a>
+</p>
+
+Validation code for CSS:
+<p>
+<a href="http://jigsaw.w3.org/css-validator/check/referer">
+<img style="border:0;width:88px;height:31px"
+src="http://jigsaw.w3.org/css-validator/images/vcss-blue"
+alt="Valid CSS!">
+</a>
+</p>
+
+1.8 Table Borders
+css for tables:
+
+table
+{
+border-collapse:collapse;
+}
+table,th, td
+{
+border: 1px solid black;
+}
+
+without the collaps, there would be 2 borders around the table. It collapse it into 1 border
+
+table
+	{
+	width:100%;
+	border-spacing: 40px 10px; 
+	<!-- controls cellspaceing horizonal then vertical -->
+	margin-left:auto;
+	margin-right:auto;
+	<!-- setting margin to auto centers a table -->
+	<!--  margin: 0px auto;  also works -->
+	}
+th
+	{
+	height:50px;
+	text-align:right;
+	vertical-align:bottom;
+	padding:15px;
+<!-- padding = space between border and content in table -->
+	background-color:green;
+	color:white;
+	}
+
+makes the text align to the right and th aligns to the bottom
+
+
+2. Introduction to javascript
+2.1
+Javscript is AKA  ECMAScript
+some good books on javascript:
+    JavaScript: The Definitive Guide" by David Flanagan, O'Reilly and Associates, Publishe
+    Gosselin, McDuffie or Deitel book
+    Javascript, 5th Edtion, by Don Gosselin, Course Technology/Cengage Learning, ISBN 0-538-74887-7
+    Internet & the World Wide Web (How to Program), 4th edition, by Deitel, Prentice Hall, ISBN 0-13-175242-1.
+    Javascript: Concepts & Techniques; Programming Interactive Web Sites, by Tina McDuffie, Franklin, Beedle, & Associates, Inc., ISBN 1-887902-69-4
+    http://www.webteacher.com/javascript/
+2.2 Programming Overview: terms and concepts
+    -HTML and CSS, which are DECLARATIVE language
+    -Javascript is an IMPERATIVE language
+    - in JavaScript, you will write FUNCTIONS which are triggered by user-initiated EVENTS; these functions will, in their turn, access and manipulate RESOURCES for various purposes.
+2.3 Variables: An Introduction
+    
+    -Variable names must begin with a letter
+    -Variable names can also begin with $ and _ (but we will not use it)
+    -Variable names are case sensitive (y and Y are different variables)
+    -declaring and initializing a variable:
+
+    var george; 
+    george = 1; 
+
+    var george = 1; 
+2.4 4 Variables: Data Types
+    - data types: int, float, string, bool (The values of false, 0, and off are all equivalent, while the values of true, 1, and on)
+        -  null and undefined
+
+2.5 Typed and Untyped Languages and Simple Variable Operations
+    - JavaScript is an "untyped" language. In an untyped language, a variable may be of any data type, and an individual variable's data type may be changed at any time
+
+2.6 Alert Method of the Window Object
+    - these both work:
+        window.alert("Hi");
+        alert("Hi");
+    -alert("Hi there\nYou are a brilliant web designer");
+    - when you click, it gives an alert:
+        <a href="javascript:alert('Hi');">Link Word</a>
+        <a href="#" onclick="alert('Hi');">Link Word</a>
+2.7 The SCRIPT Tag
+    - the script tag is usually in the head section
+
+    <script type="text/javascript">
+// Here's a couple of lines of JavaScript code:
+var george = 1;
+alert("Howdy");
+</script>
+
+    - nowadays, we dont even need to write the type because it is assumed to be javascript:
+    <!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+
+<title>Sample JavaScript Page </title>
+
+<script>
+// Here's a couple of lines of JavaScript code:
+var george = 1;
+alert("Howdy");
+</script>
+</head>
+<body>
+p>Some content...</p>
+</body>
+</html>
+
+    - sometimes older sites do not have javascript enabled, so add these comment lines:
+
+    <script language="javascript">
+
+<!--
+
+// Here's a couple of lines of JavaScript code:
+
+var george = 1;
+
+alert("Howdy");
+
+//-->
+
+</script>
+
+    - george is a number, but when we call alert on it, js will automatically convert it into a string for use
+    - we can save an exterial js file like "abc.js"
+
+    <script src="abc.js"></script>
+
+    by adding this async, it tells the browser to continue parsing while scripts are being downloaded. script 2 may be downloaded and executed before script 1:
+
+    <script src="path/to/script1.js" async></script>
+    <script src="path/to/script2.js" async></script>
+
+    so script is executed as soon as its downloaed without blocking the brwoser in the meantime
+
+    defer scripts are executed in order:
+
+<script src="path/to/script1.js" defer></script>
+<script src="path/to/script2.js" defer></script>
+
+
+2.8 comments
+     - single line comments are: //
+     -multi line comments are: /* */
+
+2.9 operators
+    - in the case of 1 + 1, (+) is the opeator becase it performs an action, the 1's are operands
+    - some operators: + - * / < > <= >= = == != && ||
+    - you can do increments like this:
+        var myCounter = 0;
+
+myCounter++; // myCounter is now equal to 1.
+
+myCounter--; // myCounter is now equal to 0.
+
+myCounter--; // myCounter is now equal to -1.
+    - you can also use  somenumber += anothernumber
+    - that can also be used on strings
+        var myName = "Michael";
+
+var myText = "<p>Hi there, ";
+
+myText += myName;
+
+myText += "! How nice to see you!</p>";
+
+2.10 Write Method of the Document Object
+    - to write contentto the webpage you do:
+    document.write("the sky is blue");
+    document.write("the sky is <i>blue.</i>");
+
+    var x = 5;
+document.write( "The number " + x + " is the number you chose" );
+
+    - you can also use writeln for "write line"
+        document.writeln("The sky is blue.");
+    - writeln is the same as write except they will add a space after your string
+    - you can also include inline styles in write statements:
+        document.write("<span style = \"color: purple; font-size: 22px;\">XYZ</span>")
+2.11 prompts
+
+number = window.prompt( "Enter a number", "" );
+
+    - here, the default in the input area will be 0
+number = window.prompt( "Enter a number", "0" );
+numb = parseInt( number ); 
+    - if you need the number in an int form, then parseInt or parseFloat
+    - this is important if you need to add numbers, if you did not parse it to int, then it will add them as strings
+
+2.12 introduction to functions
+
+    usually we put the functions in the head, to meke sure that it is loaded by the browser before it is called
+    <head>
+    <title>Example 1</title>
+    <script>
+
+        function displaymessage()
+        {
+            alert("Hello World!");
+        }
+
+    </script>
+    </head>
+
+    <body>
+    <form>
+        <input type="button" value="Click me!" onclick="displaymessage()">
+    </form>
+    <!-- you can also do: -->
+    <form>
+        <input type="button" value="Click me!" onclick="alert('Hello World!');">
+    </form>
+    </body>
+    </html>
+
+    <html>
+    <head>
+        <title>Example 2</title>
+        <script>
+            function writeMessage(){
+                document.write("Hi there<br>");
+                document.write("Have a nice day<br>");
+                document.write("are you having fun yet?");
+                document.close();
+                alert("bye!");
+            }
+        </script>
+    </head>
+
+    <body>
+        <form>
+            <input type="button" value="click me!" onclick="writeMessages();">
+        </form>
+    </body>
+    </html>
+
+ch 2.13 form input and output
+    - you can use form to get user input instead of using multiple prompts cause that gets annoying
+
+    <!DOCTYPE html>
+        <html lang="en">
+            <head>
+                <meta charset="utf-8">
+                <title>Form example 1</title>
+                <style>
+                    input{text-align: right;}
+                    body{background-color: #f5f5dc;}
+                    .body {width: 550px; margin: 0 auto;}
+                </style>
+
+                <script>
+                    function process(){
+                        var number1, number2, n1, n2,sum;
+                        number1 = document.myform.num1.value;
+                        number2 = document.myform.num2.value;
+                        n1 = parseInt(number1);
+                        n2 = parseInt(number2);
+                        sum = n1 + n2;
+                        alert("the nume of the numbers is " + sum);
+                    }
+                </script>
+            </head>
+            <body>
+                <section class="body">
+                    <form name="myform">
+                        <table>
+                            <tr>
+                                <td>First number:</td>
+                                <td><input type="text" name="num1" size="10"></td>
+                            </tr>
+                            <tr>
+                                <td>Second number:</td>
+                                <td><input type="text" name="num2" size="10"></td>
+                            </tr>
+                        </table>
+                        <br>
+                        <input type="button" onclick="process()" value="submit">
+                        <input type="reset" value="RESET">
+                    </form>
+                </selection>
+            </body>
+        </html>
+
+
+    -also, instead of gettingthe num1 and num2 by using the name "myform", we can getElementById, so instead of using name="num1", we will use id="num1"
+    it will look like this:
+
+    <!DOCTYPE html>
+        <html lang="en">
+            <head>
+                <meta charset="utf-8">
+                <title>Form example 1</title>
+                <style>
+                    input{text-align: right;}
+                    body{background-color: #f5f5dc;}
+                    .body {width: 550px; margin: 0 auto;}
+                </style>
+
+                <script>
+        function process()
+        {
+        var number1, number2, n1, n2, sum;
+        number1 = document.getElementById("num1").value;
+        number2 = document.getElementById("num2").value;
+        n1 = parseInt(number1);
+        n2 = parseInt(number2);
+        sum = n1 + n2; alert("The sum of the numbers is " + sum);}
+    </script>
+            </head>
+            <body>
+                <section class="body">
+                    <form name="myform">
+                        <table>
+                            <tr>
+                                <td>First number:</td>
+                                <td><input type="text" id="num1" size="10"></td>
+                            </tr>
+                            <tr>
+                                <td>Second number:</td>
+                                <td><input type="text" id="num2" size="10"></td>
+                            </tr>
+                        </table>
+                        <br>
+                        <input type="button" onclick="process()" value="submit">
+                        <input type="reset" value="RESET">
+                    </form>
+                </selection>
+            </body>
+        </html>
+
+    also, instead of writing the result to a new page or using a popup box, we can set a box there for results instead:
+    <!DOCTYPE html>
+    <html lang="en">
+
+    <head>
+        <meta charset="utf-8">
+
+        <title>Form example 2</title>
+
+        <style>
+            input {text-align: right;}
+            body {background-color: #f5f5dc;}
+            .body { width: 550px; margin: 0px auto;}
+            textarea {font-family: verdana; font-size: 22px;} 
+        </style>
+
+        <script>
+
+            function process()
+            {
+            var number1, number2, n1, n2, sum;
+            number1 = document.myform.num1.value;
+            number2 = document.myform.num2.value;
+            n1 = parseInt(number1);
+            n2 = parseInt(number2);
+            sum = n1 + n2;
+            document.myform.result.value = sum;
+            }
+        </script>
+    </head>
+
+    <body>
+
+        <section class="body">
+
+            <form name="myform">
+                <table>
+                    <tr>
+                    <td>First Number:</td>
+                    <td><input type="text" name="num1" size="10"></td>
+                    </tr>
+
+                    <tr>
+                    <td>Second Number:</td>
+                    <td><input type="text" name="num2" size="10"></td>
+                    </tr>
+
+                    <tr>
+                    <td>Sum is:</td>
+                    <td><input type="text" name="result" size="10" ></td>
+                    </tr>
+                    <!--you could also use a text area instead -->
+                    Results:
+                    <textarea rows="4" cols="40" name="result"></textarea>
+
+                </table>
+                <br><br>
+
+                <input type="button" onclick="process()" value="SUBMIT">
+                <input type="reset" value="RESET">
+            </form>
+        </section>
+    </body>
+
+    - focusing the cursor on a form field: you can use autofocus(html5):
+    <form>
+        <input type="text" name="name" size="20" autofocus>
+    </form>
+
+    -or you can use JS method getelementbyid:
+    <body onload="document.getElementById('name').focus();">
+        <form>
+            <input type="text" name="name" size="20">
+        </form>
+    </body>
+
+
+2.14 input alignment
+    - when using forms, itsbetter to use table for the alignment, and also align numbers to the right
+    <style>
+        input{text-align: right;}
+    </style>
+    .
+    ..
+    ...
+    <form>
+        <table>
+            <tr>
+                <td>first number:</td>
+                <td><input type="text" id="num1" size="6"></td>
+            </tr>
+            <tr>
+                <td>second number:</td>
+                <td><input type="text" id="num2" size="6" style="text-align: right;"></td> <!-- inline css to align -->
+            </tr>
+        </table>
+    </form>
+
+2.15 innterhtml property
+    - document.write usually writes to a new page, but if you use innerHTML,you can write to the same page
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+<meta charset="utf-8">
+<title>innerHTML</title>
+
+<style>
+input {text-align: right;}
+body {background-color: #f5f5dc;}
+.body { width: 360px; margin: 0px auto;}
+</style>
+
+<script>
+
+function process() {
+
+// Set the htmlOutput variable to a string that contains an HTML table
+
+var htmlOutput = "";
+
+htmlOutput += "<table border = '1'>";
+htmlOutput += "<tr><th>State</th><th>Capital</th></tr>";
+htmlOutput += "<tr><td>California</td><td>Sacramento</tr>";
+htmlOutput += "<tr><td>New York</td><td>Albany</tr>";
+htmlOutput += "<tr><td>Texas</td><td>Austin</tr>";
+htmlOutput += "</table>";
+
+// Set the contents of the <div> block to the contents of htmlOutput
+
+document.getElementById("theTable").innerHTML = htmlOutput;
+
+}
+
+</script>
+
+<style>
+body {background-color: #f5f5dc;"}
+</style>
+
+</head>
+
+<body>
+<section class="body">
+<h3>Create and Output Table on this Page</h3>
+
+<form>
+<input type="button" value="Create and Output Table" onclick="process();">
+</form>
+
+<br><br>
+
+<!-- id of theTable is where the output will be written by the document.getElementById statement -->
+
+<div id="theTable"></div>
+
+</section>
+</body>
+</html>
+
+
+-similarly, we can do the same to our results from the previous
+ by doing:
+ document.getElementById("results").innerHTML= ("The inputted numbers were " +
+n1 + ", " + n2 + "<br>The sum of the integers was " + sum); 
+
+and
+
+<div id="results"></div>
+
+to clear the input field when clicking the reset button, use this:
+
+function res(){document.getElementById("results").innerHTML = "";}
+
+<input type="reset" value="RESET" onclick="res()">
+
+or you can just reload the window:
+<input type="reset" value="RESET" onclick="window.location.reload();">
+
+2.16 if statement
+
+if (theSky == "blue")
+{
+    document.write( "The sky is blue<br>" );
+    document.write( "Open the curtains<br>" );
+    document.write( "Wave to the neighbors" );
+}
+
+2.17 if...else if statement
+
+if (theSky == "blue") 
+{
+     document.write( "Put on my sunglasses" ); 
+}
+ else if (theSky == "gray") 
+{
+     document.write( "Put on my coat" ); 
+} 
+else if (theSky == "black") 
+{
+     document.write( "Put on my coat" ); 
+     document.write( "Get out my umbrella" ); 
+}
+
+- this is strange - it looks like for javascript, if you do not put {}, it will assume that the next else if statement belongs to the nearest if this this:
+
+if (x >= 6 )
+    if (y < 9 ) 
+        alert("A")
+    else
+        alert("B")
+
+2.18 debugging syntax errors
+- there are 2 types of syntax errors: load-time erros and run-time errors:
+
+load time: An error that violates the grammatical rules of the language when the script is loaded. The script cannot be run until the page has been successfully loaded. The error may be that the code has an extra parenthesis, or is missing a quote, brace, semi-colon, etc. Or you may declare a variable that is a JavaScript reserve word, such as class. Or you may enter parseint, instead of parseInt. JavaScript is case-sensitive.
+
+run-time errors:A run-time error occurs when the JavaScript interpreter encounters a problem during the execution of a program. This usually happens when the interpreter reads code it can't handle. The most common type of run-time error occurs when you try to access an object or variable that doesn't exist.
+
+2.19 debugging logic errors -  it may be mis-calculating a value, or perhaps an if condition is using the logically wrong (but syntactically valid) operator.
+
+to check if you have syntax errors, you can use console.log("some input here");
+then go F12 (dev tab) and then go to console
+
+debugging websites:
+http://www.cross-browser.com/talk/debug_tips.php
+http://www.javaworld.com/javaworld/jw-07-1996/jw-07-javascript.html
+http://javascript.about.com/od/reference/a/error.htm
+
+2.20 introduction to jQuery
+- jQuery solves the two biggest headaches with JavaScript—complexity and the finicky nature of different web browsers
+
+jQuery tutorial: http://www.w3schools.com/jquery/default.asp
+
+an example of jQuery:
+<!DOCTYPE html>
+<html>
+<head>
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+<script>
+$(document).ready(function(){
+  $("p").click(function(){
+    $(this).hide();
+  });
+});
+</script>
+</head>
+<body>
+
+<p>If you click on me, I will disappear.</p>
+<p>Click me away!</p>
+<p>Click me too!</p>
+
+</body>
+</html>
+
+i loaded the jquery library up on hills. to access:
+<script src="jquery.js"></script>
+
+or, to use the online one:
+<script src="http://code.jquery.com/jquery-1.10.1.js"></script>
+<script  src="http://code.jquery.com/jquery-1.11.1.min.js"></script>
+
+or let google host jquery for you:
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+
+or
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+
+
+- the syntax for jquery is: $(selector).action()
+A dollar sign to define jQuery
+A (selector) to "query (or find)" HTML elements
+A jQuery action() to be performed on the element(s)
+
+All jQuery methods are inside a document.ready() function:
+$(document).ready(function(){
+
+// jQuery functions go here...
+
+});
+
+This is to prevent any jQuery code from running before the document is finished loading (is ready).
+
+jquery selectors:
+http://www.w3schools.com/jquery/jquery_ref_selectors.asp
+
+2.21 jQuery examples
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <title>jQuery Ex 1</title>
+        <script src="http://code.jquery.com/jquery-1.10.1.js"></script>
+        <script>
+            $(document).ready(function(){
+                $("p").click(function(){
+                    $(this).hide();
+                });
+            });
+        </script>
+    </head>
+    <body>
+        <p>If you click on me, I will disappear.</p>
+
+    </body>
+</html>
+
+
+hide and show text using jQuery:
+$("#hide").click(function(){
+    $("p").hide();
+});
+$("show").click(function(){
+    $("p").show();
+});
+
+to flip some text down:
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>jQuery Ex 4</title>
+<script src="http://code.jquery.com/jquery-1.10.1.js"></script>
+<script>
+$(document).ready(function(){
+$(".flip").click(function(){
+$(".panel").slideDown("slow");
+});
+});
+</script>
+
+<style>
+div.panel,p.flip
+{
+margin:0px;
+padding:5px;
+text-align:center;
+background:#e5eecc;
+border:solid 1px #c3c3c3;
+}
+div.panel
+{
+height:120px;
+display:none;
+}
+</style>
+</head>
+
+<body>
+
+<div class="panel">
+<p>Because time is valuable, we deliver quick and easy learning.</p>
+<p>At W3Schools, you can study everything you need to learn, in an accessible and handy format.</p>
+</div>
+
+<p class="flip">Show Panel</p>
+
+</body>
+</html>
+
+this is how to toggle a panel down up up:
+<!DOCTYPE html>
+<html>
+<head>
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+<script> 
+$(document).ready(function(){
+  $("#flip").click(function(){
+    $("#panel").slideToggle("slow");
+  });
+});
+</script>
+ 
+<style> 
+#panel,#flip
+{
+padding:5px;
+text-align:center;
+background-color:#e5eecc;
+border:solid 1px #c3c3c3;
+}
+#panel
+{
+padding:50px;
+display:none;
+}
+</style>
+</head>
+<body>
+ 
+<div id="flip">Click to slide the panel down or up</div>
+<div id="panel">Hello world!</div>
+
+</body>
+</html>
+
+fading a color:
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>jQuery Ex 5</title>
+<script src="http://code.jquery.com/jquery-1.10.1.js"></script>
+<script type="text/javascript">
+$(document).ready(function(){
+$("button").click(function(){
+$("div").fadeTo("slow",0.25);
+});
+});
+</script>
+</head>
+
+<body>
+<div style="background:yellow;width:300px;height:300px">
+<button type="button">Click to Fade</button>
+</div>
+</body>
+</html>
+
+jQuery tutorial:
+http://learn.jquery.com/about-jquery/how-jquery-works/#jQuery:_The_Basics
+
+
+The .val() method is primarily used to get the values of form elements such as input, select and textarea. In the case of select elements, it returns null when no option is selected and an array containing the value of each selected option when there is at least one and it is possible to select more because the multiple attribute is present.
+
+// Get the value from a dropdown select
+$( "select.foo option:selected").val();
+
+// Get the value from a dropdown select even easier
+$( "select.foo" ).val();
+
+// Get the value from a checked checkbox
+$( "input:checkbox:checked" ).val();
+
+// Get the value from a set of radio buttons
+$( "input:radio[name=bar]:checked" ).val();
+
+2.22 using events the jQuery way
+mouse events
+- click
+- dblclick
+- mousedown (drag)
+-mouseup (release of drag)
+- mouseover: moving over ane element
+-mouseout: moving mouse off an element
+-mousemove: when the mouse moves
+
+toadd anevent to every link on a page, do this:
+$('a').mouseover();
+
+to add an event to anelement with id menu, do this:
+$('#menu').click(somefunctionname);
+do not add the () in the function as we would normally do.
+
+2.23 Web Tutorials and Examples - Basic Operations
+
+    Introduction to JavaScript
+
+        http://www.webteacher.com/javascript/
+        http://www.w3schools.com/js/js_intro.asp
+        http://www.javascriptkit.com/javatutors/primer1.shtml
+        http://javascriptkit.com/javatutors/learnjs.shtml
+
+    script tag
+
+        http://www.w3schools.com/js/js_whereto.asp
+
+    document.write and document.writeln
+
+        http://www.w3schools.com/jsref/met_doc_write.asp
+        http://www.w3schools.com/jsref/met_doc_writeln.asp
+
+    variables
+
+        http://www.w3schools.com/js/js_variables.asp
+
+    parseInt() and parseFloat()
+
+        http://www.w3schools.com/jsref/jsref_parseInt.asp
+        http://www.w3schools.com/jsref/jsref_parseFloat.asp
+
+    operators
+
+        http://www.w3schools.com/js/js_operators.asp
+        http://www.tutorialspoint.com/javascript/javascript_operators.htm
+
+    if statement
+
+        http://www.w3schools.com/js/js_if_else.asp
+
+    alert and prompt
+
+        http://javascriptkit.com/javatutors/alert1.shtml
+        http://www.pageresource.com/jscript/jalert.htm
+        http://www.pageresource.com/jscript/jprompt.htm
+
+    Math object
+
+        http://www.w3schools.com/jsref/jsref_obj_math.asp
+
+    innerHTML Property and getElementbyId
+
+        http://www.w3schools.com/jsref/met_doc_getelementbyid.asp
+        http://www.tizag.com/javascriptT/javascript-innerHTML.php
+        http://msdn2.microsoft.com/en-us/library/ms536437.aspx
+        http://www.mozilla.org/docs/dom/domref/dom_doc_ref48.html  
+
+    jQuery
+
+        http://code.jquery.com/jquery-1.11.1.min.js
+        https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js
+        http://jqueryui.com/
+        http://api.jquery.com/
+
+    Bootstrap
+
+        http://www.w3schools.com/bootstrap/
+
+2.24 Short Exercises - Basic Operations
+1. Identify and correct the errors in each of the following statements:
+
+a) if ( c < 7 );
+window.alert( "c is less than 7" );
+
+Ans: Error: There should not be a semicolon after the right parenthesis
+of the condition in the if statement.
+
+Correction: Remove the semicolon after the right parenthesis.
+[Note: The result of this error is that the output statement
+is executed whether or not the condition in the if statement
+is true. The semicolon after the right parenthesis
+is considered an empty statement, i.e., a statement that
+does nothing.]
+
+b) if ( c => 7 )
+window.alert( "c is equal to or greater than 7" );
+
+Ans: Error: The relational operator => is incorrect.
+
+Correction: Change => to >=.
+
+2. Write a statement (or comment) to accomplish each of the following tasks:
+
+a) State that a program will calculate the product of three integers.
+
+Ans: // Calculate the product of three integers
+
+b) Declare the variables x, y, z and result.
+
+Ans: var x, y, z, result;
+
+c) Declare the variables xVal, yVal and zVal.
+
+Ans: var xVal, yVal, zVal;
+
+d) Prompt the user to enter the first value, read the value from the
+user and store it in the variable xVal.
+
+Ans: xVal = window.prompt( "Enter first integer:", "0" );
+
+e) Prompt the user to enter the second value, read the value from
+the user and store it in the variable yVal.
+
+Ans: yVal = window.prompt( "Enter second integer:", "0" );
+
+f) Prompt the user to enter the third value, read the value from
+the user and store it in the variable zVal.
+
+Ans: zVal = window.prompt( "Enter third integer:", "0" );
+
+g) Convert xVal to an integer, and store the result in the
+variable x.
+
+Ans: x = parseInt( xVal );
+
+h) Convert yVal to an integer, and store the result in the
+variable y.
+
+Ans: y = parseInt( yVal );
+
+i) Convert zVal to an integer, and store the result in the
+variable z.
+
+Ans: z = parseInt( zVal );
+
+j) Compute the product of the three integers contained in
+variables x, y and z, and assign the result to the
+variable result.
+
+Ans: result = x * y * z;
+
+k) Write a line of text containing the string
+"The product is " followed by the value of the variable result.
+
+Ans:
+document.writeln( "<h1>The product is " + result + "</h1>" );
+
+
+3. Fill in the blanks in each of the following statements:
+
+a) ____ are used to document a program and improve its readability.
+
+Ans: Comments.
+
+b) A dialog capable of receiving input from the user
+is displayed with method ____ of object ____.
+
+Ans: prompt, window
+
+c) A JavaScript statement that makes a decision is
+the ___ statement.
+
+Ans: if.
+
+d) Calculations are normally performed by ____ statements.
+
+Ans: assignment.
+
+e) A dialog capable of showing a message to the user is displayed
+with method ____ of object ____.
+
+Ans: alert, window
+
+4. Write JavaScript statements that accomplish each of
+the following tasks:
+
+a) Display the message "Enter two numbers" using the window object.
+
+Ans: window.prompt( "Enter two numbers" );
+
+b) Assign the product of variables b and c to variable a.
+
+Ans: a = b * c;
+
+c) State that a program performs a sample payroll calculation.
+[Hint: Use text that helps to document a program.]
+
+Ans: // This program does a sample payroll calculation
+
+5. State whether each of the following is true or false.
+If false, explain why.
+
+a) JavaScript operators are evaluated from left to right.
+
+Ans: False. Some operators associate from right to left.
+
+b) The following are all valid variable names:
+_under_bar_, m928134, t5, j7, her_sales$, his_$account_total,
+a, b$, c, z, z2.
+
+Ans: True.
+
+c) A valid JavaScript arithmetic expression with no parentheses
+is evaluated from left to right.
+
+Ans: False. All operators do not have the same precedence and
+associativity. Some operations
+are performed before others (e.g., multiplication before addition).
+
+d) The following are all invalid variable names:
+3g, 87, 67h2, h22, 2h.
+
+Ans: False. h22 is a valid variable name because it begins with
+a letter. Variable names in JavaScript can begin with a letter,
+an underscore (_) or a dollar sign ($).
+
+6. Fill in the blanks in each of the following statements:
+
+a) What arithmetic operations have the same precedence as
+multiplication?
+
+Ans: division (/) and remainder (%).
+
+b) When parentheses are nested, which set of parentheses is
+evaluated first in an arithmetic expression?
+
+Ans: The innermost set.
+
+c) A location in the computer's memory that may contain
+different values at various times throughout the execution
+of a program is called a.
+
+Ans: variable.
+
+7. What displays in the message dialog when each of
+the given JavaScript statements is performed?
+Assume that x = 2 and y = 3.
+
+a) window.alert( "x = " + x );
+
+Ans: x = 2
+
+b) window.alert( "The value of x + x is " + ( x + x ) );
+
+Ans: The value of x + x is 4
+
+c) window.alert( "x =" );
+
+Ans: x =
+
+d) window.alert( ( x + y ) + " = " + ( y + x ) );
+Ans: 5 = 5
+
+8. Which of the following JavaScript statements contain
+variables whose values are destroyed
+(i.e., changed or replaced)?
+
+a) p = i + j + k + 7;
+b) window.alert( "variables whose values are destroyed" );
+c) window.alert( "a = 5" );
+d) stringVal = window.prompt( "Enter string:" );
+
+Ans: a, d.
+
+
+9. Given y = ax3 + 7, which of the following
+are correct JavaScript statements for this equation?
+
+a) y = a * x * x * x + 7;
+b) y = a * x * x * (x + 7);
+c) y = (a * x) * x * (x + 7);
+d) y = (a * x) * x * x + 7;
+e) y = a * (x * x * x) + 7;
+f) y = a * x * (x * x + 7);
+
+Ans: a, d, e.
+
+10. State the order of evaluation of the operators in
+each of the following JavaScript statements, and show the
+value of x after each statement is performed.
+
+a) x = 7 + 3 * 6 / 2 - 1;
+
+Ans: * is first, / is second, + is third, and - is fourth.
+Value of x is 15.
+
+b) x = 2 % 2 + 2 * 2 - 2 / 2;
+
+Ans: % is first, * is second, / is third, + is fourth,
+- is fifth. Value of x is 3.
+
+c) x = ( 3 * 9 * ( 3 + ( 9 * 3 / ( 3 ) ) ) );
+
+Ans: Value of x is 324.
+
+2.25 Coding Exercises - Basic Operations
+
+
+3.1 JavaScript Objects and Functions: An Overview
+initiate an object: use new
+Whenever you instantiate an object, you will DECLARE a variable, then INITIALIZE that variable to be a NEW instance of whatever OBJECT CONSTRUCTOR you want
+
+var theWheel = new SteeringWheel(); 
+theWheel.direction = "left"; 
+
+3.2 JavaScript Objects and Functions: Part Two
+making a new image:
+var picture0 = new Image();
+
+var picture1 = new Image();
+
+picture0.src = "capitalA.gif";
+
+picture1.src = "capitalB.gif";
+
+
+if in your html you have:
+<img src="capitalD.gif" width="54" height="54" name="fred">
+
+you can use this to insert the image in fred:
+window.document.fred.src = picture0.src;
+
+image object constructor can take 2 arguments (width, height)
+var picture0 = new Image(54, 54);
+
+var myHornSound0 = "5th";
+
+var myHornSound1 = "MHALL";
+
+var theWheel = new SteeringWheel();
+
+theWheel.horn(myHornSound1, myHornSound0, "honk");
+
+3.3 Common Event Handlers
+onclick
+onmouseover
+onmouseout
+onchange
+onload
+onfocus
+onblur
+
+<a href="#" onmouseover="alert('Hi');">onmouseover Event</a>
+<a href="#" onmouseout="alert('Bye');">onmouseout Event</a>
+
+when you choose a different option, it alerts you:
+<form>
+<select name="testPulldown" onchange="alert('You changed me');">
+<option value="1">First Choice</option>
+<option value="2">Second Choice</option>
+<option value="3">Third Choice</option>
+</select>
+</form>
+
+onload is usually placed in the body. this means when all the pages and videos on
+a page is loaded, this is triggered
+
+3.4 Basic Function Syntax
+
+writting a function:
+<script>
+
+function doStuff() {
+ var george = 1;
+ alert(george);
+}
+
+function doSomethingElse() {
+ alert("Howdy");
+}
+
+</script>
+
+
+you can call functions like this:
+<a href="#" onClick="doStuff();">Link One</a>
+<a href="javascript:doSomethingElse();">Link Two</a>
+
+example:
+<html>
+<head>
+<title>Sample JavaScript</title>
+<script>
+
+function doStuff() {
+ var george = 1;
+ alert(george);
+}
+
+function doSomethingElse() {
+ alert("Howdy");
+}
+
+</script>
+</head>
+<body>
+<p><a href="#" onClick="doStuff();">Link One</a></p>
+
+<p><a href="javascript:doSomethingElse();">Link Two</a></p>
+</body>
+</html>
+
+you can also call functions from within a function
+
+3.5 Variables: Local and Global
+here, george and fred are global variables:
+<html>
+<head>
+<title>Sample JavaScript</title>
+<script>
+
+var george = 1;
+var fred = "Hi";
+
+function doStuff() {
+ alert(george);
+}
+
+function doSomethingElse() {
+ alert(fred);
+}
+
+</script>
+</head>
+<body>
+<p><a href="#" onClick="doStuff();">Calling doStuff()</a></p>
+
+<p><a href="javascript:doSomethingElse();">Calling doSomethingElse()</a></p>
+</body>
+</html>
+
+here, fred and george are local:
+<script>
+
+function doStuff() {
+ var george = "Wow";
+ var fred = "How about that!";
+ alert(george);
+ alert(fred);
+}
+
+</script>
+
+3.6 Local and Global Variable Naming Conventions
+
+Local variable names always begin with the prefix "my".
+
+Example:
+
+myText
+myCounter
+myPosition
+myNumber
+
+Global variable names always begin with the prefix "the".
+
+Example:
+
+theText
+theCounter
+thePosition
+theNumber
+
+3.7 Functions: Declaring Arguments
+passing variables into functions:
+<html>
+<head>
+<title>Sample JavaScript</title>
+<script>
+
+function doStuff(fred) {
+ alert(fred);
+}
+
+</script>
+</head>
+<body>
+<p><a href="#" onClick="doStuff('Boo');">Calling doStuff()</a></p>
+
+<p><a href="#" onClick="doStuff('Ouch');">Calling doStuff() Again</a></p>
+</body>
+</html>
+
+3.8 The return Keyword
+Example (abbreviated):
+
+function addMe(myFirstNum, mySecondNum) {
+
+var myAnswer = myFirstNum + mySecondNum;
+
+return myAnswer;
+
+}
+
+Example (in context):
+
+function doStuff() {
+
+var myNumberOfCats = 4;
+
+var myNumberOfDogs = 2;
+
+var myTotalNumberOfPets = addMe(myNumberOfCats, myNumberOfDogs);
+
+alert(myTotalNumberOfPets);
+
+}
+
+3.9 Checking for Valid Numeric Input
+to validate whether a user has entered a numeric value, you can use the isNaN() function
+NaN = not a number
+
+Use parseInt() to change the numeric string to an integer or
+parseFloat() to change to float
+
+example:
+<script>
+
+function process() {
+
+// define variables
+
+var number, numberP;
+
+// get input number value from form using getElementById
+
+number = document.getElementById("input").value;
+
+// change string to an integer
+
+numberP = parseInt( number );
+
+// if numberP is Not a Number then alert error message, else display number
+
+// Note that the 2nd alert is not normally needed, as it's only here to show the value of a non-numeric input as NaN
+
+if ( isNaN(numberP) )
+{
+window.alert("Inputted value " + number + " is Not an integer - try again");
+
+window.alert("The parseInt value is " + numberP + " - try again");
+}
+else {
+document.myform.comment.value = ( numberP + " is an integer" );
+}
+
+}
+
+</script>
+
+</head>
+
+<body>
+
+<section class="body">
+
+<h2>Check for Numeric Input</h2>
+
+<form id="myform" name="myform">
+
+Enter input: <input type="text" id="input" size="10" >
+
+<br ><br>
+
+<input type="button" onclick="process()" value="SUBMIT">
+<input type="reset" value="RESET"><br ><br>
+
+Comment: <input type="text" name="comment" size="25" >
+
+</form>
+</section>
+
+</body>
+
+
+
+if they enter an invalid number, you can clear it and focus on that textbox;
+function getAvg() {
+
+var hwF, finF, finAvg, grade;
+
+hwF = parseFloat(document.form.hw.value);
+
+finF = parseFloat(document.form.fin.value);
+
+
+if (isNaN(hwF) || isNaN(finF) || hwF < 0 || finF < 0 || hwF > 100 || finF > 100) {
+
+document.myform.hw.value = " "; // clears hw input
+document.myform.fin.value = " "; //clears final exam input
+document.myform.hw.focus(); // focuses cursor to hw input
+
+window.alert("Both values must be numbers and not be less than 0 and not greater than 100!");
+}
+else
+{
+
+
+// process
+
+}
+
+you can also use a reset button:
+document.getElementById("myResetButton").click();
+
+or invoke the reset function on the form itself:
+document.forms.myform.reset();
+
+Note that <input type="reset"> will only reset the form fields. If your form also had error messages from a previous submission of the form and you want these messages cleared then another method is using location.reload() in your reset statement. For example:
+
+<input type="reset" value="RESET" onclick="location.reload();">
+
+3.10 More on parseInt() and isNaN
+
+if want to check if empty string has been passed in:
+var userInput = document.getElementById("myInputField").value;
+if (userInput == "") {
+window.alert("You didn't enter anything in the input field.");
+}
+
+1. Number() casting function -- converts a non-numeric value to a number
+2. parseInt() function -- converts a string to an integer
+3. parseFloat function -- converts a string to a real (floating-point) number
+
+for parseInt, beginning white space is ignored, if starts with non-number, NaN
+is returned, if first is number, it converts to number til first non number is found
+
+parseInt("11", 2) // returns 3 (parsed as binary)
+parseInt("11", 8); // returns 9 (parsed as octal)
+parseInt("11", 10); // returns 11 (parsed as decimal
+parseInt("11", 16); // returns 17 (parsed as hexadecimal)
+
+if start with 0 or 0x:
+parseInt("031") // returns 25 (parsed as octal)
+parseInt("0x2A") // returns 42 (parsed as hexadecimal)
+
+Number("") // returns 0
+isNaN("") // returns false, because "" will convert to 0, and 0 is a number!
+
+parseInt("") // returns NaN
+isNaN(parseInt("")) // returns true
+
+Number("123abc") // returns NaN
+isNaN("123abc") // returns true
+
+parseInt("123abc") // returns 123
+isNaN(parseInt("123abc")) // returns false
+
+
+examples:
+use alert to display that the input is an error:
+<!DOCTYPE html>
+<html lang="en">
+
+<head> 
+<meta charset="utf-8">
+
+<style type="text/css">
+input.n {text-align: right;}
+body {background-color: #f5f5dc;}
+.body { width: 550px; margin: 0px auto;}
+</style>
+
+<title>Test isNan2</title>
+
+<script type="text/javascript">
+
+
+function process() {
+
+  // define variables   
+
+  var number, numberP, product;
+
+
+  // get input number value from form using getElementById
+     
+     number = document.getElementById("input").value;
+
+
+// if numberP is Not a Number then alert error message, else display number
+// Note that the 2nd alert is not normally needed, as it's only here to show the value of a non-numeric input as NaN
+  
+ if ( isNaN(number) || number=="")
+      {
+        window.alert("Inputted value " + number + " is Not a number - try again");
+        window.alert("The value is " + numberP + " - try again");
+        document.myform.input.value = " ";         
+        document.myform.input.focus();
+          
+ }
+
+  else {
+
+     // change string to an integer
+
+     numberP = parseInt(number);
+
+     document.myform.comment.value =  ( numberP + "  is a number" );
+
+     sum1 = numberP + 10;
+
+     document.myform.sum.value = sum1;
+ 
+       }
+
+  }
+
+
+</script>
+
+</head>
+
+<body>
+
+<section class="body">
+
+<h2>Check for Totally Numeric Input</h2>
+
+<form id="myform" name="myform">
+
+Enter input: <input type="text" name="input" id="input" class="n" size="10">
+
+<br><br>
+
+<input type="button"  onclick="process()" value="SUBMIT">
+<input type="reset" value="RESET"><br><br>
+
+Comment: <input type="text" name="comment" size="25">
+<br><br>
+Sum of input plus 10: <input type="text" name="sum" id="sum" class="n" size="10">
+
+</form>
+
+  
+</section>
+</body>
+</html>
+
+ innerHTML and getElementById to display an error message when input is invalid:
+ <!DOCTYPE html>
+<html lang="en">
+
+<head> 
+<meta charset="utf-8">
+
+<style type="text/css">
+input.n {text-align: right;}
+body {background-color: #f5f5dc;}
+.body { width: 550px; margin: 0px auto;}
+</style>
+
+<title>Test isNan4</title>
+
+<script type="text/javascript">
+
+
+function process() {
+
+  // define variables   
+
+  var number, numberP;
+
+  var errMsg = "<span style='font-weight: bold; color: red; font-size: 20px;'>Input is Invalid</span>";
+
+
+  // get input number value from form using getElementById
+     
+     number = document.getElementById("input").value;
+
+// if numberP is TOTALLY Not a Number then display error message, 
+
+  
+ if ( isNaN(number) || number=="")
+      {
+      document.getElementById("errOut").innerHTML = errMsg;      
+      }
+
+  else {
+
+
+// change string to an integer  
+
+    numberP = parseInt( number );
+
+     document.myform.comment.value =  ( numberP + "  is a number" );
+     
+     sum1 = numberP + 10;
+
+     document.myform.sum.value = sum1;
+ 
+       }
+
+  }
+
+
+function res()
+{
+document.getElementById("errOut").innerHTML = "";
+document.myform.input.focus();
+
+}
+
+
+</script>
+
+</head>
+
+<body>
+
+<section class="body">
+
+<h2>Check for Numeric Input</h2>
+
+<form id="myform" name="myform">
+
+Enter input: <input type="text" class="n" name="input" id="input" size="10" autofocus>
+<br>
+
+<div id ="errOut"></div> 
+
+<br>
+
+<input type="button"  onclick="process()" value="SUBMIT">
+<input type="reset" value="RESET" onclick="res();"><br><br>
+
+Comment: <input type="text" name="comment" size="25">
+
+<br><br>
+Sum of input plus 10: <input type="text" name="sum" id="sum" class="n" size="10">
+
+</form>
+
+  
+<p>
+<a href="http://validator.w3.org/check?uri=referer">
+<img style="border:0;width:88px;height:59px" src="html5.jpg" alt="HTML5"></a>
+</p>
+
+</section>
+</body>
+</html>
+
+3.11 Using jQuery to check for Valid Numeric Input
+
+The script for accessing the jquery library:
+<script src="http://code.jquery.com/jquery-1.10.1.js"></script>
+
+The script that validates numeric input:
+
+<script src="http://fog.ccsf.edu/~srubin/jQvalidate.js"></script>
+
+or
+
+<script src="//ajax.aspnetcdn.com/ajax/jquery.validate/1.13.1/jquery.validate.min.js"></script>
+
+then use jQuery to make surethat the num input in myform is entered and a number between 0-10:
+
+$(document).ready(function(){
+$("#myform").validate({
+// Rules for each input item
+rules:
+{
+num: { required: true, number: true, min: 0, max: 10}
+
+}
+});
+});
+
+function process() {
+
+if ($("#myform").valid()) {
+
+//process data
+
+}
+}
+
+use this to change colors of the text of the displayed error:
+.n { color: red; font-style: italics;}
+
+this changes the error element: (including the box around the message)
+.error { font: normal 14px arial; padding: 3px; margin: 3px; color: blue; background-color: #ffc; }
+
+we can also override the default error message using messages:
+
+$(document).ready(function(){
+    $("#myform").validate({
+      // Rules for each input item
+      rules:
+            {
+        num: { required: true, number: true, min: 0, max: 10}
+            },
+
+messages:
+
+        {
+         num:  "Please enter a number between 0 and 10",
+         }
+    });      
+    });
+
+if we want the message to be below the textbox, we use
+.error{display: block;}
+
+to place an error message below each field, use errirPlacement:
+
+errorPlacement: function(error, element) {
+if ( element.is(":text")) {
+error.appendTo( element.parent());
+} else {
+error.insertAfter(element);
+}
+}
+
+ For the jQuery Validation plugin, it is suggested that each input has a label associated with it: The for-attribute of the label refers to the id-attribute of the input.
+
+For example:
+
+<label for="number">Firstname</label><input id="number" name="number">
+
+If the name attribute is omitted for input elements, the validation plugin will not work. 
+
+3.12 jQuery UI
+
+
+For an Animation that uses a button to bring up a dialog box
+http://jqueryui.com/dialog/#animated
+
+You should include these statements in your HTML coding:
+
+<link rel="stylesheet" href="http://code.jquery.com/ui/1.10.3/themes/smoothness/jquery-ui.css" />
+
+<script src="http://code.jquery.com/jquery-1.10.1.js"></script>
+
+<script src="http://code.jquery.com/ui/1.10.3/jquery-ui.js"></script>
+Another useful feature of jQuery UI is having tabs as links to the parts of an assignment.
+http://jqueryui.com/tabs/
+
+an example:
+http://fog.ccsf.edu/~srubin/tabs.html
+
+3.13 Data type conversions
+
+When the operands are of different types, the equality (==) operator actually converts its operands before determining whether or not they are equal. Here are the basic rules. (This is from "JavaScript: The Definitive Guide," 5ed, p. 67):
+
+-- If one value is null and the other is undefined, they are equal.
+
+-- If one value is a number and the other is a string, convert the string to a number and try the comparison again. (JavaScript converts "" to a 0, as a mentioned in my post regarding the isNaN() function.)
+
+-- If either value is Boolean true, convert it to 1 and try the comparison again. If either value is Boolean false, convert it to 0 and try to the comparison again.
+
+-- If one value is an object and the other is a number or string, convert the object to a primitive via toString() or valueOf(). Built-in classes use valueOf()before toString(), except for the Date class, which performs the toString() conversion.
+
+-- Any other combinations of values are not equal.
+
+
+3.14 charAt()
+
+gives you the character at that index:
+
+<script>
+
+var str = "San Francisco"; // str is the name of the string
+
+alert("First character: " + str.charAt(0)); // alerts S
+alert("Fourth character: " + str.charAt(3)); // alerts
+alert("Seventh character: " + str.charAt(6)); // alerts a
+alert("Last character: " + str.charAt(str.length-1)); // alerts o
+
+</script> 
+
+3.15 Switch statement
+
+<!DOCTYPE HTML>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Switch Example</title>
+
+<script>
+
+function process() {
+
+var mnumb;
+
+mnumb = document.myform.month.value;
+
+switch (mnumb)
+{
+
+// Display the month name based on the month number
+
+case "01":
+document.myform.mname.value=("You were born in January");
+break;
+case "02":
+document.myform.mname.value=("You were born in February");
+break;
+case "03":
+document.myform.mname.value=("You were born in March");
+break;
+case "04":
+document.myform.mname.value=("You were born in April");
+break;
+case "05":
+document.myform.mname.value=("You were born in May");
+break;
+case "06":
+document.myform.mname.value=("You were born in June");
+break;
+case "07":
+document.myform.mname.value=("You were born in July");
+break;
+case "08":
+document.myform.mname.value=("You were born in August");
+break;
+case "09":
+document.myform.mname.value=("You were born in September");
+break;
+case "10":
+document.myform.mname.value=("You were born in October");
+break;
+case "11":
+document.myform.mname.value=("You were born in November");
+break;
+case "12":
+document.myform.mname.value=("You were born in December");
+break;
+default:
+document.myform.mname.value=("Invalid month number!");
+}
+
+}
+
+</script>
+</head>
+
+<body>
+
+<h3>Switch Example</h3>
+
+<form name="myform">
+Enter your birth month as a number (2 digits) <input type="text" name="month" size="2"><br>
+Result: <input type="text" name="mname" size="25"><br><br>
+
+<input type="button" value="submit" onclick="process();">
+<input type="reset" value="reset">
+</form>
+
+</body>
+</html>
+
+you could also use else if logic:
+if (mnumb == "01")
+document.myform.mname.value=("You were born in January");
+else if (mnumb == "02")
+document.myform.mname.value=("You were born in February");
+else if (mnumb == "03")
+document.myform.mname.value=("You were born in March);
+else if (mnumb == "04")
+document.myform.mname.value=("You were born in April);
+else if (mnumb == "05")
+document.myform.mname.value=("You were born in May");
+else if (mnumb == "06")
+document.myform.mname.value=("You were born in June");
+else if (mnumb == "07")
+document.myform.mname.value=("You were born in July");
+else if (mnumb == "08")
+document.myform.mname.value=("You were born in August");
+else if (mnumb == "09")
+document.myform.mname.value=("You were born in September");
+else if (mnumb == "10")
+document.myform.mname.value=("You were born in October");
+else if (mnumb == "11")
+document.myform.mname.value=("You were born in November");
+else if (mnumb == "12")
+document.myform.mname.value=("You were born in December");
+else
+document.myform.mname.value=("Invalid month number!");
+
+3.16 Web Tutorials and Examples - Functions
+
+    functions
+
+        http://www.w3schools.com/js/js_functions.asp
+        http://www.webteacher.com/javascript/ch01.html
+
+    event handlers
+
+        http://www.w3schools.com/js/js_htmldom_events.asp
+
+    onload
+
+        http://www.codetoad.com/javascript/miscellaneous/onload_event.asp
+        http://www.w3schools.com/jsref/event_onload.asp
+
+    onmouseover
+
+            http://www.javascriptkit.com/javatutors/event4.shtml
+            http://www.pageresource.com/jscript/jmouse.htm
+
+        onfocus and onblur
+
+            http://www.w3schools.com/jsref/event_onfocus.asp
+            http://www.w3schools.com/jsref/event_onblur.asp
+
+    switch statement
+
+        http://www.w3schools.com/js/js_switch.asp
+        http://developer.mozilla.org/en/docs/Core_JavaScript_1.5_Reference:Statements:switch
+        http://www.quackit.com/javascript/tutorial/javascript_switch_statement.cfm
+        http://www.javascriptkit.com/javatutors/switch.shtml
+
+    break statement and continue statement
+
+        http://www.tutorialspoint.com/javascript/javascript_loop_control.htm
+        http://www.w3schools.com/js/js_break.asp
+
+    string charAt() and isNaN()
+
+        http://www.w3schools.com/jsref/jsref_charAt.asp
+        http://www.w3schools.com/jsref/jsref_isnan.asp
+
+
+    setTimeout
+
+        http://www.pageresource.com/jscript/jtimeout.htm
+
+    Math.random
+
+        http://www.the-art-of-web.com/javascript/random/
+        http://javascriptkit.com/javatutors/randomnum.shtml
+        http://www.pageresource.com/jscript/jrandom.htm
+
+
+    3.17 Short Exercises - Functions
+
+    Write function named distance that calculates the distance
+between two points (x1, y1) and (x2,y2). All numbers and return values should be floating-point values.Incorporate this function into a script that enables the user to enter the coordinates of the points through an XHTML form.
+
+Ans:
+
+1 <!DOCTYPE html>
+2 <html lang="en">
+3
+4
+5 <head>
+6
+7 <meta charset="utf-8">
+8
+9 <title>Solution 10.9</title>
+10
+11 <script type = "text/javascript">
+12
+13 function getDistance()
+14 {
+15 var x1 = parseInt( document.myForm.x1.value );
+16 var y1 = parseInt( document.myForm.y1.value );
+17 var x2 = parseInt( document.myForm.x2.value );
+18 var y2 = parseInt( document.myForm.y2.value );
+19 document.myForm.result.value =
+20 distance( x1, y1, x2, y2 );
+21 }
+22
+23 function distance( x1, y1, x2, y2 )
+24 {
+25 return Math.sqrt( Math.pow( Math.abs( x1 - x2 ),
+26 2 ) + Math.pow( Math.abs( y1 - y2 ), 2 ) );
+27 }
+28
+29 </script>
+30 </head>
+31
+32 <body>
+33 <form name = "myForm">
+34 <table>
+35 <tr><td>Enter x1 value</td>
+36 <td><input name = "x1" type = "text">
+37 </td>
+38 </tr>
+39 <tr><td>Enter y1 value</td>
+40 <td><input name = "y1" type = "text">
+41 </td>
+42 </tr>
+43 <tr><td>Enter x2 value</td>
+44 <td><input name = "x2" type = "text">
+45 </td>
+46 </tr>
+47 <tr><td>Enter y2 value</td>
+48 <td><input name = "y2" type = "text">
+49 </td>
+50 </tr>
+51 <tr><td><input type = "button" value= "Calculate"
+52 onclick = "getDistance()"></td>
+53 </tr>
+54 <tr><td>Distance</td>
+55 <td><input name = "result" type= "text"></td>
+56 </tr>
+57 </table>
+58 </form>
+59 </body>
+60 </html>
+
+a) What does it mean to choose numbers “at random”?
+Ans: Every number has an equal chance of being chosen at any time.
+
+b) Why is the Math.random function useful for simulating games
+of chance?
+Ans: Math.random produces a series of random numbers, and
+randomness is useful in making simulations appear realistic.
+
+c) Why is it often necessary to scale and/or shift the values
+produced by Math.random?
+Ans: To produce random numbers in a specific range.
+
+d) Why is computerized simulation of real-world situations a
+useful technique?
+
+Ans: It enables more accurate predictions of random events
+such as cars arriving at toll booths and people arriving in lines
+at a supermarket. The results of a simulation can help
+determine how many toll booths to have open or how many
+cashiers to have open at a specified time.
+
+3. Write statements that assign
+random integers to the variable n in the following ranges:
+
+a) 1 = n = 2
+Ans: n = Math.floor( 1 + Math.random() * 2 );
+
+b) 1 = n = 100
+Ans: n = Math.floor( 1 + Math.random() * 100 );
+
+c) 0 = n = 9
+Ans: n = Math.floor( Math.random() * 10 );
+
+d) 1000 = n = 1112
+Ans: n = Math.floor( 1000 + Math.random() * 113 );
+
+e) –1 = n = 1
+Ans: n = Math.floor( -1 + Math.random() * 3 );
+
+f) –3 = n = 11
+Ans: n = Math.floor( -3 + Math.random() * 15 );
+
+4 For each of the following sets of integers,
+write a single statement that will print a number at random
+from the set:
+
+a) 2, 4, 6, 8, 10.
+Ans: document.write( ( parseInt( Math.random() * 5) + 1) * 2);
+
+b) 3, 5, 7, 9, 11.
+Ans: document.write( ( parseInt( Math.random() * 5) + 1) * 2 + 1);
+
+5. Write program segments that accomplish each of the
+following tasks:
+
+a) Calculate the integer part of the quotient when integer a is
+divided by integer b.
+b) Calculate the integer remainder when integer a is divided by
+integer b.
+c) Use the program pieces developed in parts (a) and (b) to
+write a function displayDigitsthat receives an integer between
+1 and 99999 and prints it as a series of digits, each pair of
+which is separated by two spaces. For example, the integer
+4562 should be printed as 4 5 6 2.
+d) Incorporate the function developed in part (c) into a script
+that inputs an integer from a prompt dialog and invokes
+displayDigits by passing to the function the integer entered.
+
+Ans:
+
+1 <!DOCTYPE html>
+2 <html lang="en">
+3
+4
+5 <head>
+6
+7 <meta charset="utf-8">
+8
+9 <title>Solution 10.18</title>
+10
+11 <script type = "text/javascript">
+12
+13 var input;
+14
+15 input = window.prompt(
+16 "Enter a number between 1 and 99999:", "0" );
+17 document.writeln( "<pre>" );
+18 displayDigits( parseInt( input ) );
+19 document.writeln( "</pre>" );
+20
+21 // the following functions execute only when called
+22 // part a
+23 function quotient( a, b )
+24 {
+25 return Math.floor( a / b );
+26 }
+27
+28 // part b
+29 function remainder( a, b )
+30 {
+31 return a % b;
+32 }
+33
+34 // part c
+35 function displayDigits( number )
+36 {
+37 var divisor = 10000, digit;
+38
+39 // determine the divisor
+40 while ( number % divisor == number )
+41 divisor = quotient( divisor, 10 );
+42
+43 while ( divisor >= 1 ) {
+44 digit = quotient( number, divisor );
+45 document.write( digit + " " );
+46 number = remainder( number, divisor );
+47 divisor = quotient( divisor, 10 );
+48 }
+49 }
+50
+51 </script>
+52 </head>
+53
+54 <body>
+55 <p>
+56 Click Refresh (or Reload) to run this script again.
+57 </p>
+58 </body>
+59 </html>
+
+
+3.18 Coding Exercises - Functions
+Exercise 1 using a function:
+
+Write a script that contains a function that will calculate the area of a rectangle (area = width * length). Use form input text boxes to allow the user to input the width and length. Use a form button to make the function call that will calculate the area. Allow for the area to be displayed in a form input text box. Check for invalid input and then alert an error message.
+
+Click here for the solution and then view source.
+Exercise 1a using a function:
+
+Same as Exercise 1, except I use onkeyup on the last input field (rather than a submit button) and then displaying an error message (using innerHTML) in red and bold-faced and with a large font size when there is an invalid input.
+
+Click here for the solution and then view source.
+Exercise 1b using a function:
+
+Same as Exercise 1, except I use jQuery to display an error message when the user either enters non-numeric data, or enters a number not between 0-1000, or does not enter data for either width or height. You need to include the jQuery validation script.
+
+Click here for the solution and then view source.
+Exercise 2 using a function:
+
+Write a script that contains a function that will calculate a person's Body Mass Index. Use the formula: bmi = (weight * 703) / (height in inches * height in inches). Use form input text boxes to allow the user to input the weight and height. Use a form button to make the function call that will calculate the bmi. Allow for the bmi to be displayed in a form input text box. Check for invalid input and then alert an error message. Use jQuery to show/hide instructions.
+
+Click here for the solution and then view source. Here is another version using jQuery validation.
+
+Here is a simlar version using jQuery that uses the val() function to get the input field values and to display the output field value.
+
+Exercise 3 using a function and the return keyword:
+
+A Web Development Company has 3 employee positions, namely, Web Trainee, Web Designer, and Web Programmer. All positions are paid by the hour.
+
+Create a webpage using a script containing a function that inputs an employee's hourly rate and returns "Position is Web Trainee" if the employee's rate is $10-19 per hour, "Position is Web Designer" if the employee's rate is $20-49 per hour, and returns "Position is Web Programmer" if the employee's rate is $50-75 per hour. If the entered rate is anything else, then return "Invalid Input".
+
+Use a form input text box for inputting the hourly rate. Access the function by using a form button. Display the employee position in another form input text box. The script should contain a function that calls another function containing if..else if logic and the return keyword.
+
+Click here for the solution and then view source. I have included comments in the source to explain the code.
+Exercise 4 - Switch
+
+Create a webpage that contains a script that inputs a one digit rating of a webpage as 1-excellent, 2-good, 3-fair, 4-poor. Use a form text box for input. Using a switch statement display the corresponding rating message on the same page, including "invalid choice" when the input is not between 1 and 4.
+
+Click here for the solution and then view source.
+Exercise 5 - Switch using ranges:
+
+Create a webpage that contains a script that inputs a student's GPA (as a floating point number), CNIT133 homework average (as an integer) and CNIT133 final exam score (as an integer), using form text boxes. Validate the input and alert an error message if the input is invalid. When the user's mouse hovers over the GPA field, use jQuery UI tooltip coding to display the message "We ask for your Grade Point Average only for statistical purposes. A valid GPA is between 0 and 4.0". See this site for more about the jQuery UI tooltip.
+
+If the input is valid then calculate the student's final average according to the formula:
+
+final average = .7 * hwAvg + .3 * finalExam
+
+Using a switch statement with ranges of values for final average, display the student's final average (rounded to an integer), the final letter grade and relevant comments into a form textarea, using the following:
+90-100  A
+80-89   B
+70-79   C
+60-69   D
+0-59    F
+
+Click here for the solution and then view source.
+
+Here is the same example using a div element for displaying the output.
+Exercise 6a using a function and Math.random() method:
+
+Create a webpage using a script that simulates coin tossing. Let the program toss the coin each time the user clicks the Toss button. Count the number of times each side of the coin appears. Display the results. The program should call a separate function flip that takes no arguments and returns false for tails and true for heads. [Note: If the program realistically simulates the coin tossing, each side of the coin should appear approximately half the time]. Use jQuery to show/hide information about coin flipping.
+
+Click here for the solution and then view source.
+
+Here is another version that animates the flipping of the coin with sound effects. This version was created by Reid McCulloch.
+Exercise 6b using a function and Math.random() method:
+
+Same as Exercise 6a, except using penny images and jQuery UI to display instructions about coin flipping. Note that the instruction dialog can be dragged to any point on the page.
+
+Click here for the solution and then view source.
+Exercise 7 using a function and Math.random() method:
+
+Create a webpage using a script that simulates tossing dice.
+
+Click here for the solution and then view source. I have included extensive comments in the source to explain the code.
+
+Here is another version that simulates tossing dice and also displays the counts of each roll using an array.
+Exercise 8 using a function and Math.random() method:
+
+Create a webpage using a script that asks the viewer to guess a number between 1 and 5. After each guess then alert whether the guess or correct or not, and then confirm whether the viewer wants to continue or not.
+
+Click here for the solution.
+
+Here's another version that displays on the page whether the guess is correct or incorrect. It also displays on the page when the guess is not between 1 and 5.
+Exercise 9 creating a Dynamic Page:
+
+Create a dynamic questionnaire page about wine with dependencies among it's questions.
+
+Click here for the solution.
+
+Note - Page created by Paul Strader (former cnit 133 student)
+"All I'm doing is modifying the display property of the div tag using javascript. All the div's are pre written with the information. Depending on which radio button is selected, determines what div will be visible."

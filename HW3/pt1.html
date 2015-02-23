@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+ 	<title>Student grades</title>
+ 	<meta name="description" content="Lena Zheng HW3 student grades">
+ 	<meta name="author" content="Lena Zheng">
+ 	<link rel="stylesheet" type="text/css" href="../nav.css">
+
+	<style type="text/css">
+		input, textarea { display: block;}
+		table, input, textarea { margin: 0 auto;}
+		#score {text-align: center;}
+		#instructions{
+			display: none;
+		}
+	</style>
+
+	<script src="http://code.jquery.com/jquery-1.10.1.js"></script>
+
+	<!-- the following script is needed for jquery validation of input -->
+
+	<script src="http://fog.ccsf.edu/~srubin//jQvalidate.js"></script>
+
+	<script>
+		$(document).ready(function(){
+			$("#myform").validate({
+			// Rules for each input item
+			rules: 
+				{
+				hwAvg: { required: true, number: true, min: 0, max: 100},
+				midExam: { required: true, number: true, min: 0, max: 100},
+				finalExam: { required: true, number: true, min: 0, max: 100},
+				ARC: { required: true, number: true, min: 0, max: 100},
+
+				}
+			});	  
+		});
+
+		$(document).ready(function(){
+			$("#flip").click(function(){
+				$("#instructions").slideToggle("slow");
+			});
+		});
+
+		function process() {
+			if ($("#myform").valid()) {
+				// define variables	
+				var hwAvg, midExam, finalExam, ARC, average, lettergrade, output;
+				// get input number value from form using getElementById
+				hwAvg = document.getElementById("hwAvg").value;
+				midExam = document.getElementById("midExam").value;
+				finalExam = document.getElementById("finalExam").value;
+				ARC = document.getElementById("ARC").value;
+				average = Math.round((0.5 * hwAvg) + (0.2 * midExam) + (0.2* finalExam) + (0.1 * ARC));
+
+				if (average >= 90){
+					lettergrade = "A"
+				}
+				else if (average >= 80){
+					lettergrade = "B"
+				}
+				else if (average >= 70){
+					lettergrade = "C"
+				}
+				else if (average >= 60) {
+					lettergrade = "D"
+				}
+				else {
+					lettergrade = "F"
+				}
+				output =  "Your average is: " + average + ". Grade: " + lettergrade
+
+				if (average < 70){
+					output += " Student must retake the course."
+				}
+				document.myform.comment.value = output
+			}
+
+		}
+	</script>
+</head>
+
+<body>
+	<header>
+		<h2>Student Grades</h2>
+		<nav>
+			<ul>
+				<li><a href="http://hills.ccsf.edu/~lzheng22/cnit133_js">HW 1</a></li>
+				<li>
+					<a href="http://hills.ccsf.edu/~lzheng22/cnit133_js/HW2/hw2.html">HW 2</a>
+					<ul>
+						<li><a href="http://hills.ccsf.edu/~lzheng22/cnit133_js/HW2/pt1.html">HW 2: Part 1</a></li>
+						<li><a href="http://hills.ccsf.edu/~lzheng22/cnit133_js/HW2/pt2.html">HW 2: Part 2</a></li>
+						<li><a href="http://hills.ccsf.edu/~lzheng22/cnit133_js/HW2/pt3.html">HW 2: Part 3</a></li>
+						<li><a href="http://hills.ccsf.edu/~lzheng22/cnit133_js/HW2/pt4.html">HW 2: Part 4</a></li>
+						<li><a href="http://hills.ccsf.edu/~lzheng22/cnit133_js/HW2/extracredit.html">HW 2: Extra Credit</a></li>
+					</ul>
+				</li>
+				<li><a href="http://hills.ccsf.edu/~lzheng22/cnit133_js/HW3/hw3.html">HW 3</a>
+					<ul>
+						<li><a href="http://hills.ccsf.edu/~lzheng22/cnit133_js/HW3/pt1.html">HW 3: Part 1</a></li>
+						<li><a href="http://hills.ccsf.edu/~lzheng22/cnit133_js/HW3/pt2.html">HW 3: Part 2</a></li>
+						<li><a href="http://hills.ccsf.edu/~lzheng22/cnit133_js/HW3/pt3.html">HW 3: Part 3</a></li>
+						<li><a href="http://hills.ccsf.edu/~lzheng22/cnit133_js/HW3/pt4.html">HW 3: Part 4</a></li>
+						<li><a href="http://hills.ccsf.edu/~lzheng22/cnit133_js/HW3/pt5.html">HW 3: Part 5</a></li>
+						<li><a href="http://hills.ccsf.edu/~lzheng22/cnit133_js/HW3/pt6.html">HW 3: Part 6</a></li>
+						<li><a href="http://hills.ccsf.edu/~lzheng22/cnit133_js/HW3/extracredit.html">HW 3: Extra Credit</a></li>
+					</ul>
+				</li>
+				<li><a href="http://hills.ccsf.edu/~lzheng22/cnit133_js/HW4/hw4.html">HW 4</a></li>
+				<li><a href="http://hills.ccsf.edu/~lzheng22/cnit133_js/HW5/hw5.html">HW 5</a></li>
+				<li><a href="http://hills.ccsf.edu/~lzheng22/cnit133_js/HW6/hw6.html">HW 6</a></li>
+				<li><a href="http://hills.ccsf.edu/~lzheng22/cnit133_js/HW7/hw7.html">HW 7</a></li>
+				<li><a href="http://hills.ccsf.edu/~lzheng22/cnit133_js/HW8/hw8.html">HW 8</a>
+				</li>
+			</ul>
+		</nav>
+	</header>
+	<section class="body">
+		<div id="flip"><input type="button" value="Click to show instructions"></div>
+			<div id="instructions">The following webpage contains the heading, Student Grades, and uses a script that inputs a student's homework average, mid-term exam score, final exam score, and ACR (all as integers)</div>
+		<form id="myform" name="myform">
+			<table>
+				<tr>
+					<td><label for="hwAvg">Homework Average: </label></td>
+					<td><input type="text" id="hwAvg" name="hwAvg" size="10" autofocus></td>
+				</tr>
+				<tr>
+					<td><label for="midExam">Midterm Exam: </label></td>
+					<td><input type="text" id="midExam" name="midExam" size="10" ></td>
+				</tr>
+				<tr>
+					<td><label for="finalExam">Final Exam: </label></td>
+					<td><input type="text" id="finalExam" name="finalExam" size="10" ></td>
+				</tr>
+				<tr>
+					<td><label for="ARC">ARC: </label></td>
+					<td><input type="text" id="ARC" name="ARC" size="10" ></td>
+				</tr>
+			</table>
+			<input type="button"  onclick="process()" value="SUBMIT">
+			<input type="reset" value="RESET" onClick="window.location.reload();"><br><br>
+
+			<div id="score">Your score:</div>
+			<textarea rows="3" cols="30" name="comment"></textarea>
+
+		</form>
+	</section>
+	<footer>
+		<a href="http://validator.w3.org/check?uri=referer"><img alt="HTML5" src="http://fog.ccsf.edu/~srubin/html5a.jpg" style="border:0;width:29px;height:35px"></a>
+
+		<a href="http://jigsaw.w3.org/css-validator/check/referer"><img style="border:0;width:88px;height:31px" src="http://jigsaw.w3.org/css-validator/images/vcss-blue" alt="Valid CSS!"></a>
+
+	</footer>
+</body>
+
+</html>
+
+
