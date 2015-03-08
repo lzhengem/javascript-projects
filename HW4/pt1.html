@@ -1,0 +1,123 @@
+<!-- draggable -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+
+<meta charset="utf-8">
+
+<title>CNIT 133 Homework 4 pt 1: For and while loop, draggable</title>
+<meta name="description" content="Lena Zheng CNIT 133 Homework 4 pt 1: For and while loop, draggable">
+<meta name="author" content="Lena Zheng">
+
+
+<!-- include header, jquery and css -->
+<script type="text/javascript" src="../header.js"> </script>
+<script src="http://code.jquery.com/jquery-1.10.1.js"></script>
+<link rel="stylesheet" type="text/css" href="../nav.css">
+
+<!-- draggable library -->
+   <script src="http://code.jquery.com/ui/1.10.4/jquery-ui.js"></script>
+
+<script>
+	function product_of_three(){
+		answer = 1
+		for (var i = 5; i <= 20; i+=3) {
+			answer *= i
+		};
+		document.write('The product of every third integer from 5 to 20 is ' + answer)
+	}
+
+	function sum_of_three(){
+		answer = 0
+		for (var i = 5; i <= 20; i+=3) {
+			answer += i
+		};
+		document.write('<br />The sum of every third integer from 5 to 20 is ' + answer)
+	}
+
+	function product_of_fourth(){
+		answer = 1
+		start = 3 
+		while (start <=31){
+			answer *= start
+			start += 4
+		}
+
+		document.write('<br />The product of every fourth integer from 3 to 31 is ' + answer)
+	}
+
+	function sum_of_fourth(){
+		answer = 0
+		start = 3 
+		while (start <=31){
+			answer += start
+			start += 4
+		}
+
+		document.write('<br />The sum of every fourth integer from 3 to 31 is ' + answer)
+	}
+
+	 $(function() {
+		$( "#draggable" ).draggable();
+	});
+
+</script>
+<style type="text/css">
+
+
+	main ul{
+		font-size: 25px;
+		margin: 5% 15% 0 15%;
+
+	}
+	main li{
+		list-style: none;
+	}
+	a{
+		text-decoration: none;
+		color: black;
+	}
+	main a:hover{
+		background-color: blue;
+		color: white;
+	}
+
+	#draggable { width: 450px; height: 10px; padding: 0.5em; border: 1px solid green;}
+</style>
+
+</head>
+
+<body>
+	<!-- need title for header in navigation -->
+	<script>var title = "Homework 4 pt 1: For and while loop, draggable"</script>
+	<!-- add navigation bar -->
+	<script type="text/javascript" src="../navigation.js"> </script>
+
+
+	<main><div id="draggable" class="ui-widget-content">
+		<script>
+			product_of_three();
+			</script>
+		</div>
+
+			<script>
+			sum_of_three();
+			product_of_fourth();
+			sum_of_fourth();
+
+		</script>
+
+
+
+
+	</main>
+
+
+	<!-- include footer -->
+	<script type="text/javascript" src="../footer.js"> </script>
+</body>
+
+</html>
+
+

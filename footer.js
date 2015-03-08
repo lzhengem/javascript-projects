@@ -1,0 +1,5 @@
+document.write('<footer>')
+document.write('<a href="http://validator.w3.org/check?uri=referer">')
+document.write('<img alt="HTML5" src="http://fog.ccsf.edu/~srubin/html5a.jpg" style="border:0;width:29px;height:35px"></a>')
+document.write('<a href="http://jigsaw.w3.org/css-validator/check/referer">')
+document.write('<img style="border:0;width:88px;height:31px" src="http://jigsaw.w3.org/css-validator/images/vcss-blue" alt="Valid CSS!"></a></footer>')

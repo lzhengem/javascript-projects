@@ -1843,6 +1843,8 @@ You should include these statements in your HTML coding:
 Another useful feature of jQuery UI is having tabs as links to the parts of an assignment.
 http://jqueryui.com/tabs/
 
+creates multiple tabs in one page:
+
 an example:
 http://fog.ccsf.edu/~srubin/tabs.html
 
@@ -2329,3 +2331,181 @@ Click here for the solution.
 
 Note - Page created by Paul Strader (former cnit 133 student)
 "All I'm doing is modifying the display property of the div tag using javascript. All the div's are pre written with the information. Depending on which radio button is selected, determines what div will be visible."
+
+
+javascript book 4.txt
+
+book 4.1 while statement
+
+Loop Type 1: Repeat an action WHILE, or for as long as, a condition is true. 
+Loop Type 2: Repeat an action FOR a particular length of time, or FOR a given number of repetitions.
+Loop Type 3: Repeat an action until something occurs to stop it.
+
+[Note: Loop type 3 is usually created in JavaScript using the setTimeout() method of the Window object, which recursively calls its own function over and over again.]
+
+
+while loop:
+while (theGrainsOfRiceInTheBowl > 0) 
+
+{ 
+
+window.alert( "Eat a Grain Of Rice" ); 
+
+theGrainsOfRiceInTheBowl--; 
+
+}; 
+
+finding the first powere of 3 that is greater than 100:
+
+var x = 3;
+
+while (x <= 100)
+
+{
+
+x = 3 * x;
+
+};
+
+alert( "The first power of 3 larger than 100 is " + x );
+
+do while loop:
+
+this is the same as a while loop, except it will always be executed at least once:
+
+<html>
+<body>
+<script>
+var i=0;
+do
+{
+document.write("The number is " + i);
+document.write("<br>");
+i++;
+}
+while (i<=5);
+</script>
+</body>
+</html>
+
+4.2 For statement
+
+(you do not need the var keyword if you are initializing here)
+for ( var myCounter = 0; myCounter < 3; myCounter++ ) 
+
+{
+window.alert("Sort one shrimp into the basket");
+
+}
+
+
+
+sum the even numbers from 10 to 50:
+var sum = 0;
+
+for ( var number = 10; number <= 50; number += 2 )
+
+{
+
+sum += number;
+
+}
+
+using switch:
+<head>
+
+<script>
+
+function process() {
+
+var numlines;
+
+var valInput = true;
+
+// get input from user
+
+numlines = document.myform.lines.value;
+
+// Set text value of output based on value of numlines
+
+switch ( numlines ) {
+case "1":
+output = "You are #1";
+break;
+case "2":
+output = "You are #2";
+break;
+case "3":
+output = "You are #3";
+break;
+case "4":
+output = "You are #4";
+break;
+case "5":
+output = "You are #5";
+break;
+default:
+valInput = false;
+}
+
+// initailze htmlOutput
+
+htmlOutput = "";
+
+// If numlines not 1-4 alert error msg
+// otherwise build output
+
+if (valInput == false )
+alert(numlines + " is an invalid # of lines")
+else {
+
+// Build output into a variable named htmloutput
+
+for (var i = 1 ; i <=numlines; ++i)
+{
+htmlOutput += (output + "<br>");
+}
+
+/* Write output onto the same page by moving htmloutput data into the div whose id is listout */
+
+document.getElementById("listOut").innerHTML = htmlOutput;
+
+}
+
+}
+
+</script>
+</head>
+
+<body onload="document.myform.lines.focus();">
+
+<h2>Looping and Switch - Write on Same Page</h2>
+
+<form name="myform">
+
+Select 1 to 5 lines of text to write:
+<input type="text" name="lines" size="4"><br><br>
+<input type="button" onclick="process()" value="SUBMIT">
+<input type="reset" value="RESET" onclick="location.reload();"><br><br>
+
+</form>
+
+<div id ="listOut"></div>
+</body>
+
+4.4 Comma punctuation
+
+using toLocalString(). on numbers causes it return a string with commas on IE and Firefox for windows, but on a mac, Ie, safari, and fire does not return a string with commas
+
+also, on IE on windows, toLocalString() will round to the second decimal place
+
+4.5 Web Tutorials and Examples - Looping Statements
+
+
+for and while statements
+http://www.tutorialspoint.com/javascript/javascript_while_loop.htm
+http://www.tutorialspoint.com/javascript/javascript_for_loop.htm
+http://www.w3schools.com/js/js_loop_for.asp
+http://www.quackit.com/javascript/tutorial/javascript_while_loop.cfm
+http://www.cev.washington.edu/lc/CLWEBCLB/jst/js_looping.html
+

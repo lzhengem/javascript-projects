@@ -1,0 +1,164 @@
+<!-- draggable -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+
+	<meta charset="utf-8">
+
+	<title>CNIT 133 Homework 4 pt 2: Employee pay</title>
+	<meta name="description" content="CNIT 133 Homework 4 pt 2: Employee pay">
+	<meta name="author" content="Lena Zheng">
+
+
+	<!-- include header, jquery and css -->
+	<script type="text/javascript" src="../header.js"> </script>
+	<script src="http://code.jquery.com/jquery-1.10.1.js"></script>
+	<link rel="stylesheet" type="text/css" href="../nav.css">
+
+	<!-- draggable library -->
+	<script src="http://code.jquery.com/ui/1.10.4/jquery-ui.js"></script>
+
+	<!-- the following script is needed for jquery validation of input -->
+	<script src="http://fog.ccsf.edu/~srubin//jQvalidate.js"></script>
+	<script>
+		$(document).ready(function(){
+			$("#myform").validate({
+			// Rules for each input item
+			rules: 
+				{
+				emp1hours: { number: true},
+				emp2hours: { number: true},
+				emp3hours: { number: true},
+				emp4hours: { number: true},
+				emp5hours: { number: true},
+				emp6hours: { number: true},
+
+				emp1rate: { number: true},
+				emp2rate: { number: true},
+				emp3rate: { number: true},
+				emp4rate: { number: true},
+				emp5rate: { number: true},
+				emp6rate: { number: true}
+
+				}
+			});	  
+		});
+
+		function gross_pay(hours, rate){
+			var total_pay = hours * rate;
+			if (hours > 40){
+				total_pay =  total_pay + rate * 0.5 * (hours -40)
+			}
+			return total_pay
+
+		}
+
+		function get_nums(){
+
+			var emp1hours, emp1rate;
+			emp1hours = document.myform.emp1hours.value;
+			emp1rate = document.myform.emp1rate.value;
+
+			var emp2hours, emp2rate;
+			emp2hours = document.myform.emp2hours.value;
+			emp2rate = document.myform.emp2rate.value;
+
+			var emp3hours, emp3rate;
+			emp3hours = document.myform.emp3hours.value;
+			emp3rate = document.myform.emp3rate.value;
+
+			var emp4hours, emp4rate;
+			emp4hours = document.myform.emp4hours.value;
+			emp4rate = document.myform.emp4rate.value;
+
+			var emp5hours, emp5rate;
+			emp5hours = document.myform.emp5hours.value;
+			emp5rate = document.myform.emp5rate.value;
+
+			var emp6hours, emp6rate;
+			emp6hours = document.myform.emp6hours.value;
+			emp6rate = document.myform.emp6rate.value;
+
+			document.getElementById("emp1pay").innerHTML = "<input type='text' value='" + gross_pay(emp1hours, emp1rate) + "'>";
+			document.getElementById("emp2pay").innerHTML = "<input type='text' value='" + gross_pay(emp2hours, emp2rate) + "'>";
+			document.getElementById("emp3pay").innerHTML = "<input type='text' value='" + gross_pay(emp3hours, emp3rate) + "'>";
+			document.getElementById("emp4pay").innerHTML = "<input type='text' value='" + gross_pay(emp4hours, emp4rate) + "'>";
+			document.getElementById("emp5pay").innerHTML = "<input type='text' value='" + gross_pay(emp5hours, emp5rate) + "'>";
+			document.getElementById("emp6pay").innerHTML = "<input type='text' value='" + gross_pay(emp6hours, emp6rate) + "'>";
+		}
+	</script>
+</head>
+
+<body>
+
+	<!-- need title for header in navigation -->
+	<script>var title = "CNIT 133 Homework 4 pt 2: Employee pay"</script>
+	<!-- add navigation bar -->
+	<script type="text/javascript" src="../navigation.js"> </script>
+
+
+	<main>
+		Input the number of hours worked and the hourly rate:
+		<form name="myform" id="myform">
+			<table>
+				<tr><td>Employee</td>
+					<td>Hours worked</td>
+					<td>Hourly Rate</td>
+				</tr>
+
+				<tr><td>Employee 1</td>
+					<td><input type="text" name="emp1hours"></td>
+					<td><input type="text" name="emp1rate"></td>
+					<td><div name="emp1pay" id="emp1pay"><input type="text"></div></td>
+				</tr>
+
+				<tr><td>Employee 2</td>
+					<td><input type="text" name="emp2hours"></td>
+					<td><input type="text" name="emp2rate"></td>
+					<td><div name="emp2pay" id="emp2pay"><input type="text"></div></td>
+				</tr>
+
+				<tr><td>Employee 3</td>
+					<td><input type="text" name="emp3hours"></td>
+					<td><input type="text" name="emp3rate"></td>
+					<td><div name="emp3pay" id="emp3pay"><input type="text"></div></td>
+				</tr>
+
+				<tr><td>Employee 4</td>
+					<td><input type="text" name="emp4hours"></td>
+					<td><input type="text" name="emp4rate"></td>
+					<td><div name="emp4pay" id="emp4pay"><input type="text"></div></td>
+				</tr>
+
+				<tr><td>Employee 5</td>
+					<td><input type="text" name="emp5hours"></td>
+					<td><input type="text" name="emp5rate"></td>
+					<td><div name="emp5pay" id="emp5pay"><input type="text"></div></td>
+				</tr>
+
+				<tr><td>Employee 6</td>
+					<td><input type="text" name="emp6hours"></td>
+					<td><input type="text" name="emp6rate"></td>
+					<td><div name="emp6pay" id="emp6pay"><input type="text"></div></td>
+				</tr>
+				<tr>
+					<td colspan="3">
+						<input type="button" value="Submit" onclick="get_nums()">
+						<input type="reset" value="reset">
+					</td>
+				</tr>
+
+
+			</table>
+		</form>
+	</main>
+
+
+	<!-- include footer -->
+	<script type="text/javascript" src="../footer.js"> </script>
+</body>
+
+</html>
+
+
