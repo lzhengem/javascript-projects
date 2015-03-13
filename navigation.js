@@ -1,5 +1,10 @@
 document.write('<header>')
 document.write('<h2>' + title +'</h2>')
+var skills
+if (skills){
+	document.write(skills)
+}
+
 document.write('<nav><ul>')
 
 document.write('<li><a href="../HW1/index.html">HW 1</a></li>')
@@ -32,6 +37,7 @@ document.write('<li><a href="../HW4/pt3.html">HW 4: Part 3</a></li>')
 document.write('<li><a href="../HW4/pt4.html">HW 4: Part 4</a></li>')
 document.write('<li><a href="../HW4/pt5.html">HW 4: Part 5</a></li>')
 document.write('<li><a href="../HW4/pt6.html">HW 4: Part 6</a></li>')
+document.write('<li><a href="../HW4/extracredit.html">HW 4: Extra Credit</a></li>')
 document.write('</ul></li>')
 
 document.write('<li><a href="../HW5/hw5.html">HW 5</a></li>')

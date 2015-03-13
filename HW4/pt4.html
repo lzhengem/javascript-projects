@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+
+<meta charset="utf-8">
+
+<title>CNIT 133 Homework 4 pt 4: case</title>
+<meta name="description" content="Lena Zheng CNIT 133 Homework 4 pt 4: case">
+<meta name="author" content="Lena Zheng">
+<link rel="stylesheet" type="text/css" href="../nav.css">
+
+<!-- include header, jquery and css -->
+<script type="text/javascript" src="../header.js"> </script>
+<script src="http://code.jquery.com/jquery-1.10.1.js"></script>
+<script>
+
+	//create the basic table to collect info from user
+	function create_table(){
+		var amount = [null, 2.98, 4.5, 9.98, 4.49, 6.87]
+		var output = "<table><tr><td>Product #</td><td>QTY</td><td>Price</td><td>Amount</td></tr>"
+		for (var i = 1; i <= 5; i++){
+			output += "<tr>"
+			output += "<td>" + i + "</td>"
+			output +="<td><input type='text' id='qty".concat(i) + "'</td>"
+			output += "<td>" + amount[i].toFixed(2) + "</td>"
+			output +="<td><div id='amount".concat(i) + "'><input type='text'></div></td>"
+
+		}
+		output += "</tr></table>"
+		return output
+	}
+
+	// gets the total price of 1 item
+	function total_price(product, qty){
+		var price
+			switch(product){
+
+				case 1:
+					price = 2.98
+					break;
+				case 2:
+					price = 4.5
+					break;
+				case 3:
+					price = 9.98
+					break;
+				case 4:
+					price = 4.49
+					break;
+				case 5:
+					price = 6.87
+					break;
+			}
+		var amount = qty * price;
+		return amount
+		
+	}
+
+	// display the weekly amount sold
+	function output_info(qtys){
+		var amount
+		for (var i = 1; i <= 5; i++){
+			amount = "amount".concat(i)
+			if (isNaN(qtys[i])){
+				continue
+
+			}else
+			document.getElementById(amount).innerHTML = "<input type='text' value='" + total_price(i, qtys[i]).toFixed(2) + "'>"
+		}
+
+	}
+
+	//get the qty of each item from user
+	function get_info(){
+		var qtys = [null]
+		qtys.push(parseInt(document.myform.qty1.value))
+		qtys.push(parseInt(document.myform.qty2.value))
+		qtys.push(parseInt(document.myform.qty3.value))
+		qtys.push(parseInt(document.myform.qty4.value))
+		qtys.push(parseInt(document.myform.qty5.value))
+		output_info(qtys)
+	}
+
+	
+
+</script>
+
+<style type="text/css">
+	td{
+		padding-left: 10px;
+	}
+	input {
+		text-align: right;
+	}
+</style>
+
+</head>
+
+<body>
+	<!-- need title for header in navigation -->
+	<script>var title = "CNIT 133 Homework 4 pt 4: case"</script>
+	<!-- add navigation bar -->
+	<script type="text/javascript" src="../navigation.js"> </script>
+
+
+	<main>
+		<form name="myform" id="myform">
+			<div id="thistable" name="thistable"></div>
+			<!-- creates the base table. must be placed after div is set up -->
+			<script>document.getElementById("thistable").innerHTML = create_table()</script>
+
+			<!-- submit info, and output info -->
+			<input type="button" value="Submit" onclick="get_info()">
+			
+		</form>
+	</main>
+
+
+	<!-- include footer -->
+	<script type="text/javascript" src="../footer.js"> </script>
+</body>
+
+</html>
+
+

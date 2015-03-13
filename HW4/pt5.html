@@ -1,0 +1,126 @@
+<!-- Lets user choose what format list they want -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<title>CNIT 133 Homework 4 pt 5: List formats</title>
+	<meta name="description" content="Lena Zheng CNIT 133 Homework 4 pt pt 5: List formats">
+	<meta name="author" content="Lena Zheng">
+
+
+	<!-- jquery, and jquery for validation-->
+	<script src="http://code.jquery.com/jquery-1.10.1.js"></script>
+	<script src="http://fog.ccsf.edu/~srubin//jQvalidate.js"></script>
+
+	<!-- include header and css -->
+	<script type="text/javascript" src="../header.js"> </script>
+	<link rel="stylesheet" type="text/css" href="../nav.css">
+
+
+	<style type="text/css">
+		#instructions {
+			display: none;
+		}
+	</style>
+
+	<script>
+		// valate values to be numbers
+		$(document).ready(function(){
+			$("#myform").validate({
+			rules: 
+				{
+				choice: { required: true, number: true, min: 1, max: 3}
+
+				}
+			});	  
+		});
+
+		// toggle instructions
+		$(document).ready(function(){
+			$("#toggle").click(function(){
+				$("#instructions").slideToggle("slow");
+			});
+		});
+
+		function choose_format(){
+			if ($("#myform").valid()) {
+				var choice = document.myform.choice.value
+				var header, format, output
+
+				// find choice and set headers and format
+				switch(choice){
+					case '1':
+						header = "Unordered List"
+						format ="ul"
+						style = " style='list-style-type: square;'"
+						break;
+					case '2':
+						header = "Ordered Number List"
+						format = "ol"
+						style = ""
+						break;
+					case '3':
+						header = "Ordered Letter List"
+						format = "ol"
+						style = " style='list-style-type: upper-alpha;'"
+						break;
+				}
+
+				// construct output
+				output = "<h2>" + header + "</h2>"
+				output += "<" + format + style + ">"
+				for (var i = 1; i <= 3; i++){
+					output += "<li>List item " + i + "</li>"
+				}
+				output += "</" + format + ">"
+				
+				document.getElementById("showlist").innerHTML = output
+			}
+			
+		}
+
+	</script>
+</head>
+
+
+<body>
+	<!-- Nav bar -->
+
+	<script>var title = "Homework 4 pt 5: List formats"
+	var skills = "Validates input and toggles instructions"
+	</script>
+	<script type="text/javascript" src="../navigation.js"> </script>
+	<h4></h4>
+
+
+	<main>
+
+		<form id="myform" name="myform">
+			<!-- toggable instructions -->
+			<div id="toggle"><input type="button" value="Click for instructions"></div>
+			<div id="instructions">
+				Choose the list format you prefer:
+				<ol>
+					<li>unordered list</li>
+					<li>ordered list</li>
+					<li>ordered letter list</li>
+				</ol>
+			</div>
+
+			<!-- user input -->
+			Choose your format: <input type="text" name="choice">
+			<br />
+			<input type="button" value="Select format" onclick="choose_format()">
+		</form>
+
+		<div id="showlist" name="showlist"></div>
+	</main>
+
+
+	<!-- include footer -->
+	<script type="text/javascript" src="../footer.js"> </script>
+</body>
+
+</html>
+
+

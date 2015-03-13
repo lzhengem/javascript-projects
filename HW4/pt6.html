@@ -1,0 +1,158 @@
+<!-- Lets user choose what format list they want -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<title>CNIT 133 Homework 4 pt 6: Twelve days of Christmas</title>
+	<meta name="description" content="Lena Zheng CNIT 133 Homework 4 pt pt 6: Twelve days of Christmas">
+	<meta name="author" content="Lena Zheng">
+
+
+	<!-- jquery, and jquery for validation, and jquery for animation-->
+	<script src="http://code.jquery.com/jquery-1.10.1.js"></script>
+	<script src="http://fog.ccsf.edu/~srubin//jQvalidate.js"></script>
+	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+
+	<!-- include header and css -->
+	<script type="text/javascript" src="../header.js"> </script>
+	<link rel="stylesheet" type="text/css" href="../nav.css">
+
+
+	<style type="text/css">
+	</style>
+
+	<script>
+		function sing_song(){
+			var letter_day, song
+			var output = ""
+			for(var day = 1; day <=12; day++){
+				switch(day){
+					case 1:
+						letter_day = "first"
+						break;
+					case 2:
+						letter_day = "second"
+						break;
+					case 3:
+						letter_day = "third"
+						break;
+					case 4:
+						letter_day = "fourth"
+						break;
+					case 5:
+						letter_day = "fifth"
+						break;
+					case 6:
+						letter_day = "sixth"
+						break;
+					case 7:
+						letter_day = "seventh"
+						break;
+					case 8:
+						letter_day = "eight"
+						break;
+					case 9:
+						letter_day = "ninth"
+						break;
+					case 10:
+						letter_day = "tenth"
+						break;
+					case 11:
+						letter_day = "eleventh"
+						break;
+					case 12:
+						letter_day = "twelfth"
+						break;
+				}
+
+				
+				output += "On the " + letter_day + " day of Christmas my true love sent to me: <br> "
+				for(var i = day; i >= 1; i--){
+					switch(i){
+						case 1:
+							song = "A partridge in a pear tree.<br />"
+							break;
+						case 2:
+							song = "Two turtle doves"
+							break;
+						case 3:
+							song = "Three French Hens,"
+							break;
+						case 4:
+							song = "Four calling birds,"
+							break;
+						case 5:
+							song = "Five golden rings,"
+							break;
+						case 6:
+							song = "Six geese a laying,"
+							break;
+						case 7:
+							song = "Seven swans a swimming,"
+							break;
+						case 8:
+							song = "Eight maids a milking,"
+							break;
+						case 9:
+							song = "Nine ladies dancing,"
+							break;
+						case 10:
+							song = "Ten lords a leaping,"
+							break;
+						case 11:
+							song = "Eleven pipers piping,"
+							break;
+						case 12:
+							song = "Twelve drummers drumming,"
+							break;
+					}
+
+					output += song + "<br />"
+				}
+
+			}
+			return output
+		}
+
+		// animation
+		$(document).ready(function(){
+    $("button").click(function(){
+        var div=$("div");
+        div.animate({height: '600px', opacity: '0.4'}, "slow");
+        div.animate({width: '300px', opacity: '0.8'}, "slow");
+        div.animate({height: '100px', opacity: '0.4'}, "slow");
+        div.animate({width: '100px', opacity: '0.8'}, "slow");
+    });
+});
+	</script>
+</head>
+
+
+<body>
+	<!-- Nav bar -->
+
+	<script>var title = "Homework 4 pt 6: Twelve days of Christmas"
+	var skills = "Use switch statement and enter animation onto page"
+	</script>
+	<script type="text/javascript" src="../navigation.js"> </script>
+	<h4></h4>
+
+
+	<main>
+
+		<button style="position:absolute;right: 100px">Start Animation</button>
+		<div style="background:#98bf21;height:100px;width:100px;position:absolute;right: 250px"></div>
+		
+		<p><script>document.write(sing_song())</script></p>
+
+
+	</main>
+
+
+	<!-- include footer -->
+	<script type="text/javascript" src="../footer.js"> </script>
+</body>
+
+</html>
+
+
