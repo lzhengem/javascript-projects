@@ -1,0 +1,94 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+
+<meta charset="utf-8">
+
+<title>CNIT 133 Homework 4 extra credit: print a square</title>
+<meta name="description" content="Lena Zheng CNIT 133 Homework 4 extra credit: print a square">
+<meta name="author" content="Lena Zheng">
+
+
+<!-- include header, jquery, and validation library-->
+<script type="text/javascript" src="../header.js"> </script>
+<script src="http://code.jquery.com/jquery-1.10.1.js"></script>
+<script src="http://fog.ccsf.edu/~srubin//jQvalidate.js"></script>
+
+<!-- css -->
+<link rel="stylesheet" type="text/css" href="../nav.css">
+
+<script>
+	$(document).ready(function(){
+		$("#myform").validate({
+			rules:
+				{
+				length: {number: true, required: true, min: 2, max: 10}
+				}
+		})
+	})
+	function draw_square(){
+		if($("#myform").valid()){
+
+		var length = document.myform.length.value
+		var output = "<div style='font-family: monospace;'>"
+		for(var i = 1; i <= length; i++){
+			if(i == length || i == 1){
+				for (var j = 1; j <= length; j++){
+					output += "* "
+				}
+				output += "<br />"
+			}
+			else{
+				output += "*"
+				for (var j = 1; j <= 2 * length - 3; j++){
+					output += "&nbsp;"
+				}
+				output += "*<br />"
+			}
+			
+		}
+		output += "</div>"
+		document.getElementById("the_square").innerHTML = output
+		}
+
+
+	}
+</script>
+<style type="text/css">
+p {
+    font-family: monospace;
+}
+</style>
+
+</head>
+
+<body>
+	<!-- nav bar -->
+	<script>
+		var title = "Homework 4 extra credit: print a square"
+		var skills = "Using loops to make a square using monospace font, validate input"
+	</script>
+
+	<script type="text/javascript" src="../navigation.js"> </script>
+
+
+	<main>
+		<form id="myform" name="myform">
+			Enter the length of the square you'd like: 
+			<input type="text" name="length" id="length">
+			<input type="button" value="Draw!" onClick="draw_square()">
+		</form>
+
+		<div class="the_square" id="the_square"></div>
+	</main>
+
+
+	<!-- include footer -->
+	<script type="text/javascript" src="../footer.js"> </script>
+</body>
+
+</html>
+
+
