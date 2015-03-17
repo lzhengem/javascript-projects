@@ -48,7 +48,7 @@
 		function gross_pay(hours, rate){
 			var total_pay = hours * rate;
 			if (hours > 40){
-				total_pay =  total_pay + rate * 0.5 * (hours -40)
+				total_pay =  (total_pay + rate * 0.5 * (hours -40)).toFixed(2)
 			}
 			return total_pay
 
