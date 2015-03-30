@@ -12,14 +12,19 @@ body {
 nav ul ul {
 	/*when not hovering, the subpages are hidden*/
 	display: none;
+
 }
 nav{
 	text-align: center;
+
+
 }
 
 nav ul li:hover > ul {
 	/*when hovering, only its own subpages will show*/
 	display: block;
+	z-index: 1;
+
 }
 
 nav ul {
