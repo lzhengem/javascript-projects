@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+
+	<meta charset="utf-8">
+	<title>CNIT 133 Homework 5 pt2</title>
+	<meta name="description" content="Lena Zheng CNIT 133 Homework 5 pt2">
+	<meta name="author" content="Lena Zheng">
+	<link rel="stylesheet" type="text/css" href="../nav.css">
+	<!-- include header, jquery and css -->
+	<script type="text/javascript" src="../header.js"> </script>
+	<script src="http://code.jquery.com/jquery-1.10.1.js"></script>
+	<!-- need title for header in navigation -->
+	<script>
+		var title = "CNIT 133 Homework 5 pt 2";
+		var skills = "Float tables"
+	</script>
+
+	<!-- add navigation bar -->
+	<script type="text/javascript" src="../navigation.js"> </script>
+
+	<!-- Functions for this webpage -->
+	<script>
+		var States = [["AL", "ALABAMA", "Montgomery", "4,369,862"], ["AK", "ALASKA", "Juneau", "619,500"], ["AZ", "ARIZONA", "Phoenix", "4,778,332"], ["AR", "ARKANSAS", "Little Rock", "2,551,373"], ["CA", "CALIFORNIA", "Sacramento", "3,145,121"], ["CO", "COLORADO", "Denver", "4,056,133"]]
+		var statelength = States.length
+
+		// generate States table showing state abbreviation and state name
+		function maketable(){
+			var table = "<table id='info'><tr>"
+			table += "<td>State Abbr</td>"
+			table += "<td>State</td></tr>"
+
+			// for each state
+			for (var info = 0; info < statelength; info++) {
+				table += "<tr>"
+				// list their State abbr and state
+				for (var j = 0; j <= 1; j++) {
+					table += "<td>" + States[info][j] + "</td>"	
+				};
+				table += "</tr>"
+			};
+
+			table += "</table>"
+			document.write(table)
+		}
+
+		function displayinfo(){
+			var state = document.myform.thestate.value.toUpperCase()
+			var abv, statename, capital, population
+
+			for (var i = 0; i < statelength; i++) {
+				if (state == States[i][0] || state == States[i][1])
+				{
+					abv = States[i][0]
+					statename = States[i][1] 
+					capital = States[i][2]
+					population = States[i][3]
+					
+					// output the results
+					var displaytable = "<table id='results'><tr><td>Abbreviation</td><td>State Name</td><td>Capital</td><td>Population</td>"
+					displaytable += "<tr><td>" + abv + "</td>"
+					displaytable += "<td>" + statename + "</td>"
+					displaytable += "<td>" + capital + "</td>"
+					displaytable += "<td>" + population + "</td></tr>"
+					displaytable += "</tr></table>"
+					document.getElementById("display").innerHTML = displaytable
+					break;
+				}
+			};
+
+			// if the state was not found, tell user
+			if (!capital){
+				alert("Please enter a correct State")
+			}
+		}
+	</script>
+
+	<!-- Styling for this webpage -->
+	<style type="text/css">
+		table, td{
+		   border: 1px solid black;
+		} 
+
+		table#results{
+			position: absolute;
+			top: 200px;
+		}
+		td {
+			color: blue;
+		}
+
+		#right{
+			position: relative;
+			left: 60%;
+		}
+
+	</style>
+</head>
+
+<body>
+	<main>
+		<form name="myform">
+			Please enter the State:
+			<input type="text" name="thestate">
+			<input type="button" value="State Info" onclick="displayinfo()">
+		</form>
+
+		<!-- display the info here -->
+		<div id="display">
+		</div>
+
+		<!-- shift the table to the right -->
+		<div id="right">
+			<!-- display the table -->
+			<script>
+				maketable();
+			</script>
+		</div>
+
+
+	</main>
+	<br>
+	<!-- include footer -->
+	<script type="text/javascript" src="../footer.js"> </script>
+</body>
+
+</html>
+
+

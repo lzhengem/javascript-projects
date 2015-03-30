@@ -1848,6 +1848,163 @@ creates multiple tabs in one page:
 an example:
 http://fog.ccsf.edu/~srubin/tabs.html
 
+
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+
+<title>jQuery UI Tabs - Default functionality</title>
+<link rel="stylesheet" href="http://code.jquery.com/ui/1.10.3/themes/smoothness/jquery-ui.css">
+
+
+
+<style type="text/css">
+
+
+body {
+    font-family: "Trebuchet MS", "Helvetica", "Arial",  "Verdana", "sans-serif";
+    font-size: 62.5%; 
+        margin: 20px 0px; padding: 0px;
+        text-align:center; /* Hack for IE/Win */
+         background-color: #f5f5dc;
+}
+
+#content {
+    width:618px;
+    margin: 0px auto; padding: 15px;
+        text-align: left; /* Counteract to IE/Win Hack */   
+    background-color:#00ccff;
+        border: 0px; padding: 20px; 
+        border-radius: 25px;  }
+
+
+
+#hdr {
+    font-family: Verdana;
+    font-size: 28px;
+    font-weight: bold;
+    color: #000;
+    }
+</style>
+
+
+<script src="http://code.jquery.com/jquery-1.9.1.js"></script>
+<script src="http://code.jquery.com/ui/1.10.3/jquery-ui.js"></script>
+
+<!-- See for more info:  http://jqueryui.com/tabs/ -->
+
+<script type="text/javascript">
+
+$(function() {
+$( "#tabs" ).tabs();
+});
+
+</script>
+
+</head>
+
+<body>
+
+<header>
+<h3 id="hdr">JavaScript Basics Coding Examples</h3>
+</header>
+
+<section id="content">
+
+
+
+
+<div id="tabs">
+
+<ul>
+<li><a href="#tabs-1">Example 1</a></li>
+<li><a href="#tabs-2">Example 2</a></li>
+<li><a href="#tabs-3">Example 3</a></li>
+<li><a href="#tabs-4">Example 4</a></li>
+<li><a href="#tabs-5">Example 5</a></li>
+<li><a href="#tabs-6">Example 6</a></li>
+<li><a href="#tabs-7">Example 7</a></li>
+</ul>
+
+
+
+<div id="tabs-1">
+
+<p>Create a webpage that contains a script that outputs the italicized letters A, B, and C on the same line, 
+with each letter separated by a comma and one space. 
+Write the script using three document.write statements and a text color of orange.</p>
+
+
+</div>
+
+
+<div id="tabs-2">
+
+<p>Create a webpage that contains a script that uses form text boxes to input four integers and uses a
+ form textarea to display the inputted numbers, how many integers were less than 6, how many were greater or equal to 6, 
+and the product of the 4 integers.
+</p>
+
+
+</div>
+
+
+<div id="tabs-3">
+<p>Create a webpage that contains a script that outputs the following table, which 
+includes using the Math object method: Math.sqrt()</p>
+
+
+</div>
+
+
+
+<div id="tabs-4">
+
+</div>
+
+
+
+<div id="tabs-5">
+
+<p>Create a webpage that contains a script that will calculate how many hours it will 
+take 2 people to finish a job working together, given that you know how many hours it will 
+take each person to finish the job doing it alone. Assume that the people will work at the 
+same rate together as they do alone. Use form text boxes for the hours to complete a job for 
+each person alone. Use a form text box to display how many hours it will take them working 
+together. Accept floating-point numbers for input and round the output to two decimal places.
+ Verify that the input is numeric by using the isNAN function for testing a non-numeric value. The isNaN function stands for is NOT a Number and returns true if the value is NaN.
+</p>
+
+</div>
+
+<div id="tabs-6">
+
+<p>
+Create a webpage that contains a script that inputs two integers from form input fields and then determines and outputs to a form field whether the first integer is a multiple of the second.
+</p>
+
+</div>
+
+<div id="tabs-7">
+
+<p>
+Use form text boxes for an employee's name and yearly gross income. Using if...else if statements, display a relevant comment in a form text box as described here:
+Check for valid input for yearly gross.
+
+Note that I use jQuery to color the input text boxes when the user clicks in that box.
+</p>
+
+
+
+</div>
+
+</section>
+
+</body>
+</html>
+
+
 3.13 Data type conversions
 
 When the operands are of different types, the equality (==) operator actually converts its operands before determining whether or not they are equal. Here are the basic rules. (This is from "JavaScript: The Definitive Guide," 5ed, p. 67):
@@ -2509,3 +2666,395 @@ http://www.w3schools.com/js/js_loop_for.asp
 http://www.quackit.com/javascript/tutorial/javascript_while_loop.cfm
 http://www.cev.washington.edu/lc/CLWEBCLB/jst/js_looping.html
 
+
+
+ch 5 - Javascript - arrays
+
+5.1 Arrays
+
+This is considered bad array practice now:
+var fred = new Array();
+fred[0] = "Hi";
+fred[1] = 127;
+fred[2] = true;
+fred[3] = "Wow";
+
+any type of data may be placed into an array position, including objects or other arrays.
+
+use this instead:
+var fred = ["Hi", 127, true, "Wow"];
+
+if you need to fill an array of 4 elements without knowing what the elements are beforehand, you could use:
+
+var fred =  [{}, {}, {}, {}];
+
+
+5.2 Arrays and Loops
+
+var fred = ["Hi", 127, true, "Wow"];
+alert(fred.length);
+
+example for alerting fred:
+var fred = ["Hi", 127, true, "Wow"];
+
+for (myCounter = 0; myCounter < fred.length; myCounter++) {
+ alert(fred[myCounter]);
+};
+
+Every image on a web page, for instance, is stored, in order of their appearance in the HTML code, in the images[] array; the first IMG on the HTML page is stored in images[0], the second IMG on the HTML page is stored in images[1], etc. You can affect the images on an HTML page by accessing their image object instances via this array (there are also other, more direct means, as well). Countless other HTML elements are stored in a similar manner.
+
+5.3 Form Pulldown Menus Used as Navigation Elements
+
+how to change webpage onchange
+drop down menu:
+
+<form>
+<select name="destList">
+<option value="http://www.yahoo.com/">Yahoo</option>
+<option value="http://www.w3.org/">W3C</option>
+<option value="http://www.mozilla.org/">Mozilla</option>
+<option value="http:/fog.ccsf.edu/~srubin">Steve Rubin</option>
+</select>
+</form>
+
+when you click submit, and pass this.form as an argument,the keyword "this" refers to the button, which will pass a complete copy of the form to the function
+
+
+<form>
+<select name="destList">
+    <!-- if using on-change, need this first 'fake' option -->
+<option>Choose dest:</option>
+<option value="http://www.yahoo.com/">Yahoo</option>
+<option value="http://www.w3.org/">W3C</option>
+<option value="http://www.mozilla.org/">Mozilla</option>
+<option value="http://fog.ccsf.edu/~srubin">Steve Rubin</option>
+</select>
+
+<input type="button" value="Go" onclick="goToNewPage(this.form);">
+</form>
+
+in the function:
+this will show you option 2: Moxilla
+
+myForm.destList.options[2].value
+
+this shows you which index they selected:
+myForm.destList.selectedIndex
+
+so, this shows you which option they choose:
+myForm.destList.options[myForm.destList.selectedIndex].value
+
+so, this will change their window to their selection:
+function goToNewPage(myForm) {
+var mydest = myForm.destList.options[myForm.destList.selectedIndex].value;
+window.location = mydest;
+}
+
+5.4 Web Tutorials and Examples - Arrays
+
+
+    pulldown menus
+
+        http://lab.artlung.com/dropdown/
+        http://www.javascripter.net/faq/linksina.htm
+
+    Form Validation
+
+        http://corpocrat.com/2009/07/15/quick-easy-form-validation-tutorial-with-jquery/
+        http:// www.elated.com/articles/form-validation-with-javascript/
+
+    arrays
+
+        http:// www.pageresource.com/jscript/jarray.htm
+        http://www.w3schools.com/js/js_obj_array.asp
+        http:// wsabstract.com/javatutors/loop1.shtml
+
+    two-dimensional arrays
+
+        http://www.javascriptkit.com/javatutors/twoarray1.shtml
+        http://www.quackit.com/javascript/tutorial/two_dimensional_arrays.cfm
+        http://www.trans4mind.com/personal_development/JavaScript/Array2D.htm
+
+
+5.5 Short Exercises - Arrays
+1. Fill in the blanks in each of the following statements:
+
+a) JavaScript stores lists of values in _____.
+
+Ans: arrays.
+
+b) The names the four elements of array p are ___, ___,
+_____, and ______.
+
+Ans: p[ 0 ], p[ 1 ], p[ 2 ], p[ 3 ].
+
+c) In a two-dimensional array, the first subscript identifies
+the _____ of an element, and the second subscript identifies the
+of an element.
+
+Ans: row, column.
+
+d) An m-by-n array contains ___ rows, ___ columns and
+_____elements.
+
+Ans: m, n, m * n.
+
+e) The name of the element in row 3 and column 5 of
+array d is ______.
+
+Ans: d[ 3 ][ 5 ].
+
+f) The name of the element in the third row and fifth column of
+array d is ______.
+
+Ans: d[ 2 ][ 4 ]
+
+2. State whether each of the following is true
+or false. If false, explain why.
+
+a) To refer to a particular location or element within an array, we
+specify the name of the array and the value of the particular element.
+
+Ans: False, we specify the name of the array
+and the indexed location to refer to a specific
+element.
+
+b) A variable declaration reserves space for an array.
+
+Ans: True.
+
+c) To indicate that 100 locations should be reserved for
+integer array p, the programmer
+should write the declaration
+p[ 100 ];
+
+Ans: False. var p = new Array[ 100 ];
+
+d) A JavaScript program that initializes the elements of a 15-element
+array to zero must contain at least one for statement.
+
+Ans: False. Arrays can be initialized upon declaration.
+
+e) A JavaScript program that totals the elements of a two-dimensional
+array must contain nested for statements.
+
+Ans: True.
+
+3. Write JavaScript statements to accomplish each of the
+following tasks:
+
+a) Display the value of the seventh element of array f.
+
+Ans: document.write( f[ 6 ] );
+
+b) Initialize each of the five elements of one-dimensional array g to 8.
+
+Ans: for ( var i = 0; i < 5; i++ )
+g[ i ] = 8;
+
+c) Total the elements of array c, which contains 100 numeric elements.
+
+Ans: for ( var i = 0; i < 100; i++ )
+total += parseInt( c[ i ] );
+
+d) Copy 11-element array a into the first portion of array b, which
+contains 34 elements.
+
+Ans: for ( var i = 0; i < a.length; i++ )
+b[ i ] = parseInt( a[ i ] );
+
+e) Determine and print the smallest and largest values
+contained in 99-element floatingpoint array w.
+
+Ans: var highestNumber = w[ 0 ], lowestNumber = w[ 0 ];
+for ( var i = 1; i < 99; i++ ) {
+if ( w[ i ] > highestNumber )
+highestNumber = parseFloat( w[ i ] );
+if ( w[ i ] < lowestNumber )
+lowestNumber = parseFloat( w[ i ] );
+}
+document.writeln( highestNumber + " " + lowestNumber);
+
+4. Consider a two-by-three array t that will store integers.
+
+a) Write a statement that declares and creates array t.
+
+Ans: var t = new Array( 2 );
+t[ 0 ] = new Array( 3 );
+t[ 1 ] = new Array( 3 );
+
+b) How many rows does t have?
+
+Ans: 2.
+
+c) How many columns does t have?
+
+Ans: 3.
+
+d) How many elements does t have?
+
+Ans: 6.
+
+e) Write the names of all the elements in the second row of t.
+
+Ans: t[ 1 ][ 0 ], t[ 1 ][ 1 ], t[ 1 ][ 2 ].
+
+f) Write the names of all the elements in the third column of t.
+
+Ans: t[ 0 ][ 2 ], t[ 1 ][ 2 ].
+
+g) Write a single statement that sets the element of t in row 1 and
+column 2 to zero.
+
+Ans: t[ 1 ][ 2 ] = 0;
+
+h) Write a series of statements that initializes
+each element of t to zero. Do not use a repetition structure.
+
+Ans: t[ 0 ][ 0 ] = 0;
+t[ 0 ][ 1 ] = 0;
+t[ 0 ][ 2 ] = 0;
+t[ 1 ][ 0 ] = 0;
+t[ 1 ][ 1 ] = 0;
+t[ 1 ][ 2 ] = 0;
+
+i) Write a nested for statement that initializes each element of t to zero.
+
+Ans: for ( var j = 0; j < t.length; j++ )
+for ( var k = 0; k < t[ j ].length; k++ )
+t[ j ][ k ] = 0;
+or
+for ( var j in t )
+for ( var k in t[ j ] )
+t[ j ][ k ] = 0;
+
+j) Write a series of statements that determines and prints the smallest
+value in array t.
+
+Ans: // assume small is declared and initialized
+for ( var x = 0; x < t.length; x++ )
+for ( var y = 0; y < t[ x ].length; y++ )
+if ( t[ x ][ y ] < small )
+small = t[ x ][ y ];
+document.writeln( "Smallest is " + small );
+
+k) Write a statement that displays the elements of the first row of t.
+Ans: document.writeln( t[ 0 ][ 0 ] + " " + t[ 0 ][ 1 ] + " " + t[ 0 ][ 2 ] );
+l) Write a statement that totals the elements of the fourth column of t.
+
+Ans: t does not have a fourth column.
+
+5.6 Coding Exercises - Arrays
+
+Exercise 1 - Simple Array Example:
+
+Using an array, create a webpage that contains a script that uses input text boxes to input four integers and uses a form textarea to display the inputted numbers, how many integers were less than 0 and how many were greater or equal to 0, and the product of the 4 integers. Use jQuery to click/hide the instructions and to validate the input as numeric.
+
+>>http://fog.ccsf.cc.ca.us/~srubin/bk5ex.html
+
+
+Exercise 2a - Form Validation - input text boxes:
+
+Create a webpage that contains a script that validates whether a user has entered correct data in form input text boxes.
+
+>>http://fog.ccsf.cc.ca.us/%7Esrubin/textboxval1.html
+
+
+Exercise 2b - Form Validation - input text boxes:
+
+Create a webpage that validates whether a user has entered non-blank data in form input text boxes, using the required attribute and an input type of submit. No script is used for validation. A submitted form with all non-blank fields will automatically open an email program containing the form data.
+
+>>http://fog.ccsf.cc.ca.us/~srubin/textboxval3.html
+
+
+Exercise 3 - Form Validation - radio buttons:
+
+Create a webpage that contains a script that validates whether a user has checked one form radio button.
+
+>>http://fog.ccsf.edu/~srubin/radioval1.html
+
+
+Exercise 4 - Form Validation - select items:
+
+Create a webpage that contains a script that validates whether a user has selected a form select item.
+
+>>http://fog.ccsf.edu/~srubin/selval1.html
+
+
+Exercise 5a- Form Validation - jQuery
+
+Create a webpage that contains a script using jQuery that validates whether a user has entered data in a form input text box, clicked a radio button, clicked a checkbox, and selected an option.
+
+>>http://fog.ccsf.cc.ca.us/~srubin/valjq2.html
+
+Here is another form using jQuery that validates whether a user has entered data in a form input text box, clicked a radio button, clicked a checkbox, and selected an option.
+
+>>http://fog.ccsf.cc.ca.us/~srubin/alex1.html
+
+Exercise 5b- Form Validation - jQuery
+
+Create a webpage that contains a script using jQuery that validate a form with various elements. This example is taken from JQuery: the Missing Manual - Chapter 9.
+
+>>http://fog.ccsf.cc.ca.us/~srubin/valjq3.html
+
+Note that the error messages are in red and are below each form element (in the form.css file, see #signup label.error).
+
+Exercise 6:
+
+Given the following table of data about several oil companies operating in the Bay Area. Create a webpage containing a script that uses a two-dimensional array that enables the user to enter an oil company name (full or abbreviated) and have the unleaded cost per gallon and comment appear in separate form text fields of the page. The user should be able to start the script by pressing the button, "Oil Company Info". Accept lower or upper case values for the oil company abbreviation or name. If the input is invalid then display an error message in the comment text box.
+
+Use jQuery UI for a button that will display the instructions - 'Enter an Oil Company abbreviation or name (lower or upper case is ok) in the field next to the Oil Info button'.
+
+Gas Co. Abbr    Gas Co. Name    Cost per Gal.   Comment
+AR  Arco    2.99    cheap gas
+BP  British Petroleum   3.15    north sea
+EX  Exon    3.37    oil spill
+SH  Shell Oil   3.45    rip off
+
+>>http://fog.ccsf.edu/%7Esrubin/arrex3sol.html
+
+
+Exercise 7:
+
+Use a one-dimensional array to solve the following problem: Members of a club pay their dues depending on their gross income. The dues rate is $10 plus 2% of their gross income. For example, a club member whose gross income is $50000 pays $10 plus 2% of $50000, or a total of $1010. Create a webpage with a script (using an array of counters) that obtains the gross income for each member through a form and determines how many of the members pay total dues in each of the following ranges (assume that each member's gross salary is truncated to an integer amount):
+
+a) $10-99
+b) $100-999
+c) $1000-4999
+i) $5000 and over
+
+>>http://fog.ccsf.edu/%7Esrubin/arrex4sol.html
+
+
+Exercise 8:
+
+Create a webpage that contains a script, using a one-dimensional array to solve the following problem: Read in 5 numbers via a prompt, each of which is between 1 and 10. As each number is read, print it only if it is not a duplicate number that has already been read. (Note: Print the numbers in a form textarea). Provide for case in which all 5 numbers are different. Use the smallest possible array to solve this problem. Thanks to Michael Ogi for modifying this example to include pushing numbers onto the array and appending the number to the output string.
+
+>>http://fog.ccsf.edu/%7Esrubin/arrex8sol.html
+
+
+Exercise 8b:
+
+Create a webpage that contains a script, using a one-dimensional array to solve the following problem: Read in numbers into an input text box (one at a time), each of which should be between 1 and 10. As each number is read, print it only if it is not a duplicate number that has already been read. (Note: Print the numbers in a form textarea. The amount of numbers read in is unlimited. Thanks to Michael Ogi for creating this example.)
+
+>>http://fog.ccsf.edu/~srubin/arrex8bsol.html
+
+
+using css:
+when you use # - this refers to an id
+<style type="text/css">
+#sometablename{
+    float:right
+}
+</style>
+
+<div id="sometablename">
+</div>
+
+using getElementById:
+this one needs id
+<script>
+document.getElementById("results").innerHTML = results
+</script>
+
+<div id="results"></div>

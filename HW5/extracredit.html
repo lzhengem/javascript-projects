@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<!-- 
+(Airlines Reservation System) A small airline has just purchased a computer for its new automated reservations system. You have been asked to program the new system. You are to write a program to assign seats on each flight of the airline's only plane (capacity: 10 seats).
+
+Your program should display the following menu of alternatives: Please type 1 for "First Class" and Please type 2 for "Economy". If the person types 1, your program should assign a seat in the first-class section (seats 1-5). If the person types 2, your program should assign a seat in the economy section (seats 6-10). Your program should print a boarding pass indicating the person's seat number and whether it is in the first-class section or economy section of the plane.
+
+Use a one-dimensional array to represent the seating chart of the plane. Initialize all the elements of the array to 0 to indicate that all seats are empty. As each seat is assigned, set the corresponding elements of the array to 1 to indicate that the seat is no longer available.
+
+You program should never assign a seat that has already been assigned. When the first-class section is full, your program should ask the person if it is acceptable to be placed in the economy section (and vice-versa). If yes, then make the appropriate seat assignment. If no, then print the message "Next flight leaves in 3 hours." 
+
+For input, use a form input box and button. Validate input as 1 or 2. Simulate the printing of boarding passes and messages by using alerts.
+-->
+<head>
+
+
+	<meta charset="utf-8">
+	<title>CNIT 133 Homework 5 Extra credit</title>
+	<meta name="description" content="Lena Zheng CNIT 133 Homework 5 Extra credit">
+	<meta name="author" content="Lena Zheng">
+	<link rel="stylesheet" type="text/css" href="../nav.css">
+	<!-- include header, jquery and css -->
+	<script type="text/javascript" src="../header.js"> </script>
+
+	<!-- jquery and validation-->
+	<script type="text/javascript" src="http://code.jquery.com/jquery-1.11.1.js"></script>
+	<script type="text/javascript" src="http://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.12.0/jquery.validate.js"></script>
+
+	<!-- need title for header in navigation -->
+	<script>
+		var title = "CNIT 133 Homework 5 Extra Credit";
+		var skills = ""
+	</script>
+
+	<!-- add navigation bar -->
+	<script type="text/javascript" src="../navigation.js"> </script>
+
+	<!-- Functions for this webpage -->
+	<script>
+
+	jQuery(function($) {
+		$("#myform").validate({
+		// Rules for each input item
+		rules: 
+			{
+				choice: { required: true, number: true, min: 1, max:2}
+
+			}
+		});
+		
+	});
+
+	var empty_seats = [0,0,0,0,0,0,0,0,0,0]
+	var seated = false
+	function seat(){
+		if ($("#myform").valid()) {
+			var choice = document.myform.choice.value
+			var your_seat
+			// if all seats are taken
+			if ($.inArray(0, empty_seats) == -1){
+				alert("Sorry no more seats available")
+				return 
+			}
+			// they choose first class
+			if (choice == '1'){
+				for (var i = 0; i <= 4; i++) {
+					if (empty_seats[i] == 0){
+						empty_seats[i] = 1
+						seated = true
+						your_seat = i+1
+						break;
+					}
+				}
+				//no more first class seats
+				if(!seated){
+					var change_seats = prompt("Sorry, no more seats available. Is Economy seating acceptable?")
+					if (change_seats[0].toUpperCase() == 'Y'){
+						for (var i = 5; i <= 9; i++) {
+							if (empty_seats[i] == 0){
+								empty_seats[i] = 1
+								your_seat = i + 1
+								break;
+							}
+						}
+
+					}
+					//they must have first class - wait for next flight
+					else{
+						alert("the next flight leaves in 3 hours")
+					}
+				}
+				
+
+			}if (choice == '2'){
+				for (var i = 5; i <= 9; i++) {
+					if (empty_seats[i] == 0){
+						empty_seats[i] = 1
+						your_seat = i +1
+						seated = true
+						break;
+					}
+				}
+				if(!seated){
+					var change_seats = prompt("Sorry, no more seats available. Is First Class seating acceptable?")
+					if (change_seats[0].toUpperCase() == 'Y'){
+						for (var i = 0; i <= 4; i++) {
+							if (empty_seats[i] == 0){
+								empty_seats[i] = 1
+								your_seat = i+1
+								break;
+							}
+						}
+
+					}else{
+						alert("The next flight leaves in 3 hours")
+					}
+				}
+				
+
+			}
+			seated = false
+			alert("Your seat is " + your_seat)
+		}
+	}
+	</script>
+
+	<!-- Styling for this webpage -->
+	<style type="text/css">
+	td{
+		padding-right: 10px;
+	}
+	</style>
+</head>
+
+<body>
+	<main>
+		<form name="myform" id="myform">
+			Please type 1 for "First Class" and 2 for "Economy"
+			<input type="text" id="choice" name="choice">
+			<input type="button" value="Submit" onclick="seat()">
+		</form>
+	</main>
+	<!-- include footer -->
+	<script type="text/javascript" src="../footer.js"> </script>
+</body>
+
+</html>
+

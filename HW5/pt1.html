@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+
+<meta charset="utf-8">
+
+<title>CNIT 133 Homework 5 pt 1</title>
+<meta name="description" content="Lena Zheng CNIT 133 Homework 5 pt 1">
+<meta name="author" content="Lena Zheng">
+<link rel="stylesheet" type="text/css" href="../nav.css">
+
+<!-- include header, jquery and css -->
+<script type="text/javascript" src="../header.js"> </script>
+<script src="http://code.jquery.com/jquery-1.10.1.js"></script>
+<!-- include tabs -->
+<script src="http://code.jquery.com/ui/1.10.3/jquery-ui.js"></script>
+
+<!-- the following script is needed for jquery validation of input -->
+	<script src="http://fog.ccsf.edu/~srubin//jQvalidate.js"></script>
+
+<script>
+$(function() {
+$( "#tabs" ).tabs();
+});
+
+
+
+$(document).ready(function(){
+	$("#myform").validate({
+	// Rules for each input item
+	rules: 
+		{
+			input: { required: true},
+			radio: {required: true},
+			checkbox: {required: true},
+			myselect: {required: true}
+
+		}
+	});	  
+});
+
+// function to change page location
+function goToNewPage(myForm) {
+    var myDestination = myForm.destinationList.options[myForm.destinationList.selectedIndex].value;
+    window.location = myDestination;
+}
+
+</script>
+<!-- <link rel="stylesheet" href="http://code.jquery.com/ui/1.10.3/themes/smoothness/jquery-ui.css"> -->
+
+
+
+<style type="text/css">
+
+
+	#tabs {
+		font-family: "Trebuchet MS", "Helvetica", "Arial",  "Verdana", "sans-serif";
+		font-size: 62.5%; 
+	        margin: 20px 0px; padding: 0px;
+	        text-align:center; /* Hack for IE/Win */
+	}
+	#content {
+
+		width:618px;
+		margin: 0px auto; padding: 15px;
+	        text-align: left; /* Counteract to IE/Win Hack */	
+
+	        border: 0px; padding: 20px; 
+	        border-radius: 25px;  }
+
+
+
+	#hdr {
+		font-family: Verdana;
+		font-size: 28px;
+		font-weight: bold;
+		color: #000;
+		}
+
+	form ul
+	{
+	    list-style-type: none;
+	}
+
+
+	input[type="radio"][value="null"], input[type="checkbox"][value="null"] {
+		visibility:hidden;
+	}
+
+</style>
+
+
+
+</head>
+
+<body>
+
+	<!-- need title for header in navigation -->
+	<script>
+	var title = "CNIT 133 Homework 5 pt 1"
+	var skills = "Utilizing tabs, Use validation form on select boxes and drop down menus to change webpage"
+	</script>
+
+	<!-- add navigation bar -->
+	<script type="text/javascript" src="../navigation.js"> </script>
+
+
+<section id="content">
+
+	<div id="tabs">
+
+		<ul>
+		<li><a href="#ptA">Part A</a></li>
+		<li><a href="#ptB">Part B</a></li>
+		</ul>
+
+
+
+		<div id="ptA">
+
+			<form Action="mailto:lzheng22@mail.ccsf.edu" METHOD="POST" name="myform" id="myform">
+				<p>Please enter your name:
+					<input type="text" name="input"></p>
+					<ul>
+						<li>
+							<input type="radio" name="radio" value="null">Please choose your favorite:
+						</li>
+						<li>
+							<input type="radio" name="radio" value="no">No
+						</li>
+						<li>
+							<input type="radio" name="radio" value="Yes">Yes
+						</li>
+					</ul>
+
+					<ul>
+						<li><input type="checkbox" name="checkbox" value="null">Please choose your least favorite:</li>
+						<li><input type="checkbox" name="checkbox" value="hw">	Homework	</li>
+						<li><input type="checkbox" name="checkbox" value="spiders">Spiders</li>
+						<li><input type="checkbox" name="checkbox" value="rainbows">Rainbows</li>
+					</ul>
+
+					<select name="myselect">
+						<option value="">Select the most beautiful</option>
+						<option value="waterfalls">Waterfalls</option>
+						<option value="sunshine">Sunshine</option>
+						<option value="raindrops">Raindrops</option>
+					</select>
+				<br>	
+				<input type="submit" value="Submit">
+				<button type="reset" value="Reset">Reset</button>
+
+			</form>
+		</div>
+
+
+		<div id="ptB">
+
+			<form>
+				<h3>Choose your destination using onchange event</h3>
+				<select name="destinationList" onchange="goToNewPage(this.form);">
+					<option>Choose Destination:</option>
+					<option value="http://www.facebook.com">Facebook</option>
+					<option value="http://www.notalwaysright.com">NotalwaysRight</option>
+					<option value="https://www.gmail.com">Gmail</option>
+					<option value="https://www.thenosemilk.com">Thenosemilk</option>
+				</select>
+			</form>
+
+			<form>
+				<h3>Choose your destination using onclick event</h3>
+				<select name="destinationList">
+					<option value="http://www.facebook.com">Facebook</option>
+					<option value="http://www.notalwaysright.com">NotalwaysRight</option>
+					<option value="https://www.gmail.com">Gmail</option>
+					<option value="https://www.thenosemilk.com">Thenosemilk</option>
+				</select>
+
+				<input type="button" value="Go!" onClick="goToNewPage(this.form);">
+			</form>
+		</div>
+	</div>
+</section>
+
+
+
+
+	<!-- include footer -->
+	<script type="text/javascript" src="../footer.js"> </script>
+</body>
+
+</html>
+
+

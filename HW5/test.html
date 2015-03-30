@@ -1,0 +1,165 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+
+<title>jQuery UI Tabs - Default functionality</title>
+<link rel="stylesheet" href="http://code.jquery.com/ui/1.10.3/themes/smoothness/jquery-ui.css">
+
+
+
+<style type="text/css">
+
+
+body {
+	font-family: "Trebuchet MS", "Helvetica", "Arial",  "Verdana", "sans-serif";
+	font-size: 62.5%; 
+        margin: 20px 0px; padding: 0px;
+        text-align:center; /* Hack for IE/Win */
+         background-color: #f5f5dc;
+}
+
+#content {
+	width:618px;
+	margin: 0px auto; padding: 15px;
+        text-align: left; /* Counteract to IE/Win Hack */	
+	background-color:#00ccff;
+        border: 0px; padding: 20px; 
+        border-radius: 25px;  }
+
+
+
+#hdr {
+	font-family: Verdana;
+	font-size: 28px;
+	font-weight: bold;
+	color: #000;
+	}
+</style>
+
+
+<script src="http://code.jquery.com/jquery-1.9.1.js"></script>
+<script src="http://code.jquery.com/ui/1.10.3/jquery-ui.js"></script>
+
+<!-- See for more info:  http://jqueryui.com/tabs/ -->
+
+<script type="text/javascript">
+
+$(function() {
+$( "#tabs" ).tabs();
+});
+
+</script>
+
+</head>
+
+<body>
+
+<header>
+<h3 id="hdr">JavaScript Basics Coding Examples</h3>
+</header>
+
+<section id="content">
+
+
+
+
+<div id="tabs">
+
+<ul>
+<li><a href="#tabs-1">Example 1</a></li>
+<li><a href="#tabs-2">Example 2</a></li>
+<li><a href="#tabs-3">Example 3</a></li>
+<li><a href="#tabs-4">Example 4</a></li>
+<li><a href="#tabs-5">Example 5</a></li>
+<li><a href="#tabs-6">Example 6</a></li>
+<li><a href="#tabs-7">Example 7</a></li>
+</ul>
+
+
+
+<div id="tabs-1">
+
+<p>Create a webpage that contains a script that outputs the italicized letters A, B, and C on the same line, 
+with each letter separated by a comma and one space. 
+Write the script using three document.write statements and a text color of orange.</p>
+
+
+
+</div>
+
+
+<div id="tabs-2">
+
+<p>Create a webpage that contains a script that uses form text boxes to input four integers and uses a
+ form textarea to display the inputted numbers, how many integers were less than 6, how many were greater or equal to 6, 
+and the product of the 4 integers.
+</p>
+
+
+
+</div>
+
+
+
+
+<div id="tabs-3">
+<p>Create a webpage that contains a script that outputs the following table, which 
+includes using the Math object method: Math.sqrt()</p>
+
+
+</div>
+
+
+
+<div id="tabs-4">
+
+<p>Use getElementById and innerHTML to create and write the table on the same page. </p>
+
+
+
+
+</div>
+
+
+
+<div id="tabs-5">
+
+<p>Create a webpage that contains a script that will calculate how many hours it will 
+take 2 people to finish a job working together, given that you know how many hours it will 
+take each person to finish the job doing it alone. Assume that the people will work at the 
+same rate together as they do alone. Use form text boxes for the hours to complete a job for 
+each person alone. Use a form text box to display how many hours it will take them working 
+together. Accept floating-point numbers for input and round the output to two decimal places.
+ Verify that the input is numeric by using the isNAN function for testing a non-numeric value. The isNaN function stands for is NOT a Number and returns true if the value is NaN.
+</p>
+
+      
+
+</div>
+
+<div id="tabs-6">
+
+<p>
+Create a webpage that contains a script that inputs two integers from form input fields and then determines and outputs to a form field whether the first integer is a multiple of the second.
+</p>
+
+</div>
+
+<div id="tabs-7">
+
+<p>
+Use form text boxes for an employee's name and yearly gross income. Using if...else if statements, display a relevant comment in a form text box as described here:
+Check for valid input for yearly gross.
+
+Note that I use jQuery to color the input text boxes when the user clicks in that box.
+</p>
+
+
+
+</div>
+
+</section>
+
+</body>
+</html>

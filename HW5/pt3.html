@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<!-- 
+Use a one-dimensional array to solve the following problem: A company pays its salespeople on a commision basis. The salespeople receive $200 per week plus 9% of their gross sales for that week. For example, a sales person who grosses $5000 in sales in a week receives $200 plus 9% of $5000, or a total of $650. Create a webpage with a script (using an array of counters) that obtains the gross sales for each employee through a form and determines how many of the salespeople earned salaries in each of the following ranges (assume that each salesperson's salary is truncated to an integer amount): -->
+<head>
+
+
+	<meta charset="utf-8">
+	<title>CNIT 133 Homework 5 pt3</title>
+	<meta name="description" content="Lena Zheng CNIT 133 Homework 5 pt3">
+	<meta name="author" content="Lena Zheng">
+	<link rel="stylesheet" type="text/css" href="../nav.css">
+	<!-- include header, jquery and css -->
+	<script type="text/javascript" src="../header.js"> </script>
+
+	<!-- the following script is needed for jquery validation of input these files include additional methods that I used to allow digits and spaces in input-->
+	<script type="text/javascript" src="http://code.jquery.com/jquery-1.11.1.js"></script>
+	<script type="text/javascript" src="http://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.12.0/jquery.validate.js"></script>
+	<script type="text/javascript" src="http://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.12.0/additional-methods.js"></script>
+
+	<!-- need title for header in navigation -->
+	<script>
+		var title = "CNIT 133 Homework 5 pt 3";
+		var skills = "pushing arrays, bigger input boxes, using ascii chars, only allow digits and spaces in input"
+	</script>
+
+	<!-- add navigation bar -->
+	<script type="text/javascript" src="../navigation.js"> </script>
+
+	<!-- Functions for this webpage -->
+	<script>
+	// validate they input a value
+	jQuery(function($) {
+		$("#myform").validate({
+		// Rules for each input item
+		rules: 
+			{
+				sales: { required: true, pattern: /^[\d\s]+$/}
+
+			}
+		});
+		
+	});
+
+	function calculate(){
+		// if there is input
+		if ($("#myform").valid()) {
+			// get the sales of each employee from user
+			var sales = document.myform.sales.value.split(" ")
+			var saleslength = sales.length
+			var salaries = []
+			var salarytable = []
+
+			// get the salary range of each employee
+			for (var i = 0; i < saleslength ; i++) {
+				var salary = 100 * Math.floor((sales[i] * 0.09 + 200)/ 100)
+				if (salary > 1000)
+					salaries.push(1000)
+				else
+					salaries.push(salary)
+			};
+			
+			for (var i = 0; i < salaries.length; i++) {
+				var index = salaries[i]
+				if( index in salarytable){
+					salarytable[index] += 1
+				}
+				else{
+
+					salarytable[index] = 1
+				}
+			};
+
+			var output = "<table><tr><td>Salaries:</td><td>Number of people:</td></tr>"
+			var lettering = 97
+			for (var i = 200; i < 1000; i += 100) {
+				var i99 = i + 99
+				if (!salarytable[i])
+					salarytable[i] = 0
+				output += "<tr><td>" + String.fromCharCode(lettering) + ") $" + i + "-" + i99 + "</td><td>" + salarytable[i] + "</td></tr>"
+				lettering++
+			};
+			output += "<tr><td>i) $1000 and over</td><td>" + salarytable[1000] + "</td></tr>"
+			output += "</table>"
+			document.getElementById("results").innerHTML = output
+
+		}
+	}
+	</script>
+
+	<!-- Styling for this webpage -->
+	<style type="text/css">
+	td{
+		padding-right: 10px;
+	}
+	</style>
+</head>
+
+<body>
+	<main>
+		<form name="myform" id="myform">
+
+			Please enter gross sales by employees separated by spaces:
+			<input type="text" name="sales" size="50">
+			<input type="button" value="submit" onclick="calculate()">
+		</form>
+		<br>
+
+		<div id="results">
+			<table>
+				<tr>
+					<td>Salaries:</td>
+					<td>Number of people:</td>
+				</tr>
+				<tr>
+					<td>a) $200-299</td>
+				</tr>
+				<tr>
+					<td>b) $300-399</td>
+				</tr>
+				<tr>
+					<td>c) $400-499</td>
+				</tr>
+				<tr>
+					<td>d) $500-599</td>
+				</tr>
+				<tr>
+					<td>e) $600-699</td>
+				</tr>
+				<tr>
+					<td>f) $700-799</td>
+				</tr>
+				<tr>
+					<td>g) $800-899</td>
+				</tr>
+				<tr>
+					<td>h) $900-999</td>
+				</tr>
+				<tr>
+					<td>i) $1000 and over </td>
+				</tr>
+			</table>
+		</div>
+	</main>
+
+	<!-- include footer -->
+	<script type="text/javascript" src="../footer.js"> </script>
+</body>
+
+</html>
+

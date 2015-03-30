@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<!-- 
+Create a webpage that contains a script, using a one-dimensional array to solve the following problem: Read in 10 numbers, each of which is between 10 and 100. I suggest using and re-using one input text box and displaying a count of the number of numbers entered. Another alternative would be having 10 input text boxes. As each number is read, print it only if it is not a duplicate number that has already been read.  Be sure to validate the input, that is, if the number is not between 10 and 100 then display an error message. You can use a similar display of this example, except don't use prompts for the input.-->
+<head>
+
+
+	<meta charset="utf-8">
+	<title>CNIT 133 Homework 5 pt4</title>
+	<meta name="description" content="Lena Zheng CNIT 133 Homework 5 pt4">
+	<meta name="author" content="Lena Zheng">
+	<link rel="stylesheet" type="text/css" href="../nav.css">
+	<!-- include header, jquery and css -->
+	<script type="text/javascript" src="../header.js"> </script>
+
+	<!-- the following script is needed for jquery validation of input these files include additional methods that I used to allow digits and spaces in input-->
+	<script type="text/javascript" src="http://code.jquery.com/jquery-1.11.1.js"></script>
+	<script type="text/javascript" src="http://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.12.0/jquery.validate.js"></script>
+	<script type="text/javascript" src="http://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.12.0/additional-methods.js"></script>
+
+	<!-- need title for header in navigation -->
+	<script>
+		var title = "CNIT 133 Homework 5 pt 4";
+		var skills = "pushing arrays, bigger input boxes, using ascii chars, only allow digits and spaces in input"
+	</script>
+
+	<!-- add navigation bar -->
+	<script type="text/javascript" src="../navigation.js"> </script>
+
+	<!-- Functions for this webpage -->
+	<script>
+	// validate they input a value
+	jQuery(function($) {
+		$("#myform").validate({
+		// Rules for each input item
+		rules: 
+			{
+				nums: { required: true, number: true, min: 10, max:100}
+
+			}
+		});
+		
+	});
+	
+	Array.prototype.contains = function(element){
+	    return this.indexOf(element) > -1;
+	};
+
+	var nums = []
+	var numlength = 0
+
+	function verify(){
+		// if there is input
+		if ($("#myform").valid()) {
+			num = document.myform.nums.value
+			if (!nums.contains(num)){
+				nums.push(num)
+			}
+			numlength++
+			if (numlength > 10){
+				alert("Reset to enter another 10 numbers")
+				return 1
+			}
+
+			var output = "<textarea rows='10' cols='50'>You have entered "+ numlength + " numbers.\n"
+			output += "Unique numbers:\n" + nums + "</textarea>"
+
+			document.getElementById("results").innerHTML = output
+	
+		}
+	}
+	</script>
+
+	<!-- Styling for this webpage -->
+	<style type="text/css">
+	td{
+		padding-right: 10px;
+	}
+	</style>
+</head>
+
+<body>
+	<main>
+		<form name="myform" id="myform">
+
+			Please enter 10 numbers between 10 and 100:
+			<input type="text" name="nums" size="50">
+			<input type="button" value="Submit" onclick="verify()">
+			<input type="button" onclick="window.location.reload()" value="Reset">
+		</form>
+		<br>
+
+		<div id="results">
+			<textarea rows="10" cols="50">
+			</textarea>
+
+		</div>
+	</main>
+
+	<!-- include footer -->
+	<script type="text/javascript" src="../footer.js"> </script>
+</body>
+
+</html>
+
