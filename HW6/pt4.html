@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+
+<meta charset="utf-8">
+
+<title>CNIT 133 Homework 6 pt 4</title>
+<meta name="description" content="Lena Zheng CNIT 133 Homework 6 pt 4">
+<meta name="author" content="Lena Zheng">
+<link rel="stylesheet" type="text/css" href="../nav.css">
+
+<!-- include header, jquery and css -->
+<script type="text/javascript" src="../header.js"> </script>
+<script src="http://code.jquery.com/jquery-1.10.1.js"></script>
+<script src="../jquerymask.js"></script>
+
+
+<script>
+  $(function() {
+    $( document ).tooltip();
+  });
+
+  function checkcookie(){
+  	var cookies = document.cookie.split(";")
+  	if(cookies.indexOf("username=rosebud") > -1){
+  		document.getElementById("welcome").innerHTML = "Welcome back, rosebud"
+  		document.myform.username.value = "rosebud"
+  		document.myform.password.value = "komodo"
+
+
+  	}
+  }
+
+  function login(){
+  
+
+	  	var username = document.myform.username.value
+	  	var password = document.myform.password.value
+	  	// get 30 days from now
+	  	var expiration = new Date()
+	  	expiration.setDate(expiration.getDate() + 30 )
+	  	expiration = expiration.toUTCString()
+	  
+
+	  	if(username == "rosebud" && password == "komodo"){
+	  		document.cookie = "username=" + username + ";expires=" + expiration
+	  		document.cookie = "password=" + password + ";expires=" + expiration
+	  		alert("Password accepted. Welcome, " + username)
+	  		window.location="http://www.google.com"
+
+	  	}else{
+	  		alert("Incorrect username or password")
+	  	}
+	  
+  }
+
+  function deletecookies(){
+  	var olddate = new Date()
+  	olddate.setDate(olddaten.getDate() - 30 )
+  	olddate = olddate.toUTCString()
+
+  	document.cookie = "username=; expires=" + olddate
+  	document.cookie = " password=; expires=" + olddate
+
+  }
+</script>
+
+
+
+
+<style type="text/css">
+
+</style>
+
+
+
+</head>
+
+<body onload="checkcookie()">
+
+	<!-- need title for header in navigation -->
+	<script>
+	var title = "CNIT 133 Homework 6 pt 4"
+	var skills = "hovering, cookies"
+	</script>
+
+	<!-- add navigation bar -->
+	<script type="text/javascript" src="../navigation.js"> </script>
+
+	<form name="myform" id="myform">
+		<div id="welcome">
+		</div>
+
+		<input type="text" id="username" placeholder="username"><br>
+		<input type="password" id="password" placeholder="password" title="Hint - Name of the sled in the movie Citizen Kane"><br>
+		<input type="button" value="Login" onclick="login()">
+		<input type="reset">
+		<input type="button" value="delete cookies" onclick="deletecookies()">
+
+
+	</form>
+	<!-- include footer -->
+	<script type="text/javascript" src="../footer.js"> </script>
+</body>
+
+</html>
+
+

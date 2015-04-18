@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+
+<meta charset="utf-8">
+
+<title>CNIT 133 Homework 6 pt 1</title>
+<meta name="description" content="Lena Zheng CNIT 133 Homework 6 pt 1">
+<meta name="author" content="Lena Zheng">
+<link rel="stylesheet" type="text/css" href="../nav.css">
+
+<!-- include header, jquery and css -->
+<script type="text/javascript" src="../header.js"> </script>
+<script src="http://code.jquery.com/jquery-1.10.1.js"></script>
+
+<!-- the following script is needed for jquery validation of input -->
+	<script src="http://fog.ccsf.edu/~srubin//jQvalidate.js"></script>
+
+<script>
+
+$(document).ready(function(){
+	$("#myform").validate({
+	// Rules for each input item
+	rules: 
+		{
+			number: { number: true}
+
+		}
+	});	  
+});
+
+function calculate() {
+	if ($("#myform").valid()) {
+		var number = parseFloat(document.myform.number.value)
+		var rounded = (Math.round(number)).toString()
+		var squarerooted = Math.round(Math.sqrt(number)).toString()
+		var tenth = ((Math.floor( number * 10 + .5 ) / 10).toFixed(4)).toString()
+		var hundredth = ((Math.floor( number * 100 + .5 ) / 100).toFixed(4)).toString()
+		var thousandths = ((Math.floor( number * 1000 + .5 ) / 1000).toFixed(4)).toString()
+
+		var output = "You entered " + number + ".\n"
+		output += "Rounded: " + rounded + "\n"
+		output += "Square root rounded: " + squarerooted + "\n"
+		output += "Rounded to the tenth place: " + tenth + "\n"
+		output += "Rounded to the hundredth place: " + hundredth + "\n"
+		output += "Rounded to the thousandths place:" + thousandths
+
+		document.getElementById("output").innerHTML = "<textarea rows='5' cols='50'>" + output + "</textarea>"
+	}
+
+
+}
+</script>
+
+
+
+
+<style type="text/css">
+
+</style>
+
+
+
+</head>
+
+<body>
+
+	<!-- need title for header in navigation -->
+	<script>
+	var title = "CNIT 133 Homework 6 pt 1"
+	var skills = ""
+	</script>
+
+	<!-- add navigation bar -->
+	<script type="text/javascript" src="../navigation.js"> </script>
+
+	<form name="myform" id="myform">
+	
+		Please enter a number: 
+		<input type="text" id="number" name="number">
+		<br>
+		<input type="button" value="Calculate!" onclick="calculate()">
+		<div id="output">
+			<textarea rows="5" cols="50"></textarea>
+		</div>
+	</form>
+	<!-- include footer -->
+	<script type="text/javascript" src="../footer.js"> </script>
+</body>
+
+</html>
+
+

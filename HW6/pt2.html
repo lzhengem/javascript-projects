@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+
+<meta charset="utf-8">
+
+<title>CNIT 133 Homework 6 pt 2</title>
+<meta name="description" content="Lena Zheng CNIT 133 Homework 6 pt 2">
+<meta name="author" content="Lena Zheng">
+<link rel="stylesheet" type="text/css" href="../nav.css">
+
+<!-- include header, jquery and css -->
+<script type="text/javascript" src="../header.js"> </script>
+<script src="http://code.jquery.com/jquery-1.10.1.js"></script>
+
+<!-- the following script is needed for jquery validation of input -->
+	<script src="http://fog.ccsf.edu/~srubin//jQvalidate.js"></script>
+
+<script>
+
+$(document).ready(function(){
+	$("#myform").validate({
+	// Rules for each input item
+	rules: 
+		{
+			searchchar: { required: true}
+
+		}
+	});	  
+});
+	function search(){
+		if ($("#myform").valid()) {
+			var string = document.myform.thestring.value
+			var searchchar = document.myform.searchchar.value[0]
+			var stringlength = string.length
+			var occurrences = 0
+			for (var i = 0; i < stringlength; i++) {
+				if (searchchar == string[i]) {
+					occurrences++
+				}
+
+
+			};
+			if (occurrences == 0) {
+				window.open("", "new", "width=300,height=100").document.write("The character " + searchchar + " was not found in text string!")
+			}
+			else{
+				document.myform.output.value = occurrences
+
+			}
+		}
+	}
+
+
+</script>
+
+
+
+
+<style type="text/css">
+
+</style>
+
+
+
+</head>
+
+<body>
+
+	<!-- need title for header in navigation -->
+	<script>
+	var title = "CNIT 133 Homework 6 pt 2"
+	var skills = "form validation, string search, new window"
+	</script>
+
+	<!-- add navigation bar -->
+	<script type="text/javascript" src="../navigation.js"> </script>
+
+	<form name="myform" id="myform">
+		<input type="text" name="searchchar">
+		<input type="button" value="search" onclick="search()">
+		<input type="reset" value="Reset">
+		<br>
+		Please enter your text: <br>	
+		<textarea rows="5" cols="50" name="thestring"></textarea>
+
+		<br>
+		Occurences of your character in the string:
+		<input type="text" name="output">
+
+
+	</form>
+	<!-- include footer -->
+	<script type="text/javascript" src="../footer.js"> </script>
+</body>
+
+</html>
+
+

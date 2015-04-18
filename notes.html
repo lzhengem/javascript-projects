@@ -3058,3 +3058,564 @@ document.getElementById("results").innerHTML = results
 </script>
 
 <div id="results"></div>
+
+6.1 opening a new window
+window.open(website, name of new window, window parameters)
+
+ex:
+window.open("http://www.yahoo.com/", "marian", "width=500,height=400");
+
+go to JavaScript: The Definitive Guide to get more window parameter specifications
+
+window.open("http://www.yahoo.com/", "marian", "width=500,height=400,resizable,scrollbars,menubar,status,location,toolbar");
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="utf-8">
+
+<title>Sample JavaScript</title>
+<script>
+
+function doStuff()
+{
+alert("Here is Yahoo!");
+window.open("http://www.yahoo.com", "marian", "width=500,height=400"); }
+</script>
+</head>
+<body>
+<p><a href="#" onClick="doStuff();">Calling doStuff()</a>
+</p>
+</body>
+</html>
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="utf-8">
+
+<title>Sample JavaScript</title>
+
+<script>
+
+function doStuff(myMSG, myURL)
+
+{
+
+alert(myMSG);
+
+window.open(myURL, "marian", "width=500,height=400"); }
+
+</script>
+
+</head>
+
+<body> <p><a href="#" onClick= "doStuff('Here is Yahoo', 'http://www.yahoo.com/');">Yahoo Link</a>
+
+</p>
+
+<p>
+
+<a href="#" onClick="doStuff('Here is Macromedia', 'http://www.macromedia.com/');">Macromedia Link</a>
+
+</p>
+
+</body>
+
+</html>
+
+
+6.2 The window.open() Method Revisited
+
+window.open takes this format:
+ 
+window.open(URL,name,specs,replace)
+ 
+name is Optional. Specifies the target attribute or the name of the window. The following values are supported:
+
+    _blank - URL is loaded into a new window. This is default
+    _parent - URL is loaded into the parent frame
+    _self - URL replaces the current page
+    _top - URL replaces any framesets that may be loaded
+    name - The name of the window
+
+to focus your window:
+function doStuff() {
+var myWindow = window.open("http://www.yahoo.com/", "marian",
+"width=600,height=500,top=1,left=300");
+myWindow.focus();
+}
+
+you can pass data to the new window like this:
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="utf-8">
+<script>
+
+function passData()
+{
+
+var name = document.myForm.name1.value;
+
+// assemble HTML to pump into new window:
+
+var myText = "<html>\n";
+myText += "<head>\n";
+myText += "<title>Popup Window</title>\n";
+myText += "</head>\n";
+myText += "<body>\n";
+myText += "<div align='center'>\n";
+myText += "<p><b>Your name is " + name + " !</b></p>\n";
+myText += "<input type='button' value='Close Window'
+onclick='window.close()'>\n";
+myText += "</div>\n";
+myText += "</body>\n";
+myText += "</html>";
+
+// open window on the upperleft of the screen
+
+var newWindow = window.open("", "new_window",
+"top=1,left=1,width=200,height=120");
+
+// have browser focus on window
+
+newWindow.focus();
+
+// pump html into to this new opened window
+
+
+newWindow.document.write(myText);
+
+// tell browser that newWindow document is finished loading
+
+newWindow.document.close();
+}
+
+</script>
+
+<style type="text/css">
+body {background-color: #f5f5dc;}
+</style>
+
+</head>
+
+<body>
+<section class="body">
+<h3>Pass data to popup window</h3>
+<form name = "myForm">
+<p><b>Enter your name: </b>
+<input type="text" size="20" name="name1"><br><br>
+<input type = "button" value = "Pass data to popup window"
+onclick = "passData()"></p>
+</form>
+</section>
+</body>
+</html>
+
+
+6.3 charAt and indexOf
+
+how to get length:
+<script>
+
+function getname()
+{
+
+var yourname=document.myform.name.value;
+
+if (yourname.length > 10)
+{
+alert('That name is just too long');
+}
+else
+alert('Hi '+ yourname + '!');
+
+}
+
+</script>
+
+
+<!-- this will get you the character at that specific spot -->
+var my_car="Ferrari";
+var the_length=my_car.length;
+<!-- this will get you the last character -->
+var last_char=my_car.charAt(the_length-1);
+alert('The last character is '+ last_char + '.');
+
+
+<!-- this will let you see what the index of a certain letter is -->
+var my_car="Ferrari";
+var where_is_r=my_car.indexOf('r');
+alert('The r is at position '+ where_is_r +'.');
+
+this function returns -1 if that index is not found
+
+however, does this work if it is more than 1 letter?
+
+how to make sure that they type in the correct http address:
+
+function get_url()
+{
+
+var is_protocol_ok=your_url.indexOf('http://');
+var is_dot_ok=your_url.indexOf('.');
+if ((is_protocol_ok==-1) || (is_dot_ok==-1))
+{
+alert('Error: Your url should begin with http:// and have at least one dot (.)!');
+get_url();
+}
+else
+alert('Thanks!');
+}
+
+
+6.4 Split Function
+
+<script>
+var myString = "123456789";
+
+var mySplitResult = myString.split("5");
+
+document.write("The first element is " + mySplitResult[0]);
+document.write("<br> The second element is " + mySplitResult[1]);
+</script>
+
+6.5 Regular expressions
+
+var phoneNumber = document.myForm.input.value;
+
+phoneRegExp = /^(\()(\d{3})(\))(\s)(\d{3})(-\d{4})$/;
+
+// Create regular expression for correct phone# format
+// a regular expression starts with / and ends with /
+// ^ means beginning of string
+// (\() indicates that the 1st character be a left parentheses
+...need \ to escape
+// (\d{3}) means 3 digits for area code
+// (\)) indicates the ) after the area code
+// (\s) indicates a blank character (a single white space)
+// (\d{3}) means 3 digits for phone prefix
+// - for the hyphen, (\d{4}) means 4 digits for phone extension
+// $ means the string should end
+
+the parentheses is just for grouping
+(\s)
+
+
+the regexp appears between the two forward slashes.
+^ beginning of the input line
+( just a left paren for grouping
+\( indicates a literal left paren
+? indicates optional
+\d indicate digits
+{3} repeat 3 times
+\) literal right paren
+) end of grouping
+{0,1} can happen a minimum of 0 times or a maximum or 1 time
+
+subexpressions:
+
+var myRegExp = /^(\d{3})-(\d{3})-(\d{4})$/;
+var phone = "123-456-7890";
+var parts = phone.match(myRegExp);
+if (parts != null) {
+alert(parts[1] + "," + parts[2] + "," + parts[3]); // returns 123,456,7890
+} else {
+alert("Invalid format");
+}
+
+more lenient: /^(\(?\d{3}\)?){0,1}[ -.]?(\d{3})[ -.]?(\d{4})$/
+
+6.6 Web Tutorials and Examples - Objects
+
+    Objects
+
+        http://www.w3schools.com/js/js_objects.asp
+        http://www.w3schools.com/jsref/jsref_obj_date.asp
+
+    Math.round and Math.floor
+
+        http://www.w3schools.com/jsref/jsref_round.asp
+        http://www.w3schools.com/jsref/jsref_floor.asp
+
+    String Object
+
+        http://www.w3schools.com/jsref/jsref_obj_string.asp
+        http://www.pageresource.com/jscript/jstring1.htm
+
+    Cookies
+
+        http://hills.ccsf.edu/~mogi/cookieTest.html
+        http://www.elated.com/articles/javascript-and-cookies/
+        http://www.w3schools.com/js/js_cookies.asp
+        http://www.quirksmode.org/js/cookies.html
+
+    Regular Expressions
+
+        http://www.w3schools.com/jsref/jsref_obj_regexp.asp
+
+6.7 Short Exercises - Objects
+Short Exercises - Objects
+
+1. Write a script that uses relational and equality operators to compare
+two Strings input by the user through abform. Output in an textarea whether
+the first string is less than, equal to or greater than the second.
+
+Ans:
+1 <!DOCTYPE html>
+2 <html lang="en">
+3
+4
+5 <!-- Exercise 12.6 Solution -->
+6
+7 <head>
+8
+9 <meta charset="utf-8">
+10 <script type = "text/javascript">
+11
+12 function compareStrings()
+13 {
+14 var s1, s2;
+15
+16 s1 = document.myForm.first.value;
+17 s2 = document.myForm.second.value;
+18
+19 if ( s1 < s2 )
+20 document.myForm.output.value =
+21 "The second string is greater";
+22 else if ( s1 > s2 )
+23 document.myForm.output.value =
+24 "The first string is greater";
+25 else
+26 document.myForm.output.value =
+27 "The two strings are equal";
+28 }
+29
+30 </script>
+31 </head>
+32
+33 <body>
+34 <form name = "myForm">
+35 <table border = "0">
+36 <colgroup><col span = "2" align = "center">
+37 </colgroup>
+38 <tr><td>Enter first string:</td>
+39 <td><input name = "first" type = "text">
+40 </td>
+41 </tr>
+42 <tr><td>Enter second string:
+
+43 <td><input name = "second" type = "text">
+44 </td>
+45 </tr>
+46 <tr><td><input type = "button" value = "Compare"
+47 onclick= "compareStrings()"></td>
+48 </tr>
+49 <tr><td colspan = "2">
+50 <textarea name = "output" rows = "4"
+51 cols = "30"></textarea></td>
+52 </tr>
+53 </table>
+54 </form>
+55 </body>
+56 </html>
+
+2. Write a script that inputs a line of text,
+tokenizes it with String method split and outputs
+the tokens in reverse order.
+
+Ans:
+1 <!DOCTYPE html>
+2 <html lang="en">
+3
+4
+5 <!-- Exercise 12.11 Solution -->
+6
+7 <head>
+8
+9 <meta charset="utf-8">
+10 <title>Solution 12.11
+11 <script type = "text/javascript">
+12
+13
+14 function run()
+15 {
+16 var input, tokens, i;
+17
+18 input = window.prompt( "Enter a sentence", "" );
+19
+20 tokens = input.split( " " );
+21
+22 for( i = tokens.length - 1 ; i >= 0; i-- ) {
+23 document.write( tokens[ i ] + " " );
+24 }
+25 }
+26
+27 </script>
+28 </head>
+29
+30 <body onload = "run()">31 </html>
+
+3. Write a script that inputs text from a form and outputs it in uppercase
+and lowercaseletters.
+
+Ans:
+1 <!DOCTYPE html>
+2 <html lang="en">
+3
+4
+5 <!-- Exercise 12.12 Solution -->
+6
+7 <head>
+8
+9 <meta charset="utf-8">
+10 <title>Solution 12.12</title>
+11 <script type = "text/javascript">
+12
+13 function convert()
+14 {
+15 var s = document.myForm.input.value;
+16 document.myForm.output.value =
+17 s.toLowerCase() + "\n" + s.toUpperCase();
+18 }
+19
+20 </script>
+21 </head>
+22
+23 <body>
+24 <form name = "myForm">
+25 <table border = "1">
+26 <tr><td>Enter a string</td>
+27 <td><input name = "input" type = "text" size = "50">
+28 </td>
+29 </tr>
+30 <tr><td><input type = "button" value = "Convert"
+31 onclick = "convert()">
+
+32 </tr>
+33 <tr><td colspan = "2"><textarea name = "output" rows = "4"
+34 cols = "55"></textarea></td>
+35 </tr>
+36 </table>
+37 </form>
+38 </body>
+39 </html>
+
+4. Write a script that reads a series of strings and outputs in an XHTML textarea
+only those strings beginning with the character 'b'.
+
+Ans:
+
+1 <!DOCTYPE html>
+2 <html lang="en">
+3
+4
+5 <!-- Exercise 12.15 Solution -->
+6
+7 <head>
+8
+9 <meta charset="utf-8">
+10 <title>Solution 12.15
+11 <script type = "text/javascript">
+12
+13 function testString()
+14 {
+15 var s = document.myForm.input.value;
+16
+17 if ( s.indexOf( "b" ) == 0 )
+18 document.myForm.output.value += s + "\n";
+19 }
+20
+21 </script>
+22 </head>
+23
+24 <body>
+25 <form name = "myForm">
+26 Enter a string<br />
+27 <input name = "input" type = "text" size = "20">
+28 <input type = "button" value = "Submit"
+29 onclick = "testString()"><br>
+30 <textarea name = "output" rows = "4" cols = "55"></textarea>
+31 </form>
+32 </body>
+33 </html>
+
+8 Coding Exercises - Objects
+
+Exercises using Objects
+Objects Exercise 1:
+
+Write a script that inputs a floating point number with at least 3 decimal places and uses Math.round and Math.floor to round it to an integer, Math.round and Math.floor to round it to the hundredths position, and toFixed method to round it to the tenths position. Input by the user is through a form input box. Output is in a form textarea. Your script should also display the original floating point number.
+
+>>Here is the solution. (http://fog.ccsf.cc.ca.us/~srubin/obj1sol.html)
+
+Here is the same problem using jQuery. Notice the use of the val() function to get the input field value and to display the output field value, as well as the html() function to display an error msg if the input field is not numeric. Thanks to Michael Ogi for creating this page.
+
+>>Here is the solution. (http://fog.ccsf.cc.ca.us/~srubin/obj1soljq.html)
+Objects Exercise 2a:
+
+Create a webpage that contains a script that:
+
+1. Displays the current local date and time (PST or PDT), the UTC date and time, and the differences in hours between the 2 time zones. (Note: UTC is the same as GMT).
+
+2. Inputs a zip code and its extension as a string in the form 55555-5555. The script should use String method split to extract the main zip code as a token and the 4 digit extension as a token. Display the zip code in one text field, the zip extension in another text field, and the first 3 characters of the zip code in yet another text field.
+
+>>Here is the solution. (http://fog.ccsf.edu/~srubin/obj2sol.html)
+Objects Exercise 2b:
+
+This is the same problem as Exercise 2a, but in this case I use a jQuery mask to ensure valid input as well as making it easier for the user to input data. Notice that you need to include the following jQuery scripts for handling the mask and the data validity:
+
+<script src="http://code.jquery.com/jquery-1.7.1.js"></script>
+<script src="http://fog.ccsf.edu/~srubin/mask.js"></script>
+<script src="http://fog.ccsf.edu/~srubin/jQvalidate.js"></script>
+
+>>Here is the solution.(http://fog.ccsf.cc.ca.us/~srubin/obj2solb.html)
+
+This is a masked input plugin for the jQuery javascript library that includes mask formats for date, phone, SSN, etc. (http://digitalbush.com/projects/masked-input-plugin/)
+
+Objects Exercise 3:
+
+Create a webpage that contains a script that uses String method charAt() to determine the number of occurrences of an inputted search character in the string "Mary had a little lamb". Use a form input box to input the search character and another form input box to display the number of occurences found in the string. Use toLowerCase() where applicable.
+
+>>Here is the solution.(http://fog.ccsf.edu/~srubin/obj3solx.html)
+Objects Exercise 4:
+
+Create a webpage that contains a script that uses a form input box to allow the user to enter a number. If the user enters a number between 1 and 10 then calculate the product of that number by 50 and enter the product in another form input box. If the original entered number is NOT between 1 and 10 then open a new window (using the window.open method), that contains an error message along with the number that was entered. Your new window should be a width of 200 pixels, height of 100 pixels, and be approximately on the upper right over the original page.
+
+>>Here is the solution.(fog.ccsf.edu/~srubin/objnewwin.html)
+Objects Exercise 5:
+
+Create a webpage that contains a form input text field for the user's name and a submit and reset button.
+
+A. When the user first opens the webpage:
+
+1. The user should enter their name and click the submit button, which will call a script function that alerts an initial welcome message, and then calls a script function which sets a cookie for the user's name (set the cookie to expire in 30 days).
+
+Use the jQuery UI tooltip(jqueryui.com/tooltip/)for the username field to display 'Please type your name carefully' when the user hovers over the username field.
+
+When the user returns to the original page within 30 days with the cookie already set, then, when the user clicks in the user's name form field, use onfocus to call a script function that will:
+
+1. check to see if the cookie has been set and if so calls another script function to get the cookie, which will contain the user's name and then returns to the check cookie script function.
+2. alert a welcome again message.
+3. automatically display the user's name in the form input field.
+
+Note: If testing the above immediately then reset the form, reload the page, and click in the user's name input box. Use a form button that calls a function to delete cookies from your browser before testing and re-testing this example.
+
+Here is the same solution.(http://fog.ccsf.cc.ca.us/~srubin/cookie4.html)
+
+See this cookie tutorial. (http://www.w3schools.com/js/js_cookies.asp)
+
+Objects Exercise 6:
+
+Create a webpage that contains two button links so that hovering over one button will cause it to grow while simultaneously shrinking the other button. Thanks to Michael Ogi for creating this script.
+
+Here is the solution. (http://fog.ccsf.cc.ca.us/~srubin/growb.html)
+

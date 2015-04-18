@@ -80,6 +80,9 @@ Use a one-dimensional array to solve the following problem: A company pays its s
 				output += "<tr><td>" + String.fromCharCode(lettering) + ") $" + i + "-" + i99 + "</td><td>" + salarytable[i] + "</td></tr>"
 				lettering++
 			};
+			if(!salarytable[1000]){
+				salarytable[1000] = 0
+			}
 			output += "<tr><td>i) $1000 and over</td><td>" + salarytable[1000] + "</td></tr>"
 			output += "</table>"
 			document.getElementById("results").innerHTML = output

@@ -31,10 +31,10 @@ $(document).ready(function(){
 	// Rules for each input item
 	rules: 
 		{
-			input: { required: true},
-			radio: {required: true},
-			checkbox: {required: true},
-			myselect: {required: true}
+			name: { required: true},
+			favorite: {required: true},
+			leastfav: {required: true},
+			beautiful: {required: true}
 
 		}
 	});	  
@@ -46,6 +46,28 @@ function goToNewPage(myForm) {
     window.location = myDestination;
 }
 
+
+function display_output(){
+	if ($("#myform").valid()) {
+		var name = document.myform.name.value
+		var favorite = document.myform.favorite.value
+		var beautiful = document.myform.beautiful.value
+		var leastfav = []
+
+		for (var i = 0; i <= 2; i++) {
+
+			if(document.myform.leastfav[i].checked){
+				leastfav.push(document.myform.leastfav[i].value)
+			}
+		};	
+
+		var output = "Your name is " + name + ".\n"
+		output += "Your favorite thing is " + favorite + " and your least favorite is " + leastfav + ".\n"
+		output += "And the thing you think is most beautiful is " + beautiful + "."
+
+		document.getElementById("output").innerHTML = "<textarea rows='4' cols='50'>" + output + "</textarea>"
+	}
+}
 </script>
 <!-- <link rel="stylesheet" href="http://code.jquery.com/ui/1.10.3/themes/smoothness/jquery-ui.css"> -->
 
@@ -119,39 +141,41 @@ function goToNewPage(myForm) {
 
 		<div id="ptA">
 
-			<form Action="mailto:lzheng22@mail.ccsf.edu" METHOD="POST" name="myform" id="myform">
+			<form name="myform" id="myform">
 				<p>Please enter your name:
-					<input type="text" name="input"></p>
+					<input type="text" name="name"></p>
 					<ul>
 						<li>
-							<input type="radio" name="radio" value="null">Please choose your favorite:
+							<input type="radio" name="favorite" value="null">Please choose your favorite:
 						</li>
 						<li>
-							<input type="radio" name="radio" value="no">No
+							<input type="radio" name="favorite" value="flying">Flying
 						</li>
 						<li>
-							<input type="radio" name="radio" value="Yes">Yes
+							<input type="radio" name="favorite" value="eating">Eating
 						</li>
 					</ul>
 
 					<ul>
-						<li><input type="checkbox" name="checkbox" value="null">Please choose your least favorite:</li>
-						<li><input type="checkbox" name="checkbox" value="hw">	Homework	</li>
-						<li><input type="checkbox" name="checkbox" value="spiders">Spiders</li>
-						<li><input type="checkbox" name="checkbox" value="rainbows">Rainbows</li>
+						<li><input type="checkbox" name="other" value="null">Please choose your least favorite:</li>
+						<li><input type="checkbox" name="leastfav" value="homework">	Homework	</li>
+						<li><input type="checkbox" name="leastfav" value="spiders">Spiders</li>
+						<li><input type="checkbox" name="leastfav" value="rainbows">Rainbows</li>
 					</ul>
 
-					<select name="myselect">
+					<select name="beautiful">
 						<option value="">Select the most beautiful</option>
 						<option value="waterfalls">Waterfalls</option>
 						<option value="sunshine">Sunshine</option>
 						<option value="raindrops">Raindrops</option>
 					</select>
 				<br>	
-				<input type="submit" value="Submit">
+				<input type="button" value="Submit" onclick="display_output()">
 				<button type="reset" value="Reset">Reset</button>
-
 			</form>
+			<div id="output">
+				<textarea rows="4" cols="50"></textarea>
+			</div>
 		</div>
 
 
